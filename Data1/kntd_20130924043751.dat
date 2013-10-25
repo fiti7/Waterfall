@@ -1,0 +1,8 @@
+<t aid='61560' ins='61565' tid='100' bt='527920408' ver='10,6,221,708' dver='4' qc='70'>
+<td dte='0' td='10009' tdn='2006' ep='0' cd='23' tl='234' qc='70' />
+<pd pid='1' dpe='0' tp='0' tu='0' sm='0' qc='70' /></t>
+<t aid="61560" ins="61565" tid="1658640" bt="527920638" ver="11,1,157,236" dver="4" so="P" at="0">
+	<td td="115" tdn="61" cd="0" rb="607" de="1" arb="607" aet="5" eii="11" brm="9999" ucm="172" uik="1051" umk="21920" ce="0" dmn="1" cnc="1" at="2672"/>
+	<pd pid="1" tp="61" cd="0" top="47" tu="115" st="0" sp="607" dce="0" sm="0" de="1" dom="500" td="7" tfp="28" tc="26" tr="0" trp="0" dmn="1" cnc="1" dlm="107" dim="108" dcls="115" dcle="115" dcm="115"/>
+	<pdd pid="1" id="1" sid="0" rt="B" dc="332" dh="275" te="61" sd="35" dst="200" ch="1" ip="65.198.48.33" mc="1420" td="7" tc="26" tr="0" sr="270" tfp="28" trp="0" cs="http://agentcomm.keynote.com" ob="/keepalive.htm" ct="51" st="0"/>
+	<content instID="11" path="C:\KNAgent\data\content\09_23_13_11_1658640_527920638\"/></t>

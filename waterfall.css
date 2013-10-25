@@ -1,0 +1,43 @@
+.media, #media
+{
+    width: 1300px; 
+    height: 350px; 
+    float: left;
+    display: inline-block;
+    overflow-x: scroll;
+    -ms-overflow-x: auto;
+    overflow-y: hidden;
+    -ms-overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.image
+{
+    float: left;
+    height: 90%;
+    width: 400px;
+    margin: 10px;
+    text-align:center;
+    padding-left: 10px solid white;
+}
+
+.imageContainer
+{
+        
+    float:left;
+}
+
+.figure {
+        position: relative; }
+        
+.figure p.caption {
+        display: none;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        margin: 0;
+        width: 96%;
+        padding: 5px 3%;
+        background-color: #555;
+        color: #fff;
+        font-weight: bold; }
