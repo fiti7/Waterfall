@@ -1,0 +1,36 @@
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+
+public class CopyFiles {
+
+	public static void main(String[] args) {
+		String newpath = "C:\\Users\\knadmin\\Desktop\\Data";
+		String oldpath = "C:\\KNAgent\\Data";
+		/*
+		 * While true
+		 * wait for file to appear
+		 * copy to new location
+		 * reset
+		 */
+		while(true){
+			try {
+				if (FileUtils.sizeOf(new File(oldpath)) != 0){
+					//copies directories
+
+					FileUtils.copyDirectory(new File(oldpath), new File(newpath));
+					//wait until next time
+					Thread.sleep(1000);
+				}
+			} catch (IOException | InterruptedException | IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+
+
+
+	}
+}
