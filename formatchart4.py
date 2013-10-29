@@ -229,7 +229,7 @@ def createoutputs(inputarray, maxseq):
         #new scrollpercent working the range from starttime to endtime
         
         #myvars - the percent .media has scrolled
-        #all start and endtimes
+        #all  start and endtimes
         
         #solution - find the start and endtime related to this waterfall
         #derive time using the max endtime * scroll percent
@@ -241,6 +241,8 @@ def createoutputs(inputarray, maxseq):
     print("var endtimes =" + str(endtimes) + ";")
     print("var origintimes =" + str(origintimes) + ";")
     f.close()
+    
+
 
 data = ExtractData.main()
 newarray = formatdata(data, elements)
