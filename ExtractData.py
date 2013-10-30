@@ -1,8 +1,8 @@
 import pprint 
 
-def main():
+def main(source):
     lines = []
-    with open("./Data/TransData.dat", "r") as f:
+    with open(source, "r") as f:
         try:
             items = f.readlines()
             for item in items:

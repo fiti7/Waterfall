@@ -1,9 +1,12 @@
+import java.io.IOException;
+
 
 
 public class Controller {
 	
-	public static void main(String args[]){
-		
+	public static void main(String args[]) throws IOException{
+		Runtime rt = Runtime.getRuntime();
+		rt.exec("cmd /c c:\\path\\to\\python python\\test.py");
 		
 	//start the thread to copy files as tHe agent runs. 
 			Thread f = new Thread(new CopyFiles());

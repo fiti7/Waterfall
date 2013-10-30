@@ -7,6 +7,7 @@ import ExtractData
 import pprint
 import sys
 import operator
+import webbrowser
 
 elements = ["START_MSEC", "FIRST_PACKET_DELTA", "CONNECT_DELTA", "PAGE_SEQ", "RECORD_SEQ", "OBJECT_TEXT"]
 
@@ -242,11 +243,15 @@ def createoutputs(inputarray, maxseq):
     print("var origintimes =" + str(origintimes) + ";")
     f.close()
     
+#find the related picture files and data files. Open the pages
+#how are they related?
+#figure out how to match- change the names so they match
 
-
-data = ExtractData.main()
+data = ExtractData.main("./Data/TransData.dat")
 newarray = formatdata(data, elements)
 maxseq = getmax(newarray)
 reducetext(newarray[-1])
 output = splitTransactions(newarray, maxseq)
 createoutputs(output, maxseq)
+
+webbrowser.open('localhost/linedbase3.php?link=./Data/ScreenCapAt1381654112396/*.jpg')

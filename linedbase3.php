@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!-- localhost/linedbase3.php?link=./Data/ScreenCapAt1381654112396/*.jpg  -->
+
 <html lang"en">
   <body>
   	   <meta charset="utf-8">
@@ -93,7 +95,7 @@
     <div class="imageContainer">
 	
 	<?php
-	$dir = "./Data/ScreenCapAt1381654112396/*.jpg";
+	$dir = echo $_GET['link'];
 	//get the list of all files with .jpg extension in the directory and save it in an array named $images
 	$images = glob( $dir );
 	//extract only the name of the file without the extension and save in an array named $images

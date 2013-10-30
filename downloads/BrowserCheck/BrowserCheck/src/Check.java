@@ -27,7 +27,6 @@ public class Check implements Runnable{
 	private boolean lastfound = false;
 	
 	public void run() {
-		
 		SimpleDateFormat sdfDate = new SimpleDateFormat("yyyyMMddHHmmss");
 		Date now = new Date();
 		
