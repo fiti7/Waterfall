@@ -11,10 +11,15 @@ public class CopyFiles implements Runnable{
 
 		while(true){
 			try {
+				if (!(new File(OUTPUT_FOLDER).exists())){
+					new File(OUTPUT_FOLDER).mkdir();
+				}
 				if (FileUtils.sizeOf(new File(SOURCE_FOLDER)) != 0){
 				//copies directories
 				
 					FileUtils.copyDirectory(new File(SOURCE_FOLDER), new File(OUTPUT_FOLDER));
+					LoggerTest logger = new LoggerTest();
+					logger.log(String.valueOf(new File(SOURCE_FOLDER).list()));
 					//give it a rest
 					//System.out.println("copying");
 					Thread.sleep(1000);

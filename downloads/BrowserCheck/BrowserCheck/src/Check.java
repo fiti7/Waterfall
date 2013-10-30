@@ -16,8 +16,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import stopwatch.*;
-
 //TODO: Split into model/view/controller that automatically senses device/browser type
 
 public class Check implements Runnable{
@@ -31,7 +29,7 @@ public class Check implements Runnable{
 	public void run() {
 		
 		SimpleDateFormat sdfDate = new SimpleDateFormat("yyyyMMddHHmmss");
-Date now = new Date();
+		Date now = new Date();
 		
 		String strDate = sdfDate.format(now);
 		
@@ -49,7 +47,7 @@ Date now = new Date();
 			c.SetLastFound(true);
 			System.out.println("I started running so I'm setting my things to true");
 			if (screencapProcess== null){
-				path = SOURCE_PATH + String.valueOf(System.currentTimeMillis());
+				path = SOURCE_PATH + sdfDate.format(new Date());
 				screencapProcess= c.startScreencap(path);
 				
 			}
@@ -64,7 +62,7 @@ Date now = new Date();
 			
 			//Once a browser has been opened or closed capture screen or stop capture.
 			if (c.GetFound() == true){
-				path = SOURCE_PATH + String.valueOf(System.currentTimeMillis());
+				path = SOURCE_PATH + sdfDate.format(new Date());
 				screencapProcess= c.startScreencap(path);
 				System.out.println("capturing");
 			}

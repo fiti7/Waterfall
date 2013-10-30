@@ -1,4 +1,5 @@
-package stopwatch;
+
+
 
 
 import java.io.File;
@@ -34,6 +35,8 @@ public class Renamer implements Runnable{
 						boolean success = myfiles[i].renameTo(myfile);
 						if (success){
 							System.out.println("name changed to" + name);
+							LoggerTest logger = new LoggerTest();
+							logger.log("name changed to" + name);
 						}
 					}
 					
