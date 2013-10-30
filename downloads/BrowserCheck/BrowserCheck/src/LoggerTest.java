@@ -8,7 +8,7 @@ public class LoggerTest {
  
  public static void init(){
  try {
- fh=new FileHandler("./loggerExample.log", false);
+ fh=new FileHandler("C:\\Users\\knadmin\\Desktop\\Data\\logger.log", false);
  } catch (IOException e) {
  e.printStackTrace();
  }
