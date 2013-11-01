@@ -247,11 +247,13 @@ def createoutputs(inputarray, maxseq):
 #how are they related?
 #figure out how to match- change the names so they match
 
+
+ 
 data = ExtractData.main("./Data/TransData.dat")
 newarray = formatdata(data, elements)
 maxseq = getmax(newarray)
 reducetext(newarray[-1])
 output = splitTransactions(newarray, maxseq)
 createoutputs(output, maxseq)
+webbrowser.get('windows-default').open('http:\\localhost/linedbase3.php?link=./Data/ScreenCapAt1381654112396/*.jpg')
 
-webbrowser.open('localhost/linedbase3.php?link=./Data/ScreenCapAt1381654112396/*.jpg')
