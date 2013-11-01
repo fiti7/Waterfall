@@ -21,9 +21,14 @@ import javax.mail.internet.MimeMultipart;
 
 public class Mail2 {
 	private List<String> fileList = new ArrayList<String>();
-	private static final String OUTPUT_ZIP_FILE = "C:\\Users\\knadmin\\Desktop\\Data\\Data.zip";
-	private static final String SOURCE_FOLDER = "C:\\Users\\knadmin\\Desktop\\Data";
+	private String OUTPUT_ZIP_FILE = "C:\\Users\\knadmin\\Desktop\\Data\\Data.zip";
+	private String OUTPUT_FOLDER = "C:\\Users\\knadmin\\Desktop\\Data";
 	private static final String EMAIL = "etaiklein@gmail.com";
+	
+	public void Mail2(String OUTPUT){
+		OUTPUT_FOLDER = OUTPUT;
+		OUTPUT_ZIP_FILE = OUTPUT + "\\Data.zip";
+	}
 	
 	public void zipandmail(){
 		System.out.println("zipping");
@@ -33,7 +38,7 @@ public class Mail2 {
 	}
 
 	public void zipmain(){
-		this.generateFileList(new File(SOURCE_FOLDER));
+		this.generateFileList(new File(OUTPUT_FOLDER));
 		this.zipIt(OUTPUT_ZIP_FILE);
 
 	}
@@ -61,7 +66,7 @@ public class Mail2 {
 				zos.putNextEntry(ze);
 
 				FileInputStream in = 
-						new FileInputStream(SOURCE_FOLDER + File.separator + file);
+						new FileInputStream(OUTPUT_FOLDER + File.separator + file);
 
 				int len;
 				while ((len = in.read(buffer)) > 0) {
@@ -108,7 +113,7 @@ public class Mail2 {
 	 * @return Formatted file path
 	 */
 	private String generateZipEntry(String file){
-		return file.substring(SOURCE_FOLDER.length()+1, file.length());
+		return file.substring(OUTPUT_FOLDER.length()+1, file.length());
 	}
 
 public void mailme(String path, String TO) {

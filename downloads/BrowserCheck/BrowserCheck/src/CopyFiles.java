@@ -4,8 +4,15 @@ import java.io.IOException;
 import org.apache.commons.io.FileUtils;
 
 public class CopyFiles implements Runnable{
-	private static final String SOURCE_FOLDER = "C:\\KNAgent\\Data";
-	private static final String OUTPUT_FOLDER = "C:\\Users\\knadmin\\Desktop\\Data";
+	private String SOURCE_FOLDER = "C:\\KNAgent\\Data";
+	private String OUTPUT_FOLDER = "C:\\Users\\knadmin\\Desktop\\Data";
+	
+	public void run(String source, String output){
+		SOURCE_FOLDER = source;
+		OUTPUT_FOLDER = output;
+		run();
+	}
+	
 	@Override
 	public void run() {
 

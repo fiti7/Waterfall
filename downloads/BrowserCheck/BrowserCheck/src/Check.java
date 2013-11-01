@@ -20,11 +20,17 @@ import java.util.List;
 
 public class Check implements Runnable{
 	
-	private static final String SOURCE_PATH = "C:\\Users\\knadmin\\Desktop\\Data\\ScreenCapAt";
-	private static final String PROCESS = "TxnPlaybackEngine.exe";
+	private String SOURCE_PATH = "C:\\Users\\knadmin\\Desktop\\Data\\ScreenCapAt";
+	private String PROCESS = "TxnPlaybackEngine.exe";
 	private boolean change = false;
 	private boolean found = false;
 	private boolean lastfound = false;
+	
+	public void run(String source, String process){
+		SOURCE_PATH = source + "\\ScreenCapAt";
+		PROCESS = process;
+		run();
+	}
 	
 	public void run() {
 		SimpleDateFormat sdfDate = new SimpleDateFormat("yyyyMMddHHmmss");

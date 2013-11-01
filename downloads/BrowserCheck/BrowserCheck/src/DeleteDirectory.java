@@ -6,6 +6,12 @@ public class DeleteDirectory{
 	
 	public static final String SRC_FOLDER = "C:\\Users\\knadmin\\Desktop\\Data";
 	
+	public void Delete(String source){
+		SRC_FOLDER = source;
+		Delete();
+	}
+	
+	
     public void Delete(){
 
     	File directory = new File(SRC_FOLDER);
