@@ -7,9 +7,11 @@ import java.util.Date;
 
 
 public class Controller {
-	private static String SOURCE_FOLDER = "C:\\wamp\\www\\TestDataIn";
-	private static String OUTPUT_FOLDER = "C:\\wamp\\www\\TestDataOut";
-	private static String PROCESS = "firefox.exe";
+	//private static String SOURCE_FOLDER = "C:\\wamp\\www\\TestDataIn";
+	//private static String OUTPUT_FOLDER = "C:\\wamp\\www\\TestDataOut";
+	private static String SOURCE_FOLDER = "C:\\KNAgent\\Data";
+	private static String OUTPUT_FOLDER = "C:\\Users\\knadmin\\Desktop\\Data";
+	private static String PROCESS = "TxnPlaybackEngine.exe";
 	
 	public static void main(String args[]) throws IOException{
 		DeleteDirectory r = new DeleteDirectory(OUTPUT_FOLDER);
@@ -37,17 +39,8 @@ public class Controller {
 	//while(true){
 		System.out.println("loop starting");
 		
-		//sample data to test moving files
-		String txtpath = "C:\\wamp\\www\\TestDataIn\\" + System.currentTimeMillis() + ".txt";
-		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(txtpath, true)));
-		out.println("asdf");
-		out.close();
 		
-		txtpath = "C:\\wamp\\www\\TestDataIn\\" + System.currentTimeMillis() + ".txt";
-		out = new PrintWriter(new BufferedWriter(new FileWriter(txtpath, true)));
-		out.println("asdf");
-		out.close();
-		
+	while(true){
 		try {
 			Thread.sleep(10000);
 		} catch (InterruptedException e) {
@@ -57,7 +50,7 @@ public class Controller {
 	///mail me the result
 		System.out.println("trying to mail");
 			Mail2 m = new Mail2(OUTPUT_FOLDER);
-			//m.zipandmail();
+			m.zipandmail();
 			System.out.println("mailem");
 	//Delete the Directory
 			DeleteDirectory d = new DeleteDirectory(OUTPUT_FOLDER);
@@ -67,11 +60,11 @@ public class Controller {
 			System.out.println("destroy the evidence");
 	//wait  ten minutes
 	try {
-		Thread.sleep(1000);
+		Thread.sleep(10000);
 	} catch (InterruptedException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 	}
-//	}
+	}
 }

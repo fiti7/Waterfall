@@ -34,7 +34,7 @@ public class CopyFiles implements Runnable{
 					logger.log("copied " + mystring.substring(0,mystring.length()-2));
 					
 					//give it a rest
-					System.out.println("copying");
+					//System.out.println("copying");
 					Thread.sleep(1000);
 					
 				

@@ -9,7 +9,7 @@ import java.util.logging.*;
 
  
 public class LoggerTest {
- public static String path = ".//logger.txt";
+ public static String path = "C:\\Users\\knadmin\\Desktop\\Data\\logger.txt";
  private static SimpleDateFormat sdfDate = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss.SSS");
  
  public static void init(){
