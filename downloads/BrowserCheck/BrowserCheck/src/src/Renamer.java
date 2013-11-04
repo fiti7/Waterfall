@@ -6,10 +6,12 @@ import java.io.File;
 
 
 public class Renamer implements Runnable{
+	LoggerTest logger = new LoggerTest();
 	File afile = new File("");
 
-	public Renamer(File bfile){
+	public Renamer(File bfile, LoggerTest mylogger){
 		afile = bfile;
+		logger = mylogger;
 	}
 
 	public void run() {
@@ -26,7 +28,8 @@ public class Renamer implements Runnable{
 				myfiles = afile.listFiles();
 				for (int i = 0; i < myfiles.length; i++){
 					//if it hasnt been renamed
-					if(myfiles[i].getName().contains("scap")){
+					
+					if(myfiles[i].length()!= 0 && myfiles[i].getName().contains("scap")){
 						System.out.println(myfiles[i].getName());
 						name = System.nanoTime() -  starttime;
 						name = ((long)name/1000000000.0);
@@ -35,7 +38,6 @@ public class Renamer implements Runnable{
 						boolean success = myfiles[i].renameTo(myfile);
 						if (success){
 							System.out.println("name changed to" + name);
-							LoggerTest logger = new LoggerTest();
 							logger.log("name changed to" + name);
 						}
 					}

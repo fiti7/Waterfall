@@ -25,11 +25,13 @@ public class Check implements Runnable{
 	private boolean change = false;
 	private boolean found = false;
 	private boolean lastfound = false;
+	private static LoggerTest logger = new LoggerTest();
 
 	
-	public Check(String source, String process) {
+	public Check(String source, String process, LoggerTest mylogger) {
 		SOURCE_PATH = source + "\\ScreenCapAt";
 		PROCESS = process;
+		logger = mylogger;
 	}
 	
 	public void run() {
@@ -42,18 +44,18 @@ public class Check implements Runnable{
 		
 		//define the path the pictures will be dumped to.
 		String path = SOURCE_PATH + strDate;
-		
-		Check c = new Check(SOURCE_PATH, PROCESS);
+		System.out.println("mypath = " + path);
 		Process screencapProcess= null;
 
 		//check if we are running to start
-		if (c.AmIRunning()){
-			c.SetFound(true);
-			c.SetLastFound(true);
+		if (this.AmIRunning()){
+			this.SetFound(true);
+			this.SetLastFound(true);
 			System.out.println("I started running so I'm setting my things to true");
 			if (screencapProcess== null){
 				path = SOURCE_PATH + sdfDate.format(new Date());
-				screencapProcess= c.startScreencap(path);
+				System.out.println("case2mypath = " + path);
+				screencapProcess= this.startScreencap(path);
 				
 			}
 		}
@@ -61,24 +63,25 @@ public class Check implements Runnable{
 
 		//loop check if a browser has been opened or closed.
 		while(true){
-			c.waitForChange();
-			c.SetChange(false);
-			c.SetLastFound(c.GetFound());
+			this.waitForChange();
+			this.SetChange(false);
+			this.SetLastFound(this.GetFound());
 			
 			//Once a browser has been opened or closed capture screen or stop capture.
-			if (c.GetFound() == true){
+			if (this.GetFound() == true){
 				path = SOURCE_PATH + sdfDate.format(new Date());
-				screencapProcess= c.startScreencap(path);
+				screencapProcess= this.startScreencap(path);
+				System.out.println("case3mypath = " + path);
 				System.out.println("capturing");
 			}
 			else {
 				//stop the screencap
-				if (c.GetFound() == false){
-					c.stopScreencap(screencapProcess);
+				if (this.GetFound() == false){
+					this.stopScreencap(screencapProcess);
 				}
 				System.out.println("stopping capture");
 			}
-			c.clean(path);
+			this.clean(path);
 		}
 	}
 
@@ -151,11 +154,13 @@ public class Check implements Runnable{
 		
 		}
 
-		Thread r = new Thread(new Renamer(new File(path)));
+		Thread r = new Thread(new Renamer(new File(path), logger));
 		
 		System.out.println("running renamer");
 		r.start();
 		long starttime = System.nanoTime();
+		System.out.println("mypath = " + path);
+
 			screencapProcess = rt.exec("C:\\VLC\\vlc screen:// --dshow-vdev=screen-capture-recorder --dshow-fps=10 -I dummy --dummy-quiet --rate=1 --video-filter=scene --vout=dummy --scene-format=jpg --scene-ratio=1 --scene-prefix=snap --scene-path=" + path +" --scene-prefix="+ "scap" +	((long)(System.nanoTime() - starttime)/1000000000.0)+" vlc://quit ");
 		
 		return screencapProcess;

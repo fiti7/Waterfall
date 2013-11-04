@@ -6,10 +6,12 @@ import org.apache.commons.io.FileUtils;
 public class CopyFiles implements Runnable{
 	private String SOURCE_FOLDER = "C:\\KNAgent\\Data";
 	private String OUTPUT_FOLDER = "C:\\Users\\knadmin\\Desktop\\Data";
-	
-	public CopyFiles(String source, String output){
+	private LoggerTest logger = new LoggerTest();
+
+	public CopyFiles(String source, String output, LoggerTest mylogger){
 		SOURCE_FOLDER = source;
 		OUTPUT_FOLDER = output;
+		logger = mylogger;
 	}
 	
 	@Override
@@ -24,7 +26,6 @@ public class CopyFiles implements Runnable{
 				//copies directories
 				
 					FileUtils.copyDirectory(new File(SOURCE_FOLDER), new File(OUTPUT_FOLDER));
-					LoggerTest logger = new LoggerTest();
 					logger.log(String.valueOf(new File(SOURCE_FOLDER).list()));
 					//give it a rest
 					//System.out.println("copying");
