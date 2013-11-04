@@ -1,6 +1,9 @@
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Date;
 
 
 public class Controller {
@@ -31,11 +34,20 @@ public class Controller {
 			c.start();
 	
 	 		
-	while(true){
+	//while(true){
 		System.out.println("loop starting");
-		File file = new File("C:\\wamp\\www\\TestDataIn\\" + System.currentTimeMillis() + ".txt");
-		file.createNewFile();
-		new FileWriter(file,true).append("I am no longer empty");
+		
+		//sample data to test moving files
+		String txtpath = "C:\\wamp\\www\\TestDataIn\\" + System.currentTimeMillis() + ".txt";
+		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(txtpath, true)));
+		out.println("asdf");
+		out.close();
+		
+		txtpath = "C:\\wamp\\www\\TestDataIn\\" + System.currentTimeMillis() + ".txt";
+		out = new PrintWriter(new BufferedWriter(new FileWriter(txtpath, true)));
+		out.println("asdf");
+		out.close();
+		
 		try {
 			Thread.sleep(10000);
 		} catch (InterruptedException e) {
@@ -45,7 +57,7 @@ public class Controller {
 	///mail me the result
 		System.out.println("trying to mail");
 			Mail2 m = new Mail2(OUTPUT_FOLDER);
-			m.zipandmail();
+			//m.zipandmail();
 			System.out.println("mailem");
 	//Delete the Directory
 			DeleteDirectory d = new DeleteDirectory(OUTPUT_FOLDER);
@@ -61,5 +73,5 @@ public class Controller {
 		e.printStackTrace();
 	}
 	}
-	}
+//	}
 }
