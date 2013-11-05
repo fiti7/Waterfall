@@ -12,7 +12,7 @@
     <script src="./waterfall.js"></script>
 	
 	<!-- charts -->
-	<script type="text/javascript" src="./jquery-2.0.2.min.js"></script>
+	<script type="text/javascript" src="./Data/jquery-2.0.2.min.js"></script>
 
 	<script type="text/javascript" id="key" src="key.js"></script>
 	 <div id="bigcontainer">
@@ -186,9 +186,9 @@
 
   </div>
 </div>
-<script src="./HighCharts/js/highcharts.js"></script>
-<script src="./HighCharts/js/highcharts-more.js"></script>
-<script src="./HighCharts/js/modules/exporting.js"></script>
+<script src="./external/js/highcharts.js"></script>
+<script src="./external/js/highcharts-more.js"></script>
+<script src="./external/js/modules/exporting.js"></script>
 
 <div id="container" style="min-width: 25em; background-color:blue; max-width: 75em; height: 150em; margin: auto"></div>
 </div>

@@ -115,7 +115,7 @@ def createoutputs(inputarray, maxseq):
     #for each transaction
     for num in range(maxseq):
         #make a new file
-        name = './outputs' + str(num) + '.js'
+        name = './Data/outputs' + str(num) + '.js'
         outnames.append(name)
         
         #get the time each sequence starts and ends
@@ -235,7 +235,7 @@ def createoutputs(inputarray, maxseq):
         #solution - find the start and endtime related to this waterfall
         #derive time using the max endtime * scroll percent
         #new percent should be the range of startime/maxend - endtime/maxend
-    f = open('.\key.js', 'w')
+    f = open('./Data/key.js', 'w')
     sys.stdout = f
     print("var outnames =" + str(outnames) + ";")
     print("var starttimes =" + str(starttimes) + ";")
@@ -255,5 +255,6 @@ maxseq = getmax(newarray)
 reducetext(newarray[-1])
 output = splitTransactions(newarray, maxseq)
 createoutputs(output, maxseq)
-webbrowser.get('windows-default').open('http:\\localhost/linedbase3.php?link=./Data/ScreenCapAt1381654112396/*.jpg')
+
+webbrowser.get('windows-default').open('http://localhost/linedbase3.php?link=./Data/ScreenCapAt1381654112396/*.jpg')
 
