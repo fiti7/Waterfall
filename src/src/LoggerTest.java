@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 import java.io.BufferedWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.*;
 
  
 public class LoggerTest {
@@ -37,9 +36,9 @@ public class LoggerTest {
  
 
  
- public static void main(String[] args) {
+public static void main(String[] args) {
  LoggerTest logger = new LoggerTest();
- logger.init();
+ LoggerTest.init();
  logger.log("message1");
  }
 }

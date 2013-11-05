@@ -1,17 +1,15 @@
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
+
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Date;
+
 
 
 public class Controller {
-	//private static String SOURCE_FOLDER = "C:\\wamp\\www\\TestDataIn";
-	//private static String OUTPUT_FOLDER = "C:\\wamp\\www\\TestDataOut";
-	private static String SOURCE_FOLDER = "C:\\KNAgent\\Data";
-	private static String OUTPUT_FOLDER = "C:\\Users\\knadmin\\Desktop\\Data";
-	private static String PROCESS = "TxnPlaybackEngine.exe";
+	private static String SOURCE_FOLDER = "C:\\wamp\\www\\TestDataIn";
+	private static String OUTPUT_FOLDER = "C:\\wamp\\www\\TestDataOut";
+	private static String PROCESS = "firefox.exe";
+//	private static String SOURCE_FOLDER = "C:\\KNAgent\\Data";
+//	private static String OUTPUT_FOLDER = "C:\\Users\\knadmin\\Desktop\\Data";
+//	private static String PROCESS = "TxnPlaybackEngine.exe";
 	
 	public static void main(String args[]) throws IOException{
 		DeleteDirectory r = new DeleteDirectory(OUTPUT_FOLDER);
@@ -47,11 +45,16 @@ public class Controller {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	///mail me the result
-		System.out.println("trying to mail");
-			Mail2 m = new Mail2(OUTPUT_FOLDER);
-			m.zipandmail();
-			System.out.println("mailem");
+//	///mail me the result
+//		System.out.println("trying to mail");
+//			Mail2 m = new Mail2(OUTPUT_FOLDER);
+//			m.zipandmail();
+//			System.out.println("mailem");
+		
+		Automate a = new Automate();
+		a.run();
+		System.out.println("automating");
+		
 	//Delete the Directory
 			DeleteDirectory d = new DeleteDirectory(OUTPUT_FOLDER);
 			d.Delete();
