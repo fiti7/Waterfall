@@ -15,15 +15,12 @@ public class Controller {
 //	private static String PROCESS = "firefox.exe";
 // private static String FILES = ""C:\\wamp\\www\\src\\src";
 		private static String SOURCE_FOLDER = "C:\\KNAgent\\Data";
-		private static String OUTPUT_FOLDER = "C:\\Users\\knadmin\\Desktop\\Data";
+		private static String OUTPUT_FOLDER = "C:\\Users\\knadmin\\workspace\\www\\www\\src\\Data";
 		private static String PROCESS = "TxnPlaybackEngine.exe";
-		private static String FILES = "C:\\Users\\knadmin\\Desktop\\www\\src\\src";
+		private static String FILES = "C:\\Users\\knadmin\\workspace\\www\\www\\src\\src";
 
 	public static void main(String args[]) throws IOException, MessagingException{
-		DeleteDirectory r = new DeleteDirectory(OUTPUT_FOLDER);
-		r.Delete();
-		DeleteDirectory s = new DeleteDirectory(SOURCE_FOLDER);
-		s.Delete();
+
 
 
 		//Runtime rt = Runtime.getRuntime();
@@ -54,9 +51,9 @@ public class Controller {
 				e.printStackTrace();
 			}
 
-			Automate a = new Automate();
-			a.run();
-			System.out.println("automating");
+//			Automate a = new Automate();
+	//		a.run();
+		//	System.out.println("automating");
 
 			try {
 				FileUtils.copyDirectory(new File(FILES), new File(OUTPUT_FOLDER));

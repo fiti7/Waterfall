@@ -41,7 +41,7 @@ public class Automate{
 		//this will also call the php file
 		try {
 			System.out.println("running python files");
-			Process process = Runtime.getRuntime().exec("cmd /c " + pythonPath + " " + filePath, null, new File("C:\\wamp\\www\\src\\src"));
+			Process process = Runtime.getRuntime().exec("C:\\Windows\\System32\\cmd.exe /c " + pythonPath + " " + filePath, null, new File("C:\\wamp\\www\\src\\src"));
 			Scanner scanner = new Scanner(process.getInputStream());
 			while (scanner.hasNext()) {
 				System.out.println(scanner.nextLine());

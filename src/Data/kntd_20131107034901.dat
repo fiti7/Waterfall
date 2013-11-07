@@ -1,0 +1,23 @@
+<t aid='61560' ins='61565' tid='100' bt='531719082' ver='10,6,221,708' dver='4' qc='70'>
+<td dte='0' td='10009' tdn='2006' ep='0' cd='25' tl='249' qc='70' />
+<pd pid='1' dpe='0' tp='0' tu='0' sm='0' qc='70' /></t>
+<t aid='61560' ins='61565' tid='100' bt='531719311' ver='10,6,221,708' dver='4' qc='70'>
+<td dte='0' td='10016' tdn='0' ep='0' cd='0' tl='0' qc='70' />
+<pd pid='1' dpe='0' tp='0' tu='0' sm='0' qc='70' /></t>
+<t aid='61560' ins='61565' tid='100' bt='531719312' ver='10,6,221,708' dver='4' qc='70'>
+<td dte='0' td='10017' tdn='0' ep='0' cd='0' tl='0' qc='70' />
+<pd pid='1' dpe='0' tp='0' tu='0' sm='0' qc='70' /></t>
+<t aid='61560' ins='61565' tid='100' bt='531719313' ver='10,6,221,708' dver='4' qc='70'>
+<td dte='0' td='10018' tdn='0' ep='0' cd='0' tl='0' qc='70' />
+<pd pid='1' dpe='0' tp='0' tu='0' sm='0' qc='70' /></t>
+<t aid='61560' ins='61565' tid='100' bt='531719314' ver='10,6,221,708' dver='4' qc='70'>
+<td dte='0' td='10003' tdn='3' ep='0' cd='0' tl='0' qc='70' />
+<pd pid='1' dpe='0' tp='0' tu='0' sm='0' qc='70' /></t>
+<t aid='61560' ins='61565' tid='100' bt='531719315' ver='10,6,221,708' dver='4' qc='70'>
+<td dte='0' td='10003' tdn='3' ep='0' cd='0' tl='0' qc='70' />
+<pd pid='1' dpe='0' tp='0' tu='0' sm='0' qc='70' /></t>
+<t aid="61560" ins="61565" tid="1658640" bt="531719330" ver="11,1,157,236" dver="4" so="P" at="0">
+	<td td="3994" tdn="68" cd="0" rb="607" de="1" arb="607" aet="5" eii="13" brm="9999" ucm="313" uik="1054" umk="26364" ce="0" dmn="1" cnc="1" at="16047"/>
+	<pd pid="1" tp="68" cd="0" top="1000" tu="3994" st="0" sp="607" dce="0" sm="0" de="1" dom="500" td="9" tfp="31" tc="28" tr="0" trp="0" dmn="1" cnc="1" dlm="2029" dim="2491" dcls="3994" dcle="3994" dcm="3994"/>
+	<pdd pid="1" id="1" sid="0" rt="B" dc="332" dh="275" te="68" sd="1005" dst="200" ch="1" ip="65.198.48.33" mc="1452" td="9" tc="28" tr="0" sr="270" tfp="31" trp="0" cs="http://agentcomm.keynote.com" ob="/keepalive.htm" ct="51" st="0"/>
+	<content instID="13" path="C:\KNAgent\data\content\11_06_13_13_1658640_531719330\"/></t>

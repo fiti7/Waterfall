@@ -22,7 +22,7 @@ import javax.mail.internet.MimeMultipart;
 public class Mail2 {
 	private List<String> fileList = new ArrayList<String>();
 	private String OUTPUT_ZIP_FILE = "C:\\Users\\knadmin\\Desktop\\Data\\Data.zip";
-	private String OUTPUT_FOLDER = "C:\\Users\\knadmin\\Desktop\\Data";
+	private static String OUTPUT_FOLDER = "C:\\Users\\knadmin\\Desktop\\Data";
 	private static final String EMAIL = "etaiklein@gmail.com";
 	
 	public Mail2(String OUTPUT) {
@@ -166,4 +166,10 @@ public void mailme(String path, String TO) {
 		throw new RuntimeException(e);
 	}
 }
+
+public static void main(String[] args){
+	Mail2 m = new Mail2(OUTPUT_FOLDER);
+	m.zipandmail();
+}
+
 }
