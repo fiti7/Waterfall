@@ -8,6 +8,9 @@ import java.util.Properties;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+import net.lingala.zip4j.core.ZipFile;
+import net.lingala.zip4j.exception.ZipException;
+
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
@@ -24,17 +27,31 @@ public class Mail2 {
 	private String OUTPUT_ZIP_FILE = "C:\\Users\\knadmin\\Desktop\\Data\\Data.zip";
 	private static String OUTPUT_FOLDER = "C:\\Users\\knadmin\\Desktop\\Data";
 	private static final String EMAIL = "etaiklein@gmail.com";
-	
-	public Mail2(String OUTPUT) {
+	private static final Integer TENMB = 10485760;
+	private static LoggerTest logger = new LoggerTest();
+
+	public Mail2(String OUTPUT, LoggerTest mlogger) {
 		OUTPUT_FOLDER = OUTPUT;
+		logger = mlogger;
 		OUTPUT_ZIP_FILE = OUTPUT + "\\Data.zip";
 	}
 	
 	public void zipandmail(){
-		System.out.println("zipping");
+		logger.log(String.valueOf(amITooBig(OUTPUT_FOLDER, TENMB/2)));
+		logger.log("zipping");
 		zipmain();
-		System.out.println("mailing...");
+		logger.log("mailing...");
+		ZipFile zipFile;
+		logger.log("encrypting");
+		try {
+		zipFile = new ZipFile(OUTPUT_ZIP_FILE);
+		zipFile.setPassword("Keynote");
+		} catch (ZipException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		mailme(OUTPUT_ZIP_FILE, EMAIL);
+		cleanup();
 	}
 
 	public void zipmain(){
@@ -80,7 +97,7 @@ public class Mail2 {
 			//remember close it
 			zos.close();
 
-			System.out.println("Done");
+			System.out.println("Zipped");
 		}catch(IOException ex){
 			ex.printStackTrace();   
 		}
@@ -167,8 +184,25 @@ public void mailme(String path, String TO) {
 	}
 }
 
+public long amITooBig(String f, Integer s){
+	long size = new File(f).length();
+	if(size > s){
+		System.out.println("directory is too large. deleting to make space");
+		DeleteDirectory d = new DeleteDirectory(f);
+		d.Delete();
+	}
+	return size;
+}
+
+public void cleanup(){
+	File f = new File(OUTPUT_FOLDER + "\\Data.zip");
+	f.delete();
+}
+
 public static void main(String[] args){
-	Mail2 m = new Mail2(OUTPUT_FOLDER);
+	LoggerTest mlogger = new LoggerTest("C:\\wamp\\www\\src\\logger");
+	LoggerTest.init();
+	Mail2 m = new Mail2("C:\\wamp\\www\\src\\Data", mlogger);
 	m.zipandmail();
 }
 

@@ -1,6 +1,6 @@
 var ml = 150; var myline; var calculatedPercent = 0;
-        var starttime =  20826 ;
-        var endtime =  20844 ;
+        var starttime =  48119 ;
+        var endtime =  48142 ;
             $(function main() {
             $('#container').highcharts({
                 chart: {marginLeft: ml,
@@ -15,7 +15,7 @@ var ml = 150; var myline; var calculatedPercent = 0;
                  xAxis: {categories: ['/i/catalog/modu', '/i/catalog/modu', '/i/catalog/modu'] ,                 alternateGridColor: '#FDFFD5'                 },
                          yAxis: [{
                          labels:{ format: "{value:.3f}", formatter: function(){return ((this.value) / 1000) + 's';}}, 
-                    min: " 20826 ",
+                    min: " 48119 ",
                     title: false,
                 },{                linkedTo:0,                labels:{ format: "{value:.3f}", formatter: function(){return ((this.value) / 1000) + 's';}}, 
                 title: false,
@@ -36,12 +36,12 @@ var ml = 150; var myline; var calculatedPercent = 0;
 },
 {
 
-            showInLegend: false, data: [3, 2, 2]
+            showInLegend: false, data: [6, 9, 9]
 },
 {
 color: 'transparent',
 
-            showInLegend: false, data: [20871, 20871, 61]
+            showInLegend: false, data: [48160, 48161, 55]
 ,yaxis: 1}                            ]            });        });        
 $(setInterval(
         function makeline(chart) {
@@ -52,8 +52,8 @@ $(setInterval(
         style = window.getComputedStyle(element);
         var scrollPercent = ((element.scrollLeft) / (element.scrollWidth - element.clientWidth));
         var myheight = $(chart.container).height();
-        var startPercent = (starttime /  28486 );
-        var endPercent = (endtime /  28486 );
+        var startPercent = (starttime /  59365 );
+        var endPercent = (endtime /  59365 );
         calculatedPercent = (scrollPercent - startPercent)/(endPercent - startPercent);
         console.log("cp " + calculatedPercent);        var mywidth =  (calculatedPercent * ($(chart.container).width() - ml)) + ml - 1 ;
         if ((0 <= calculatedPercent) && (calculatedPercent <=1)){

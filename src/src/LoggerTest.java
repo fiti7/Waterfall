@@ -8,12 +8,20 @@ import java.util.Date;
 
  
 public class LoggerTest {
- public static String path = "C:\\Users\\knadmin\\Desktop\\Data\\logger.txt";
+ public static String PATH = "C:\\Users\\knadmin\\Desktop\\Data\\logger";
  private static SimpleDateFormat sdfDate = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss.SSS");
+ private static String fullpath = "";
+ 
+ public LoggerTest(){}
+ 
+ public LoggerTest(String path){
+	 PATH = path;
+ }
  
  public static void init(){
 //clear the file
-	File file = new File(path);
+	fullpath = PATH + String.valueOf(System.currentTimeMillis()).substring(8, 13) + ".txt";
+	File file = new File(fullpath);
 	file.delete();
 	
 	try {
@@ -26,7 +34,7 @@ public class LoggerTest {
  
  public void log(String mystring){
 	 try {
-		    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(path, true)));
+		    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(fullpath, true)));
 		    out.println(sdfDate.format(new Date()));
 		    out.println(mystring);
 		    out.close();
@@ -37,8 +45,10 @@ public class LoggerTest {
 
  
 public static void main(String[] args) {
- LoggerTest logger = new LoggerTest();
+ LoggerTest logger = new LoggerTest("C:\\wamp\\www\\src\\logger");
  LoggerTest.init();
  logger.log("message1");
+ logger.log("message2");
+
  }
 }

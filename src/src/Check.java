@@ -26,7 +26,7 @@ public class Check implements Runnable{
 	private boolean found = false;
 	private boolean lastfound = false;
 	private static LoggerTest logger = new LoggerTest();
-
+	long starttime = System.nanoTime();
 	
 	public Check(String source, String process, LoggerTest mylogger) {
 		SOURCE_PATH = source + "\\ScreenCapAt";
@@ -54,7 +54,6 @@ public class Check implements Runnable{
 			System.out.println("I started running so I'm setting my things to true");
 			if (screencapProcess== null){
 				path = SOURCE_PATH + sdfDate.format(new Date());
-				System.out.println("case2mypath = " + path);
 				screencapProcess= this.startScreencap(path);
 				
 			}
@@ -71,15 +70,14 @@ public class Check implements Runnable{
 			if (this.GetFound() == true){
 				path = SOURCE_PATH + sdfDate.format(new Date());
 				screencapProcess= this.startScreencap(path);
-				System.out.println("case3mypath = " + path);
-				System.out.println("capturing");
+				logger.log("capturing");
 			}
 			else {
 				//stop the screencap
 				if (this.GetFound() == false){
+					logger.log("stopping capture");
 					this.stopScreencap(screencapProcess);
 				}
-				System.out.println("stopping capture");
 			}
 			this.clean(path);
 		}
@@ -137,7 +135,6 @@ public class Check implements Runnable{
 				}
 			}
 			if (this.GetFound() != this.GetLastFound()){
-				System.out.println("I changed!");
 				this.SetChange(true);
 			}
 		}
@@ -145,7 +142,6 @@ public class Check implements Runnable{
 
 	public Process startScreencap(String path){
 		try {
-		System.out.println("capturing");
 		Runtime rt = Runtime.getRuntime();
 		Process screencapProcess = null;
 		//sanity check- does this file already exist?
@@ -156,12 +152,12 @@ public class Check implements Runnable{
 
 		Thread r = new Thread(new Renamer(new File(path), logger));
 		
-		System.out.println("running renamer");
+		logger.log("running renamer");
 		r.start();
-		long starttime = System.nanoTime();
-		System.out.println("mypath = " + path);
+		starttime = System.nanoTime();
+		logger.log("mypath = " + path);
 
-			screencapProcess = rt.exec("C:\\VLC\\vlc screen:// --dshow-vdev=screen-capture-recorder --dshow-fps=10 -I dummy --dummy-quiet --rate=1 --video-filter=scene --vout=dummy --scene-format=jpg --scene-ratio=1 --scene-prefix=snap --scene-path=" + path +" --scene-prefix="+ "scap" +	((long)(System.nanoTime() - starttime)/1000000000.0)+" vlc://quit ");
+			screencapProcess = rt.exec("C:\\VLC\\vlc screen:// --dshow-vdev=screen-capture-recorder --dshow-fps=10 -I dummy --dummy-quiet --rate=1 --video-filter=scene --vout=dummy --scene-format=jpg --scene-ratio=1 --scene-prefix=snap --scene-path=" + path +" --scene-prefix="+ "scap" +	( String.valueOf(((long)System.nanoTime() - starttime)).substring(10, 15))+" vlc://quit ");
 		
 		return screencapProcess;
 		} catch (IOException e) {
