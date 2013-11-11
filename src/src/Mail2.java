@@ -8,9 +8,6 @@ import java.util.Properties;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-import net.lingala.zip4j.core.ZipFile;
-import net.lingala.zip4j.exception.ZipException;
-
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
@@ -41,15 +38,6 @@ public class Mail2 {
 		logger.log("zipping");
 		zipmain();
 		logger.log("mailing...");
-		ZipFile zipFile;
-		logger.log("encrypting");
-		try {
-		zipFile = new ZipFile(OUTPUT_ZIP_FILE);
-		zipFile.setPassword("Keynote");
-		} catch (ZipException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		mailme(OUTPUT_ZIP_FILE, EMAIL);
 		cleanup();
 	}

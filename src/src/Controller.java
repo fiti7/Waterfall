@@ -48,9 +48,9 @@ public class Controller {
 				e.printStackTrace();
 			}
 
-			Automate a = new Automate();
-			a.run();
-			logger.log("automating");
+//			Automate a = new Automate();
+//			a.run();
+//			logger.log("automating");
 
 			try {
 				FileUtils.copyDirectory(new File(FILES), new File(OUTPUT_FOLDER));

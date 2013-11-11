@@ -17,6 +17,7 @@ public class Renamer implements Runnable{
 	public void run() {
 	        long starttime = System.nanoTime();
 			double name;
+			String filenames;
 			//psuedocode. 
 	        //get foldername. 			
 			
@@ -35,11 +36,8 @@ public class Renamer implements Runnable{
 						name = ((long)name/1000000000.0);
 						//rename it
 						File myfile = new File(afile.getPath()  + "\\" +String.format("%.3f",name)+".jpg");
+						logger.log(myfiles[i] + " changed to" + name);
 						boolean success = myfiles[i].renameTo(myfile);
-						if (success){
-							System.out.println("name changed to" + name);
-							logger.log("name changed to" + name);
-						}
 					}
 					
 				}
