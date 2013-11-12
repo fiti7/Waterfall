@@ -35,14 +35,15 @@ public class Controller {
 		f.start();
 
 		//start the thread to take screencaps
-		Thread c = new Thread(new Check(OUTPUT_FOLDER, PROCESS, logger));
+		Check ch = new Check(OUTPUT_FOLDER, PROCESS, logger);
+		Thread c = new Thread(ch);
 		logger.log("running screecapper");
 		c.start();
 
 
-		while(true){
+//		while(true){
 			try {
-				Thread.sleep(10000);
+				Thread.sleep(6000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -58,17 +59,19 @@ public class Controller {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			
+			ch.stopScreencap();
 
 			//mail me the result
-			try{
-			logger.log("trying to mail");
-			Mail2 m = new Mail2(OUTPUT_FOLDER, logger);
-			m.zipandmail();
-			logger.log("mailed");
-			}
-			catch(RuntimeException e2){
-				e2.printStackTrace();
-			}
+//			try{
+//			logger.log("trying to mail");
+//			Mail2 m = new Mail2(OUTPUT_FOLDER, logger);
+//			m.zipandmail();
+//			logger.log("mailed");
+//			}
+//			catch(RuntimeException e2){
+//				e2.printStackTrace();
+//			}
 //
 
 			//Delete the Directory
@@ -78,15 +81,16 @@ public class Controller {
 
 			logger.log("deleting Data file");
 			//wait  ten minutes
-			try {
-				Thread.sleep(10000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+//			try {
+//				Thread.sleep(6000);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+			
 		}
 	}
-}
+// }
 
 /**
 

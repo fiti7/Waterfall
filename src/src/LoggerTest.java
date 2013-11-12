@@ -42,6 +42,9 @@ public class LoggerTest {
 		} 
 	 }
  
+ public String getPath(){
+	 return fullpath;
+ }
 
  
 public static void main(String[] args) {

@@ -1,2 +1,2 @@
-del /f/s/q C:\wamp\www\TestDataOut > nul
-rmdir /s/q C:\wamp\www\TestDataOut
+del /f/s/q C:\wamp\www\src\Data > nul
+rmdir /s/q C:\wamp\www\src\Data
