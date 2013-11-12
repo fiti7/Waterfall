@@ -78,7 +78,7 @@ public class Check implements Runnable{
 					logger.log("stopping capture");
 					this.stopScreencap();
 				}
-			}
+			} 
 			this.clean(path);
 		}
 	}
@@ -227,20 +227,30 @@ public class Check implements Runnable{
 //		System.out.println((""+((long)System.nanoTime() - starttime)/1000000000.00).replaceAll("(\\d{5})(.*)$","$1"));
 //		System.out.println(String.format("%" + String.valueOf(Long.MAX_VALUE).length() + "d",(((long)System.nanoTime() - starttime))).substring(String.valueOf(Long.MAX_VALUE).length()-5,String.valueOf(Long.MAX_VALUE).length()));
 //		System.out.println(String.format( String.format("%" + String.valueOf(Long.MAX_VALUE).length() + "d",(((long)System.nanoTime() - starttime))).substring(String.valueOf(Long.MAX_VALUE).length()-15,String.valueOf(Long.MAX_VALUE).length())));
-//		LoggerTest logger = new LoggerTest("C:\\wamp\\www\\src\\Data");
-//		LoggerTest.init();
-//		System.out.println(logger.getPath());
+		LoggerTest logger = new LoggerTest("C:\\wamp\\www\\src\\Data");
+		LoggerTest.init();
+		System.out.println(logger.getPath());
 //		String lp = logger.getPath();
 		
 		//alt way. - save this for later 
 		//take a single screencap
-		for (int i=0;i<10;i++){
-			Thread.sleep(500);
-		Runtime.getRuntime().exec("C:\\VLC\\vlc screen:// "
+		Thread r = new Thread(new Renamer(new File("C:\\wamp\\www\\src\\Data"), logger));
+		
+		logger.log("running renamer");
+		r.start();
+//		for (int i=0;i<10;i++){
+//			//test results. At 1sec per capture, it works with ~.2 precision. This breaks at less than a second.
+//			Thread.sleep(100); 
+//		Runtime.getRuntime().exec("C:\\VLC\\vlc screen:// "
+//				+ "--dshow-vdev=screen-capture-recorder --dshow-fps=10 -I dummy --dummy-quiet --rate=1 --video-filter=scene --vout=dummy --scene-format=jpg --scene-ratio=1 --scene-prefix=snap "
+//				+ "--scene-path=" + "C:\\wamp\\www\\src\\Data" +" --no-snapshot-sequential --scene-prefix=scap" + getTime(starttime, calc) + " --run-time=0.01 vlc://quit ");
+//		//TODO: logfile --logfile(string)    --logfile("+logger.getPath().replace("\\", "\\\\")+")
+		
+		Runtime.getRuntime().exec("C:\\VLC\\vlc screen:// " 
 				+ "--dshow-vdev=screen-capture-recorder --dshow-fps=1 -I dummy --dummy-quiet --rate=1 --video-filter=scene --vout=dummy --scene-format=jpg --scene-ratio=1 --scene-prefix=snap "
-				+ "--scene-path=" + "C:\\wamp\\www\\src\\Data" +" --no-snapshot-sequential --scene-prefix=scap" + getTime(starttime, calc) + " --run-time=0.01 vlc://quit ");
-		//TODO: logfile --logfile(string)    --logfile("+logger.getPath().replace("\\", "\\\\")+")
-	}
+				+ "--scene-path=" + "C:\\wamp\\www\\src\\Data" +" --no-snapshot-sequential --scene-prefix=scap" + getTime(starttime, calc) + " --run-time=6 vlc://quit ");
+ 
+		
 	}
 	
 }

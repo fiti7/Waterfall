@@ -30,8 +30,9 @@ public class Renamer implements Runnable{
 				for (int i = 0; i < myfiles.length; i++){
 					//if it hasnt been renamed
 					
+					//TODO: to save time, just remember the names and format it later.
+					
 					if(myfiles[i].length()!= 0 && myfiles[i].getName().contains("scap")){
-						System.out.println(myfiles[i].getName());
 						name = System.nanoTime() -  starttime;
 						name = ((long)name/1000000000.0);
 						//rename it
@@ -39,6 +40,8 @@ public class Renamer implements Runnable{
 						logger.log(myfiles[i] + " changed to" + name);
 						boolean success = myfiles[i].renameTo(myfile);
 					}
+					else{myfiles[i].delete();
+					i-=1;}
 					
 				}
 				try {

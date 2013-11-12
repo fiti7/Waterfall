@@ -94,6 +94,15 @@ public class Controller {
 
 /**
 
+TODO: Rewrite the renamer to be faster, give up on fast screencaps and concentrate on accuracy instead. Run it and send to Seth. 
+
+Also this: data: [
+      {y: 34.4, color: 'red'},     // this point is red
+      21.8,                        // default blue
+      {y: 20.1, color: '#aaff99'}, // this will be greenish
+      20]                          // default blue
+      
+
 Check! 1. Open VM
 2. Make the shit run
 3. Collect Test Data
