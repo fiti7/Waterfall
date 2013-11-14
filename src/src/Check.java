@@ -159,7 +159,7 @@ public class Check implements Runnable{
 		logger.log("mypath = " + path);
 
 		//TODO: find a way to get the timestamp using vlc
-			screencapProcess = rt.exec("C:\\VLC\\vlc screen:// --dshow-vdev=screen-capture-recorder --dshow-fps=0.5 -I dummy --dummy-quiet --rate=1 --video-filter=scene --vout=dummy --scene-format=jpg --scene-ratio=1 --scene-prefix=snap --scene-path=" + path +" --scene-prefix="+ "screenCapAt-$T- vlc://quit --stop-time=6 ");
+			screencapProcess = rt.exec("C:\\VLC\\vlc screen:// --dshow-vdev=screen-capture-recorder --dshow-fps=5 -I dummy --dummy-quiet --rate=1 --video-filter=scene --vout=dummy --scene-format=jpg --scene-ratio=1 --scene-prefix=snap --scene-path=" + path +" --scene-prefix="+ "scap vlc://quit --stop-time=6 ");
 		
 		return screencapProcess;
 		} catch (IOException e) {

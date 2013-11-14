@@ -19,7 +19,7 @@ public class CopyFiles implements Runnable{
 	}
 	
 	public void run(boolean b) {
-
+	String temp = "";
 		while(b){
 			try {
 				if (!(new File(OUTPUT_FOLDER).exists())){
@@ -33,10 +33,11 @@ public class CopyFiles implements Runnable{
 					for(int i=0; i<mylist.length; i++){
 						mystring+= (mylist[i] + ", ");
 					}
-					if (mystring != "blob, content, Destin1, invalid"){
+					if (mystring != temp){
 					FileUtils.copyDirectory(new File(SOURCE_FOLDER), new File(OUTPUT_FOLDER));
 					logger.log("copied " + mystring.substring(0,mystring.length()-2));
 					}
+					temp = mystring;
 					//give it a rest
 					//System.out.println("copying");
 					Thread.sleep(1000);

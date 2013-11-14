@@ -43,7 +43,7 @@ public class Controller {
 
 		while(true){
 			try {
-				Thread.sleep(6000);
+				Thread.sleep(60000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -60,8 +60,6 @@ public class Controller {
 				e1.printStackTrace();
 			}
 			
-			ch.stopScreencap();
-
 			//mail me the result
 			try{
 			logger.log("trying to mail");
@@ -77,12 +75,14 @@ public class Controller {
 			//Delete the Directory
 			DeleteDirectory d = new DeleteDirectory(OUTPUT_FOLDER);
 			d.Delete();
- 
-
+			d = new DeleteDirectory(SOURCE_FOLDER);
+			d.Delete();
+			
 			logger.log("deleting Data file");
+			
 			//wait  ten minutes
 			try {
-				Thread.sleep(6000);
+				Thread.sleep(10000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -95,6 +95,7 @@ public class Controller {
 /**
 
 TODO: Rewrite the renamer to be faster, give up on fast screencaps and concentrate on accuracy instead. Run it and send to Seth. 
+Rewrite copier to be less wasteful
 
 Also this: data: [
       {y: 34.4, color: 'red'},     // this point is red
