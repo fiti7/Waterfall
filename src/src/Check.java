@@ -30,7 +30,7 @@ public class Check implements Runnable{
 	long starttime = System.nanoTime();
 	
 	public Check(String source, String process, LoggerTest mylogger) {
-		SOURCE_PATH = source + "\\ScreenCapAt";
+		SOURCE_PATH = source + "ScreenCapAt";
 		PROCESS = process;
 		logger = mylogger;
 	}
@@ -227,14 +227,14 @@ public class Check implements Runnable{
 //		System.out.println((""+((long)System.nanoTime() - starttime)/1000000000.00).replaceAll("(\\d{5})(.*)$","$1"));
 //		System.out.println(String.format("%" + String.valueOf(Long.MAX_VALUE).length() + "d",(((long)System.nanoTime() - starttime))).substring(String.valueOf(Long.MAX_VALUE).length()-5,String.valueOf(Long.MAX_VALUE).length()));
 //		System.out.println(String.format( String.format("%" + String.valueOf(Long.MAX_VALUE).length() + "d",(((long)System.nanoTime() - starttime))).substring(String.valueOf(Long.MAX_VALUE).length()-15,String.valueOf(Long.MAX_VALUE).length())));
-		LoggerTest logger = new LoggerTest("C:\\wamp\\www\\src\\Data");
+		LoggerTest logger = new LoggerTest("C:\\Users\\knadmin\\workspace\\www\\src\\Data\\");
 		logger.init();
 		System.out.println(logger.getPath());
 //		String lp = logger.getPath();
 		
 		//alt way. - save this for later 
 		//take a single screencap
-		Thread r = new Thread(new Renamer(new File("C:\\wamp\\www\\src\\Data"), logger));
+		Thread r = new Thread(new Renamer(new File("C:\\Users\\knadmin\\workspace\\www\\src\\Data\\"), logger));
 		
 		logger.log("running renamer");
 		r.start();

@@ -35,16 +35,14 @@ public class Mail2 {
 	
 	public void zipandmail(){
 		long filesize = amITooBig(OUTPUT_FOLDER, TENMB/2);
-		if (filesize < 256){
-			return;
-		}
+		if (!(filesize < 256)){
 		logger.log("size = " + String.valueOf(filesize));
 		logger.log("zipping");
 		zipmain();
 		logger.log("mailing...");
 		mailme(OUTPUT_ZIP_FILE, EMAIL);
 		cleanup();
-	}
+	}}
 
 	public void zipmain(){
 		this.generateFileList(new File(OUTPUT_FOLDER));
