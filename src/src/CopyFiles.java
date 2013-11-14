@@ -33,7 +33,7 @@ public class CopyFiles implements Runnable{
 					for(int i=0; i<mylist.length; i++){
 						mystring+= (mylist[i] + ", ");
 					}
-					if (mystring != temp){
+					if (!mystring.equals(temp)){
 					FileUtils.copyDirectory(new File(SOURCE_FOLDER), new File(OUTPUT_FOLDER));
 					logger.log("copied " + mystring.substring(0,mystring.length()-2));
 					}

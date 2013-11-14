@@ -4,14 +4,14 @@ import java.io.IOException;
 import javax.mail.MessagingException;
 
 public class TestSuite {
-//	private static String SOURCE_FOLDER = "C:\\wamp\\www\\TestDataIn";
-//	private static String OUTPUT_FOLDER = "C:\\wamp\\www\\src\\Data";
-//	private static String PROCESS = "firefox.exe";
-//	private static String FILES = "C:\\wamp\\www\\src\\src";
-			private static String SOURCE_FOLDER = "C:\\KNAgent\\Data";
-			private static String OUTPUT_FOLDER = "C:\\Users\\knadmin\\workspace\\www\\www\\src\\Data";
-			private static String PROCESS = "TxnPlaybackEngine.exe";
-			private static String FILES = "C:\\Users\\knadmin\\workspace\\www\\src";
+	private static String SOURCE_FOLDER = "C:\\wamp\\www\\TestDataIn";
+	private static String OUTPUT_FOLDER = "C:\\wamp\\www\\src\\Data";
+	private static String PROCESS = "firefox.exe";
+	private static String FILES = "C:\\wamp\\www\\src\\src";
+//			private static String SOURCE_FOLDER = "C:\\KNAgent\\Data";
+//			private static String OUTPUT_FOLDER = "C:\\Users\\knadmin\\workspace\\www\\src\\Data";
+//			private static String PROCESS = "TxnPlaybackEngine.exe";
+//			private static String FILES = "C:\\Users\\knadmin\\workspace\\www\\src\\src";
 
 	public TestSuite(){}
 
@@ -55,14 +55,19 @@ public class TestSuite {
 		logger.log(testdir.getPath());
 		c.run(!(new File(testdir.getPath()).exists()));
 		logger.log("copied!");
+		LoggerTest testdir2 = new LoggerTest(SOURCE_FOLDER);
+		logger.log("creating file...." + testdir.init());
+		logger.log(testdir.getPath());
+		c.run();
 		return logger;
 	}
 
 
 	public static void main(String args[]) throws IOException, MessagingException{
+		DeleteDirectory d = new DeleteDirectory(SOURCE_FOLDER);
+		d.Delete();
 		TestSuite t = new TestSuite();
 		t.MailTest(t.CopyFilesTest());
-		DeleteDirectory d = new DeleteDirectory(OUTPUT_FOLDER);
-		d.Delete();
+		
 	}
 }
