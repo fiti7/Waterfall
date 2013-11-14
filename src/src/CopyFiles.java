@@ -25,7 +25,7 @@ public class CopyFiles implements Runnable{
 				if (!(new File(OUTPUT_FOLDER).exists())){
 					new File(OUTPUT_FOLDER).mkdir();
 				}
-				if (FileUtils.sizeOf(new File(SOURCE_FOLDER)) != 0){
+				if (new File(SOURCE_FOLDER).exists()){
 				//copies directories
 					String[] mylist = new File(SOURCE_FOLDER).list();
 					

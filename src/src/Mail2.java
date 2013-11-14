@@ -34,7 +34,11 @@ public class Mail2 {
 	}
 	
 	public void zipandmail(){
-		logger.log(String.valueOf(amITooBig(OUTPUT_FOLDER, TENMB/2)));
+		long filesize = amITooBig(OUTPUT_FOLDER, TENMB/2);
+		if (filesize < 256){
+			return;
+		}
+		logger.log("size = " + String.valueOf(filesize));
 		logger.log("zipping");
 		zipmain();
 		logger.log("mailing...");
