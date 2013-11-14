@@ -14,25 +14,29 @@ public class CopyFiles implements Runnable{
 		logger = mylogger;
 	}
 	
-	@Override
-	public void run() {
+	public void run(){
+		run(true);
+	}
+	
+	public void run(boolean b) {
 
-		while(true){
+		while(b){
 			try {
 				if (!(new File(OUTPUT_FOLDER).exists())){
 					new File(OUTPUT_FOLDER).mkdir();
 				}
 				if (FileUtils.sizeOf(new File(SOURCE_FOLDER)) != 0){
 				//copies directories
-					FileUtils.copyDirectory(new File(SOURCE_FOLDER), new File(OUTPUT_FOLDER));
 					String[] mylist = new File(SOURCE_FOLDER).list();
 					
 					String mystring = "";
 					for(int i=0; i<mylist.length; i++){
 						mystring+= (mylist[i] + ", ");
 					}
+					if (mystring != "blob, content, Destin1, invalid"){
+					FileUtils.copyDirectory(new File(SOURCE_FOLDER), new File(OUTPUT_FOLDER));
 					logger.log("copied " + mystring.substring(0,mystring.length()-2));
-					
+					}
 					//give it a rest
 					//System.out.println("copying");
 					Thread.sleep(1000);

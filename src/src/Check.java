@@ -228,7 +228,7 @@ public class Check implements Runnable{
 //		System.out.println(String.format("%" + String.valueOf(Long.MAX_VALUE).length() + "d",(((long)System.nanoTime() - starttime))).substring(String.valueOf(Long.MAX_VALUE).length()-5,String.valueOf(Long.MAX_VALUE).length()));
 //		System.out.println(String.format( String.format("%" + String.valueOf(Long.MAX_VALUE).length() + "d",(((long)System.nanoTime() - starttime))).substring(String.valueOf(Long.MAX_VALUE).length()-15,String.valueOf(Long.MAX_VALUE).length())));
 		LoggerTest logger = new LoggerTest("C:\\wamp\\www\\src\\Data");
-		LoggerTest.init();
+		logger.init();
 		System.out.println(logger.getPath());
 //		String lp = logger.getPath();
 		

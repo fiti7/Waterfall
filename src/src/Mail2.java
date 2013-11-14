@@ -189,7 +189,7 @@ public void cleanup(){
 
 public static void main(String[] args){
 	LoggerTest mlogger = new LoggerTest("C:\\wamp\\www\\src\\logger");
-	LoggerTest.init();
+	logger.init();
 	Mail2 m = new Mail2("C:\\wamp\\www\\src\\Data", mlogger);
 	m.zipandmail();
 }

@@ -40,8 +40,8 @@ public class Renamer implements Runnable{
 						logger.log(myfiles[i] + " changed to" + name);
 						boolean success = myfiles[i].renameTo(myfile);
 					}
-					else{myfiles[i].delete();
-					i-=1;}
+					//else{myfiles[i].delete();
+					//i-=1;}
 					
 				}
 				try {

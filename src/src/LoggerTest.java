@@ -10,6 +10,7 @@ import java.util.Date;
 public class LoggerTest {
  public static String PATH = "C:\\Users\\knadmin\\Desktop\\Data\\logger";
  private static SimpleDateFormat sdfDate = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss.SSS");
+ private static SimpleDateFormat nameformat = new SimpleDateFormat("MM-dd-yyyy-HH-mm-ss-SSS");
  private static String fullpath = "";
  
  public LoggerTest(){}
@@ -18,22 +19,23 @@ public class LoggerTest {
 	 PATH = path;
  }
  
- public static void init(){
+ public boolean init(){
 //clear the file
-	fullpath = PATH + String.valueOf(System.currentTimeMillis()).substring(8, 13) + ".txt";
+	fullpath = PATH + "\\" + String.valueOf("log-" + nameformat.format(new Date())) + ".txt";
 	File file = new File(fullpath);
 	file.delete();
-	
+	boolean mybool = false;
 	try {
-		file.createNewFile();
+		mybool = file.createNewFile();
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	 } 
+	return mybool; } 
  
  public void log(String mystring){
 	 try {
+		    System.out.println(mystring);
 		    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(fullpath, true)));
 		    out.println(sdfDate.format(new Date()));
 		    out.println(mystring);
@@ -49,7 +51,7 @@ public class LoggerTest {
  
 public static void main(String[] args) {
  LoggerTest logger = new LoggerTest("C:\\wamp\\www\\src\\logger");
- LoggerTest.init();
+ logger.init();
  logger.log("message1");
  logger.log("message2");
 

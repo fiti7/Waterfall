@@ -10,14 +10,14 @@ import org.apache.commons.io.FileUtils;
 
 
 public class Controller {
-	private static String SOURCE_FOLDER = "C:\\wamp\\www\\TestDataIn";
-	private static String OUTPUT_FOLDER = "C:\\wamp\\www\\src\\Data";
-	private static String PROCESS = "firefox.exe";
-	private static String FILES = "C:\\wamp\\www\\src\\src";
-//		private static String SOURCE_FOLDER = "C:\\KNAgent\\Data";
-//		private static String OUTPUT_FOLDER = "C:\\Users\\knadmin\\workspace\\www\\www\\src\\Data";
-//		private static String PROCESS = "TxnPlaybackEngine.exe";
-//		private static String FILES = "C:\\Users\\knadmin\\workspace\\www\\www\\src\\src";
+//	private static String SOURCE_FOLDER = "C:\\wamp\\www\\TestDataIn\\";
+//	private static String OUTPUT_FOLDER = "C:\\wamp\\www\\src\\Data\\";
+//	private static String PROCESS = "firefox.exe";
+//	private static String FILES = "C:\\wamp\\www\\src\\src\\";
+		private static String SOURCE_FOLDER = "C:\\KNAgent\\Data\\";
+		private static String OUTPUT_FOLDER = "C:\\Users\\knadmin\\workspace\\www\\www\\src\\Data\\";
+		private static String PROCESS = "TxnPlaybackEngine.exe";
+		private static String FILES = "C:\\Users\\knadmin\\workspace\\www\\src\\";
 
 	public static void main(String args[]) throws IOException, MessagingException{
 
@@ -26,7 +26,7 @@ public class Controller {
 		//Runtime rt = Runtime.getRuntime();
 		//rt.exec("cmd /c c:\\path\\to\\python python\\test.py");
 		LoggerTest logger = new LoggerTest(OUTPUT_FOLDER);
-		LoggerTest.init();
+		logger.init();
 		logger.log("created");
 
 		//start the thread to copy files as tHe agent runs. 
@@ -41,7 +41,7 @@ public class Controller {
 		c.start();
 
 
-//		while(true){
+		while(true){
 			try {
 				Thread.sleep(6000);
 			} catch (InterruptedException e) {
@@ -63,16 +63,16 @@ public class Controller {
 			ch.stopScreencap();
 
 			//mail me the result
-//			try{
-//			logger.log("trying to mail");
-//			Mail2 m = new Mail2(OUTPUT_FOLDER, logger);
-//			m.zipandmail();
-//			logger.log("mailed");
-//			}
-//			catch(RuntimeException e2){
-//				e2.printStackTrace();
-//			}
-//
+			try{
+			logger.log("trying to mail");
+			Mail2 m = new Mail2(OUTPUT_FOLDER, logger);
+			m.zipandmail();
+			logger.log("mailed");
+			}
+			catch(RuntimeException e2){
+				e2.printStackTrace();
+			}
+
 
 			//Delete the Directory
 			DeleteDirectory d = new DeleteDirectory(OUTPUT_FOLDER);
@@ -81,16 +81,16 @@ public class Controller {
 
 			logger.log("deleting Data file");
 			//wait  ten minutes
-//			try {
-//				Thread.sleep(6000);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
+			try {
+				Thread.sleep(6000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 		}
 	}
-// }
+ }
 
 /**
 
