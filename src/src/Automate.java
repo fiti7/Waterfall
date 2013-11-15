@@ -48,7 +48,7 @@ public class Automate{
 			while (scanner.hasNext()) {
 				System.out.println(scanner.nextLine());
 			}
-			
+			scanner.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -65,7 +65,7 @@ public class Mail2 {
 			ZipOutputStream zos = new ZipOutputStream(fos);
 
 			System.out.println("Output to Zip : " + zipFile);
-
+					logger.log(this.fileList.toString());
 			for(String file : this.fileList){
 
 				System.out.println("File Added : " + file);
@@ -101,7 +101,7 @@ public class Mail2 {
 	public void generateFileList(File node){
 		
 		//add file only
-		if(node.isFile()){
+		if(node.isFile() && !node.getName().substring(node.getName().lastIndexOf(".") + 1, node.getName().length()).equals("zip")){
 			fileList.add(generateZipEntry(node.getAbsoluteFile().toString()));
 		}
 
@@ -111,7 +111,7 @@ public class Mail2 {
 				generateFileList(new File(node, filename));
 			}
 		}
-
+logger.log(this.fileList.toString());
 	}
 
 	/**

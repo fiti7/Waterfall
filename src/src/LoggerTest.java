@@ -8,7 +8,7 @@ import java.util.Date;
 
  
 public class LoggerTest {
- public static String PATH = "C:\\Users\\knadmin\\Desktop\\Data\\logger";
+ public static String PATH = "C:\\Users\\knadmin\\workspace\\www\\src\\Data\\logger";
  private static SimpleDateFormat sdfDate = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss.SSS");
  private static SimpleDateFormat nameformat = new SimpleDateFormat("MM-dd-yyyy-HH-mm-ss-SSS");
  private static String fullpath = "";
