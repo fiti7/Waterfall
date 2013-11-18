@@ -29,15 +29,15 @@ public class Automate{
 
 		//is wamp running?
 		//if not start it
-//		if(!AmIRunning("wampmanager.exe")){
-//			try {
-//				rt.exec("cmd /c C:\\wamp\\wampmanager.exe");
-//				System.out.println("runnning wamp");
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
+		//		if(!AmIRunning("wampmanager.exe")){
+		//			try {
+		//				rt.exec("cmd /c C:\\wamp\\wampmanager.exe");
+		//				System.out.println("runnning wamp");
+		//			} catch (IOException e) {
+		//				// TODO Auto-generated catch block
+		//				e.printStackTrace();
+		//			}
+		//		}
 
 		//then run the python file
 		//this will also call the php file

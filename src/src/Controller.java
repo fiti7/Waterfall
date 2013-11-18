@@ -10,14 +10,14 @@ import org.apache.commons.io.FileUtils;
 
 
 public class Controller {
-//	private static String SOURCE_FOLDER = "C:\\wamp\\www\\TestDataIn\\";
-//	private static String OUTPUT_FOLDER = "C:\\wamp\\www\\src\\Data\\";
-//	private static String PROCESS = "firefox.exe";
-//	private static String FILES = "C:\\wamp\\www\\src\\src\\";
-		private static String SOURCE_FOLDER = "C:\\KNAgent\\Data";
-		private static String OUTPUT_FOLDER = "C:\\Users\\knadmin\\workspace\\www\\src\\Data";
-		private static String PROCESS = "TxnPlaybackEngine.exe";
-		private static String FILES = "C:\\Users\\knadmin\\workspace\\www\\src\\src";
+	private static String SOURCE_FOLDER = "C:\\wamp\\www\\TestDataIn\\";
+	private static String OUTPUT_FOLDER = "C:\\wamp\\www\\src\\Data\\";
+	private static String PROCESS = "firefox.exe";
+	private static String FILES = "C:\\wamp\\www\\src\\src\\";
+	//		private static String SOURCE_FOLDER = "C:\\KNAgent\\Data";
+	//		private static String OUTPUT_FOLDER = "C:\\Users\\knadmin\\workspace\\www\\src\\Data";
+	//		private static String PROCESS = "TxnPlaybackEngine.exe";
+	//		private static String FILES = "C:\\Users\\knadmin\\workspace\\www\\src\\src";
 
 	public static void main(String args[]) throws IOException, MessagingException{
 
@@ -49,23 +49,24 @@ public class Controller {
 				e.printStackTrace();
 			}
 
-//			Automate a = new Automate();
-//			a.run();
-//			logger.log("automating");
+			//			Automate a = new Automate();
+			//			a.run();
+			//			logger.log("automating");
 
+			//add the files needed to run it
 			try {
 				FileUtils.copyDirectory(new File(FILES), new File(OUTPUT_FOLDER));
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
+
 			//mail me the result
 			try{
-			logger.log("trying to mail");
-			Mail2 m = new Mail2(OUTPUT_FOLDER, logger);
-			m.zipandmail();
-			logger.log("mailed");
+				logger.log("trying to mail");
+				Mail2 m = new Mail2(OUTPUT_FOLDER, logger);
+				m.zipandmail();
+				logger.log("mailed");
 			}
 			catch(RuntimeException e2){
 				e2.printStackTrace();
@@ -77,9 +78,9 @@ public class Controller {
 			d.Delete();
 			d = new DeleteDirectory(SOURCE_FOLDER);
 			d.Delete();
-			
+
 			logger.log("deleting Data file");
-			
+
 			//wait  ten minutes
 			try {
 				Thread.sleep(10000);
@@ -87,10 +88,10 @@ public class Controller {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 		}
 	}
- }
+}
 
 /**
 
@@ -102,7 +103,7 @@ Also this: data: [
       21.8,                        // default blue
       {y: 20.1, color: '#aaff99'}, // this will be greenish
       20]                          // default blue
-      
+
 
 Check! 1. Open VM
 2. Make the shit run
@@ -118,4 +119,4 @@ Check! 1. Open VM
 1. Add colors 
 
 - Send Seth e-mail with everything.
-**/
+ **/

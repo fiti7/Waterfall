@@ -32,17 +32,22 @@ public class Mail2 {
 		logger = mlogger;
 		OUTPUT_ZIP_FILE = OUTPUT + "\\Data.zip";
 	}
-	
+
 	public void zipandmail(){
 		long filesize = amITooBig(OUTPUT_FOLDER, TENMB/2);
 		logger.log("size = " + String.valueOf(filesize));
-		if ((filesize > 4)){
-		logger.log("zipping");
-		zipmain();
-		logger.log("mailing...");
-		mailme(OUTPUT_ZIP_FILE, EMAIL);
-		cleanup();
-	}}
+
+		if ((filesize > 1)){
+			logger.log("zipping");
+			zipmain();
+			logger.log("mailing...");
+			mailme(OUTPUT_ZIP_FILE, EMAIL);
+			cleanup();
+		}
+		else {
+			logger.log("Not mailing. size = 0. ");
+		}
+	}
 
 	public void zipmain(){
 		this.generateFileList(new File(OUTPUT_FOLDER));
@@ -65,7 +70,7 @@ public class Mail2 {
 			ZipOutputStream zos = new ZipOutputStream(fos);
 
 			System.out.println("Output to Zip : " + zipFile);
-					logger.log(this.fileList.toString());
+			logger.log(this.fileList.toString());
 			for(String file : this.fileList){
 
 				System.out.println("File Added : " + file);
@@ -99,10 +104,16 @@ public class Mail2 {
 	 * @param node file or directory
 	 */
 	public void generateFileList(File node){
-		
-		//add file only
-		if(node.isFile() && !node.getName().substring(node.getName().lastIndexOf(".") + 1, node.getName().length()).equals("zip")){
+
+		String name = node.getName();
+
+		//add files only
+		if(node.isFile() && !name.substring(name.lastIndexOf(".") + 1, name.length()).equals("zip")){
 			fileList.add(generateZipEntry(node.getAbsoluteFile().toString()));
+		}
+		else if (name.substring(name.lastIndexOf(".") + 1, name.length()).equals("zip")){
+			logger.log(name + "not added.");
+			node.delete();
 		}
 
 		if(node.isDirectory()){
@@ -111,8 +122,8 @@ public class Mail2 {
 				generateFileList(new File(node, filename));
 			}
 		}
-logger.log("filelist = " + this.fileList.toString());
-System.out.println("filelist = " + this.fileList.toString());
+		logger.log("filelist = " + this.fileList.toString());
+		System.out.println("filelist = " + this.fileList.toString());
 	}
 
 	/**
@@ -124,77 +135,77 @@ System.out.println("filelist = " + this.fileList.toString());
 		return file.substring(OUTPUT_FOLDER.length()+1, file.length());
 	}
 
-public void mailme(String path, String TO) {
+	public void mailme(String path, String TO) {
 
-	final String username = "etaiklein@gmail.com";
-	final String password = "Supercow1";
+		final String username = "etaiklein@gmail.com";
+		final String password = "Supercow1";
 
-	Properties props = new Properties();
-	props.put("mail.smtp.auth", "true");
-	props.put("mail.smtp.starttls.enable", "true");
-	props.put("mail.smtp.host", "smtp.gmail.com");
-	props.put("mail.smtp.port", "587");
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
 
-	Session session = Session.getInstance(props,
-			new javax.mail.Authenticator() {
-		protected PasswordAuthentication getPasswordAuthentication() {
-			return new PasswordAuthentication(username, password);
-		}
-	});
-
-	try {
-
-		Message message = new MimeMessage(session);
-		message.setFrom(new InternetAddress("etaiklein@gmail.com"));
-		message.setRecipients(Message.RecipientType.TO,
-				InternetAddress.parse(TO));
-		message.setSubject("Keynote Data and Screenshots");
-		message.setText("");
-
-		Multipart multipart = new MimeMultipart();
-
-		MimeBodyPart attachPart = new MimeBodyPart();
+		Session session = Session.getInstance(props,
+				new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		});
 
 		try {
-			attachPart.attachFile(path);
-		} catch (IOException ex) {
-			ex.printStackTrace();
+
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress("etaiklein@gmail.com"));
+			message.setRecipients(Message.RecipientType.TO,
+					InternetAddress.parse(TO));
+			message.setSubject("Keynote Data and Screenshots");
+			message.setText("");
+
+			Multipart multipart = new MimeMultipart();
+
+			MimeBodyPart attachPart = new MimeBodyPart();
+
+			try {
+				attachPart.attachFile(path);
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			}
+
+			multipart.addBodyPart(attachPart);
+
+			// sets the multi-part as e-mail's content
+			message.setContent(multipart);
+
+			Transport.send(message);
+
+			System.out.println("Done");
+
+		} catch (MessagingException e) {
+			throw new RuntimeException(e);
 		}
-
-		multipart.addBodyPart(attachPart);
-
-		// sets the multi-part as e-mail's content
-		message.setContent(multipart);
-
-		Transport.send(message);
-
-		System.out.println("Done");
-
-	} catch (MessagingException e) {
-		throw new RuntimeException(e);
 	}
-}
 
-public long amITooBig(String f, Integer s){
-	long size = new File(f).length();
-	if(size > s){
-		System.out.println("directory is too large. deleting to make space");
-		DeleteDirectory d = new DeleteDirectory(f);
-		d.Delete();
+	public long amITooBig(String f, Integer s){
+		long size = new File(f).length();
+		if(size > s){
+			System.out.println("directory is too large. deleting to make space");
+			DeleteDirectory d = new DeleteDirectory(f);
+			d.Delete();
+		}
+		return size;
 	}
-	return size;
-}
 
-public void cleanup(){
-	File f = new File(OUTPUT_FOLDER + "\\Data.zip");
-	f.delete();
-}
+	public void cleanup(){
+		File f = new File(OUTPUT_FOLDER + "\\Data.zip");
+		f.delete();
+	}
 
-public static void main(String[] args){
-	LoggerTest mlogger = new LoggerTest("C:\\wamp\\www\\src\\logger");
-	logger.init();
-	Mail2 m = new Mail2("C:\\wamp\\www\\src\\Data", mlogger);
-	m.zipandmail();
-}
+	public static void main(String[] args){
+		LoggerTest mlogger = new LoggerTest("C:\\wamp\\www\\src\\logger");
+		logger.init();
+		Mail2 m = new Mail2("C:\\wamp\\www\\src\\Data", mlogger);
+		m.zipandmail();
+	}
 
 }

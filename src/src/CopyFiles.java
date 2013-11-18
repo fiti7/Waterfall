@@ -13,45 +13,44 @@ public class CopyFiles implements Runnable{
 		OUTPUT_FOLDER = output;
 		logger = mylogger;
 	}
-	
+
 	public void run(){
 		run(true);
 	}
-	
+
 	public void run(boolean b) {
-	String temp = "";
+		String temp = "";
 		while(b){
 			try {
 				if (!(new File(OUTPUT_FOLDER).exists())){
 					new File(OUTPUT_FOLDER).mkdir();
 				}
 				if (new File(SOURCE_FOLDER).exists()){
-				//copies directories
+					//copies directories
 					String[] mylist = new File(SOURCE_FOLDER).list();
-					
+
 					String mystring = "";
 					for(int i=0; i<mylist.length; i++){
 						mystring+= (mylist[i] + ", ");
 					}
 					if (!mystring.equals(temp)){
-					FileUtils.copyDirectory(new File(SOURCE_FOLDER), new File(OUTPUT_FOLDER));
-					logger.log("copied " + mystring.substring(0,mystring.length()-2));
+						FileUtils.copyDirectory(new File(SOURCE_FOLDER), new File(OUTPUT_FOLDER));
+						logger.log("copied " + mystring.substring(0,mystring.length()-2));
 					}
 					temp = mystring;
 					//give it a rest
 					//System.out.println("copying");
 					Thread.sleep(1000);
-					
-				
+
+
 				}
-				} catch (IOException | InterruptedException | IllegalArgumentException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+			} catch (IOException | InterruptedException | IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			
-			
 		}
-		
+
+
 	}
-		
+
+}

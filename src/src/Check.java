@@ -19,7 +19,7 @@ import java.util.List;
 //TODO: Split into model/view/controller that automatically senses device/browser type
 
 public class Check implements Runnable{
-	
+
 	private String SOURCE_PATH = "C:\\Users\\knadmin\\Desktop\\Data\\ScreenCapAt";
 	private String PROCESS = "TxnPlaybackEngine.exe";
 	private boolean change = false;
@@ -28,21 +28,21 @@ public class Check implements Runnable{
 	private static LoggerTest logger = new LoggerTest();
 	public static Process screencapProcess = null;
 	long starttime = System.nanoTime();
-	
+
 	public Check(String source, String process, LoggerTest mylogger) {
 		SOURCE_PATH = source + "\\ScreenCapAt";
 		PROCESS = process;
 		logger = mylogger;
 	}
-	
+
 	public void run() {
 		SimpleDateFormat sdfDate = new SimpleDateFormat("yyyyMMddHHmmss");
 		Date now = new Date();
-		
+
 		String strDate = sdfDate.format(now);
-		
-		
-		
+
+
+
 		//define the path the pictures will be dumped to.
 		String path = SOURCE_PATH + strDate;
 		System.out.println("mypath = " + path);
@@ -55,7 +55,7 @@ public class Check implements Runnable{
 			if (screencapProcess== null){
 				path = SOURCE_PATH + sdfDate.format(new Date());
 				screencapProcess= this.startScreencap(path);
-				
+
 			}
 		}
 
@@ -65,7 +65,7 @@ public class Check implements Runnable{
 			this.waitForChange();
 			this.SetChange(false);
 			this.SetLastFound(this.GetFound());
-			
+
 			//Once a browser has been opened or closed capture screen or stop capture.
 			if (this.GetFound() == true){
 				path = SOURCE_PATH + sdfDate.format(new Date());
@@ -142,41 +142,41 @@ public class Check implements Runnable{
 
 	public Process startScreencap(String path){
 		try {
-		Runtime rt = Runtime.getRuntime();
-		Process screencapProcess = null;
-		//sanity check- does this file already exist?
-		if (!(new File(path).exists())){
-		new File(path).mkdir();
-		
-		}
+			Runtime rt = Runtime.getRuntime();
+			Process screencapProcess = null;
+			//sanity check- does this file already exist?
+			if (!(new File(path).exists())){
+				new File(path).mkdir();
 
-		Thread r = new Thread(new Renamer(new File(path), logger));
-		
-		logger.log("running renamer");
-		r.start();
-		starttime = System.nanoTime();
-		float calc = 0;
-		logger.log("mypath = " + path);
+			}
 
-		//TODO: find a way to get the timestamp using vlc
+			Thread r = new Thread(new Renamer(new File(path), logger));
+
+			logger.log("running renamer");
+			r.start();
+			starttime = System.nanoTime();
+			float calc = 0;
+			logger.log("mypath = " + path);
+
+			//TODO: find a way to get the timestamp using vlc
 			screencapProcess = rt.exec("C:\\VLC\\vlc screen:// --dshow-vdev=screen-capture-recorder --dshow-fps=5 -I dummy --dummy-quiet --rate=1 --video-filter=scene --vout=dummy --scene-format=jpg --scene-ratio=1 --scene-prefix=snap --scene-path=" + path +" --scene-prefix="+ "scap vlc://quit --stop-time=6 ");
-		
-		return screencapProcess;
+
+			return screencapProcess;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 		return null;
 	}
-	
+
 	public void clean(String path){
-	for (File file : new File(path).listFiles()){	
-	         if (file.length() == 0){
-	        	 file.delete();
-	         }
+		for (File file : new File(path).listFiles()){	
+			if (file.length() == 0){
+				file.delete();
+			}
+		}
 	}
-	}
-	
+
 	public void stopScreencap(){
 		//System.out.println("ceasing capture");
 		screencapProcess.destroy();
@@ -211,47 +211,47 @@ public class Check implements Runnable{
 
 	public static String getTime(long starttime, float calc){
 		String mystring = String.valueOf((calc = (float) (((long)System.nanoTime() - starttime)/1000000000.00))).substring(0, 7); 
-				//Math.max(0, String.valueOf(calc).length() - 5));
+		//Math.max(0, String.valueOf(calc).length() - 5));
 		logger.log(mystring + " created");
 		System.out.println(mystring + " created");
 		return mystring;
 	}
-	
+
 	public static void main(String[] args) throws InterruptedException, IOException{
 		long starttime = (long)System.nanoTime();
 		float calc = 0;
-//		Thread.sleep(1000);
-//		long check = ((long)System.nanoTime() - starttime);
-//		System.out.println(getTime(starttime, calc));
-//		System.out.println((""+((long)System.nanoTime() - starttime)/1000000000.00).replaceAll("(.*)(\\d{5}$)","$2"));
-//		System.out.println((""+((long)System.nanoTime() - starttime)/1000000000.00).replaceAll("(\\d{5})(.*)$","$1"));
-//		System.out.println(String.format("%" + String.valueOf(Long.MAX_VALUE).length() + "d",(((long)System.nanoTime() - starttime))).substring(String.valueOf(Long.MAX_VALUE).length()-5,String.valueOf(Long.MAX_VALUE).length()));
-//		System.out.println(String.format( String.format("%" + String.valueOf(Long.MAX_VALUE).length() + "d",(((long)System.nanoTime() - starttime))).substring(String.valueOf(Long.MAX_VALUE).length()-15,String.valueOf(Long.MAX_VALUE).length())));
+		//		Thread.sleep(1000);
+		//		long check = ((long)System.nanoTime() - starttime);
+		//		System.out.println(getTime(starttime, calc));
+		//		System.out.println((""+((long)System.nanoTime() - starttime)/1000000000.00).replaceAll("(.*)(\\d{5}$)","$2"));
+		//		System.out.println((""+((long)System.nanoTime() - starttime)/1000000000.00).replaceAll("(\\d{5})(.*)$","$1"));
+		//		System.out.println(String.format("%" + String.valueOf(Long.MAX_VALUE).length() + "d",(((long)System.nanoTime() - starttime))).substring(String.valueOf(Long.MAX_VALUE).length()-5,String.valueOf(Long.MAX_VALUE).length()));
+		//		System.out.println(String.format( String.format("%" + String.valueOf(Long.MAX_VALUE).length() + "d",(((long)System.nanoTime() - starttime))).substring(String.valueOf(Long.MAX_VALUE).length()-15,String.valueOf(Long.MAX_VALUE).length())));
 		LoggerTest logger = new LoggerTest("C:\\Users\\knadmin\\workspace\\www\\src\\Data");
 		logger.init();
 		System.out.println(logger.getPath());
-//		String lp = logger.getPath();
-		
+		//		String lp = logger.getPath();
+
 		//alt way. - save this for later 
 		//take a single screencap
 		Thread r = new Thread(new Renamer(new File("C:\\Users\\knadmin\\workspace\\www\\src\\Data"), logger));
-		
+
 		logger.log("running renamer");
 		r.start();
-//		for (int i=0;i<10;i++){
-//			//test results. At 1sec per capture, it works with ~.2 precision. This breaks at less than a second.
-//			Thread.sleep(100); 
-//		Runtime.getRuntime().exec("C:\\VLC\\vlc screen:// "
-//				+ "--dshow-vdev=screen-capture-recorder --dshow-fps=10 -I dummy --dummy-quiet --rate=1 --video-filter=scene --vout=dummy --scene-format=jpg --scene-ratio=1 --scene-prefix=snap "
-//				+ "--scene-path=" + "C:\\wamp\\www\\src\\Data" +" --no-snapshot-sequential --scene-prefix=scap" + getTime(starttime, calc) + " --run-time=0.01 vlc://quit ");
-//		//TODO: logfile --logfile(string)    --logfile("+logger.getPath().replace("\\", "\\\\")+")
-		
+		//		for (int i=0;i<10;i++){
+		//			//test results. At 1sec per capture, it works with ~.2 precision. This breaks at less than a second.
+		//			Thread.sleep(100); 
+		//		Runtime.getRuntime().exec("C:\\VLC\\vlc screen:// "
+		//				+ "--dshow-vdev=screen-capture-recorder --dshow-fps=10 -I dummy --dummy-quiet --rate=1 --video-filter=scene --vout=dummy --scene-format=jpg --scene-ratio=1 --scene-prefix=snap "
+		//				+ "--scene-path=" + "C:\\wamp\\www\\src\\Data" +" --no-snapshot-sequential --scene-prefix=scap" + getTime(starttime, calc) + " --run-time=0.01 vlc://quit ");
+		//		//TODO: logfile --logfile(string)    --logfile("+logger.getPath().replace("\\", "\\\\")+")
+
 		Runtime.getRuntime().exec("C:\\VLC\\vlc screen:// " 
 				+ "--dshow-vdev=screen-capture-recorder --dshow-fps=1 -I dummy --dummy-quiet --rate=1 --video-filter=scene --vout=dummy --scene-format=jpg --scene-ratio=1 --scene-prefix=snap "
 				+ "--scene-path=" + "C:\\wamp\\www\\src\\Data" +" --no-snapshot-sequential --scene-prefix=scap" + getTime(starttime, calc) + " --run-time=6 vlc://quit ");
- 
-		
+
+
 	}
-	
+
 }
 
