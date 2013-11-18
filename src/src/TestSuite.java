@@ -38,6 +38,7 @@ public class TestSuite {
 
 	public LoggerTest MailTest(LoggerTest logger){
 		Mail2 m = new Mail2(OUTPUT_FOLDER,logger);
+		System.out.println("mailing...");
 		m.zipandmail();
 		return logger;
 	}
@@ -60,10 +61,18 @@ public class TestSuite {
 
 
 	public static void main(String args[]) throws IOException, MessagingException{
+		new File(SOURCE_FOLDER).mkdir();
 		DeleteDirectory d = new DeleteDirectory(SOURCE_FOLDER);
 		d.Delete();
+		d = new DeleteDirectory(OUTPUT_FOLDER);
+		d.Delete();
+		
 		TestSuite t = new TestSuite();
-		t.MailTest(t.CopyFilesTest());
+		LoggerTest myLogger = t.CopyFilesTest();
+		t.MailTest(myLogger);
+		
+		d.Delete();
+		d = new DeleteDirectory(SOURCE_FOLDER);
 		d.Delete();
 	}
 }

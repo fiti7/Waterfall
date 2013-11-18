@@ -35,8 +35,8 @@ public class Mail2 {
 	
 	public void zipandmail(){
 		long filesize = amITooBig(OUTPUT_FOLDER, TENMB/2);
-		if (!(filesize < 256)){
 		logger.log("size = " + String.valueOf(filesize));
+		if ((filesize > 4)){
 		logger.log("zipping");
 		zipmain();
 		logger.log("mailing...");
@@ -111,7 +111,8 @@ public class Mail2 {
 				generateFileList(new File(node, filename));
 			}
 		}
-logger.log(this.fileList.toString());
+logger.log("filelist = " + this.fileList.toString());
+System.out.println("filelist = " + this.fileList.toString());
 	}
 
 	/**
