@@ -48,11 +48,15 @@ public class Controller {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			
 
 			//			Automate a = new Automate();
 			//			a.run();
 			//			logger.log("automating");
-
+			
+			if (ch.isMailed() == 1){
+			
 			//add the files needed to run it
 			try {
 				FileUtils.copyDirectory(new File(FILES), new File(OUTPUT_FOLDER));
@@ -80,7 +84,9 @@ public class Controller {
 			d.Delete();
 
 			logger.log("deleting Data file");
-
+			
+			ch.setMailed(0);
+			
 			//wait  ten minutes
 			try {
 				Thread.sleep(10000);
@@ -88,7 +94,7 @@ public class Controller {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
+			}
 		}
 	}
 }

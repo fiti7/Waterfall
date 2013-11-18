@@ -22,6 +22,8 @@ public class Check implements Runnable{
 
 	private String SOURCE_PATH = "C:\\Users\\knadmin\\Desktop\\Data\\ScreenCapAt";
 	private String PROCESS = "TxnPlaybackEngine.exe";
+	//mailed is used to buffer mailing screencaps
+	private int mailed = 0; 
 	private boolean change = false;
 	private boolean found = false;
 	private boolean lastfound = false;
@@ -159,7 +161,7 @@ public class Check implements Runnable{
 			logger.log("mypath = " + path);
 
 			//TODO: find a way to get the timestamp using vlc
-			screencapProcess = rt.exec("C:\\VLC\\vlc screen:// --dshow-vdev=screen-capture-recorder --dshow-fps=5 -I dummy --dummy-quiet --rate=1 --video-filter=scene --vout=dummy --scene-format=jpg --scene-ratio=1 --scene-prefix=snap --scene-path=" + path +" --scene-prefix="+ "scap vlc://quit --stop-time=6 ");
+			screencapProcess = rt.exec("C:\\VLC\\vlc screen:// --dshow-vdev=screen-capture-recorder --dshow-fps=5 -I dummy --dummy-quiet --rate=1 --video-filter=scene --vout=dummy --scene-format=jpg --scene-ratio=1 --scene-prefix=snap --scene-path=" + path +" --scene-prefix=scap vlc://quit");
 
 			return screencapProcess;
 		} catch (IOException e) {
@@ -181,6 +183,7 @@ public class Check implements Runnable{
 		//System.out.println("ceasing capture");
 		screencapProcess.destroy();
 		screencapProcess = null;
+		this.setMailed(1);
 	}
 
 	public String GetProcess(){
@@ -207,6 +210,15 @@ public class Check implements Runnable{
 	public void SetChange(boolean newChange){
 		change = newChange;
 		return;
+	}
+	
+
+	public int isMailed() {
+		return mailed;
+	}
+
+	public void setMailed(int mailed) {
+		this.mailed = mailed;
 	}
 
 	public static String getTime(long starttime, float calc){
@@ -252,6 +264,7 @@ public class Check implements Runnable{
 
 
 	}
+
 
 }
 

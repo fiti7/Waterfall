@@ -70,10 +70,9 @@ public class Mail2 {
 			ZipOutputStream zos = new ZipOutputStream(fos);
 
 			System.out.println("Output to Zip : " + zipFile);
-			logger.log(this.fileList.toString());
 			for(String file : this.fileList){
 
-				System.out.println("File Added : " + file);
+				logger.log("File Added : " + file);
 				ZipEntry ze= new ZipEntry(file);
 				zos.putNextEntry(ze);
 
@@ -123,7 +122,6 @@ public class Mail2 {
 			}
 		}
 		logger.log("filelist = " + this.fileList.toString());
-		System.out.println("filelist = " + this.fileList.toString());
 	}
 
 	/**
@@ -199,6 +197,8 @@ public class Mail2 {
 	public void cleanup(){
 		File f = new File(OUTPUT_FOLDER + "\\Data.zip");
 		f.delete();
+		f = new File(OUTPUT_FOLDER);
+		
 	}
 
 	public static void main(String[] args){

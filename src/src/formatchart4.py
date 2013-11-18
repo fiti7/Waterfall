@@ -330,11 +330,13 @@ def createoutputs(inputarray, maxseq):
 #figure out how to match- change the names so they match
 
 print("pyrun")
-data = main("../Data/TransData.dat")
+#data = main("../Data/TransData.dat")
+data = main("../../Dump/TransData.dat")
 newarray = formatdata(data, elements)
 maxseq = getmax(newarray)
 reducetext(newarray[-1])
 output = splitTransactions(newarray, maxseq)
 createoutputs(output, maxseq)
-webbrowser.get('windows-default').open('http://localhost/src/src/linedbase3.php?link=../Data/ScreenCapAt1381654112396/*.jpg')
+#webbrowser.get('windows-default').open('http://localhost/src/src/linedbase3.php?link=../Data/ScreenCapAt1381654112396/*.jpg')
+webbrowser.get('windows-default').open('http://localhost/src/src/linedbase3.php?link=../../Dump/ScreenCapAt20131118011152/*.jpg')
 
