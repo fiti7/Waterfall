@@ -46,7 +46,7 @@ def main(source):
             return lines
      
 def finditem(input):
-    with open("map.txt", "r") as f:
+    with open("./Data/map.txt", "r") as f:
         try:
             items = f.readlines()
         
@@ -151,6 +151,7 @@ def getmax(inputarray):
 #now we have [["START_MSEC", "FIRST_PACKET_DELTA", "CONNECT_DELTA", "PAGE_SEQ", "OBJECT_TEXT"], ["START_MSEC", "FIRST_PACKET_DELTA", "CONNECT_DELTA", "PAGE_SEQ", "OBJECT_TEXT"]]
 #where PAGE_SEQ should all be "1" for the first array and "2 for the second
 def splitTransactions(inputarray, maxseq):
+	
 
     miniarray = []
 
@@ -195,7 +196,7 @@ def createoutputs(inputarray, maxseq):
     #for each transaction
     for num in range(maxseq):
         #make a new file
-        name = '../Data/outputs' + str(num) + '.js'
+        name = './Data/outputs' + str(num) + '.js'
         outnames.append(name)
         
         #get the time each sequence starts and ends
@@ -317,7 +318,7 @@ def createoutputs(inputarray, maxseq):
         #solution - find the start and endtime related to this waterfall
         #derive time using the max endtime * scroll percent
         #new percent should be the range of startime/maxend - endtime/maxend
-    f = open('../Data/key.js', 'w')
+    f = open('./Data/Data/key.js', 'w')
     sys.stdout = f
     print("var outnames =" + str(outnames) + ";")
     print("var starttimes =" + str(starttimes) + ";")
@@ -325,18 +326,16 @@ def createoutputs(inputarray, maxseq):
     print("var origintimes =" + str(origintimes) + ";")
     f.close()
     
+    
+    
 #find the related picture files and data files. Open the pages
 #how are they related?
 #figure out how to match- change the names so they match
 
-print("pyrun")
-#data = main("../Data/TransData.dat")
-data = main("../../Dump/TransData.dat")
+data = main("./Data/TransData.dat")
 newarray = formatdata(data, elements)
 maxseq = getmax(newarray)
 reducetext(newarray[-1])
 output = splitTransactions(newarray, maxseq)
 createoutputs(output, maxseq)
-#webbrowser.get('windows-default').open('http://localhost/src/src/linedbase3.php?link=../Data/ScreenCapAt1381654112396/*.jpg')
-webbrowser.get('windows-default').open('http://localhost/src/src/linedbase3.php?link=../../Dump/ScreenCapAt20131118011152/*.jpg')
-
+webbrowser.get('windows-default').open('http://localhost/Data/Data/linedbase3.php?link=./ScreenCapAt20131118014652/*.jpg')

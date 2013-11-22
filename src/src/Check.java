@@ -32,7 +32,7 @@ public class Check implements Runnable{
 	long starttime = System.nanoTime();
 
 	public Check(String source, String process, LoggerTest mylogger) {
-		SOURCE_PATH = source + "\\ScreenCapAt";
+		SOURCE_PATH = source + "\\ScreenCaps";
 		PROCESS = process;
 		logger = mylogger;
 	}
@@ -46,7 +46,7 @@ public class Check implements Runnable{
 
 
 		//define the path the pictures will be dumped to.
-		String path = SOURCE_PATH + strDate;
+		String path = SOURCE_PATH;// + strDate;
 		System.out.println("mypath = " + path);
 
 		//check if we are running to start
@@ -55,7 +55,7 @@ public class Check implements Runnable{
 			this.SetLastFound(true);
 			System.out.println("I started running");
 			if (screencapProcess== null){
-				path = SOURCE_PATH + sdfDate.format(new Date());
+				path = SOURCE_PATH;// + sdfDate.format(new Date());
 				screencapProcess= this.startScreencap(path);
 
 			}
@@ -70,7 +70,7 @@ public class Check implements Runnable{
 
 			//Once a browser has been opened or closed capture screen or stop capture.
 			if (this.GetFound() == true){
-				path = SOURCE_PATH + sdfDate.format(new Date());
+				path = SOURCE_PATH;// + sdfDate.format(new Date());
 				screencapProcess= this.startScreencap(path);
 				logger.log("capturing");
 			}
@@ -239,17 +239,17 @@ public class Check implements Runnable{
 		//		System.out.println((""+((long)System.nanoTime() - starttime)/1000000000.00).replaceAll("(\\d{5})(.*)$","$1"));
 		//		System.out.println(String.format("%" + String.valueOf(Long.MAX_VALUE).length() + "d",(((long)System.nanoTime() - starttime))).substring(String.valueOf(Long.MAX_VALUE).length()-5,String.valueOf(Long.MAX_VALUE).length()));
 		//		System.out.println(String.format( String.format("%" + String.valueOf(Long.MAX_VALUE).length() + "d",(((long)System.nanoTime() - starttime))).substring(String.valueOf(Long.MAX_VALUE).length()-15,String.valueOf(Long.MAX_VALUE).length())));
-		LoggerTest logger = new LoggerTest("C:\\Users\\knadmin\\workspace\\www\\src\\Data");
-		logger.init();
-		System.out.println(logger.getPath());
-		//		String lp = logger.getPath();
-
-		//alt way. - save this for later 
-		//take a single screencap
-		Thread r = new Thread(new Renamer(new File("C:\\Users\\knadmin\\workspace\\www\\src\\Data"), logger));
-
-		logger.log("running renamer");
-		r.start();
+//		LoggerTest logger = new LoggerTest("C:\\Users\\knadmin\\workspace\\www\\src\\Data");
+//		logger.init();
+//		System.out.println(logger.getPath());
+//		//		String lp = logger.getPath();
+//
+//		//alt way. - save this for later 
+//		//take a single screencap
+//		Thread r = new Thread(new Renamer(new File("C:\\Users\\knadmin\\workspace\\www\\src\\Data"), logger));
+//
+//		logger.log("running renamer");
+//		r.start();
 		//		for (int i=0;i<10;i++){
 		//			//test results. At 1sec per capture, it works with ~.2 precision. This breaks at less than a second.
 		//			Thread.sleep(100); 
