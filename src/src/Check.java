@@ -20,7 +20,7 @@ import java.util.List;
 
 public class Check implements Runnable{
 
-	private String SOURCE_PATH = "C:\\Users\\knadmin\\Desktop\\Data\\ScreenCapAt";
+	private String SOURCE_PATH = "C:\\Users\\knadmin\\Desktop\\Data";
 	private String PROCESS = "TxnPlaybackEngine.exe";
 	//mailed is used to buffer mailing screencaps
 	private int mailed = 0; 
