@@ -14,9 +14,9 @@ public class Controller {
 	//private static String OUTPUT_FOLDER = "C:\\wamp\\www\\src\\Data\\";
 	//private static String PROCESS = "firefox.exe";
 	//private static String FILES = "C:\\wamp\\www\\src\\src\\";
-			private static String DROPBOX = "C:\\Users\\knadmin\\Desktop\\Dropbox\\Data\\Data";
+			//private static String DROPBOX = "C:\\Users\\knadmin\\Desktop\\Dropbox\\Data\\Data";
 			private static String SOURCE_FOLDER = "C:\\KNAgent\\Data";
-			private static String OUTPUT_FOLDER = "C:\\Users\\knadmin\\workspace\\www\\src\\Data";
+			private static String OUTPUT_FOLDER = "C:\\Users\\knadmin\\Desktop\\Dropbox\\Data\\Data";
 			private static String PROCESS = "TxnPlaybackEngine.exe";
 			private static String FILES = "C:\\Users\\knadmin\\workspace\\www\\src\\src";
 
@@ -75,14 +75,7 @@ public class Controller {
 			catch(RuntimeException e2){
 				e2.printStackTrace();
 			}
-			//move the result to the dropbox folder
-			try {
-				FileUtils.copyDirectory(new File(OUTPUT_FOLDER), new File(DROPBOX));
-				logger.log("moved to dropbox");
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+
 			
 			ch.setMailed(0);
 			
