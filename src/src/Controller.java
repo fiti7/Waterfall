@@ -48,7 +48,15 @@ public class Controller {
 			//			logger.log("automating");
 			
 			if (ch.isMailed() == 1){
-			
+				//Delete the Directory
+				DeleteDirectory d = new DeleteDirectory(OUTPUT_FOLDER);
+				d.Delete();
+				d = new DeleteDirectory(OUTPUT_FOLDER + "\\ScreenCaps");
+				d.Delete();
+				d = new DeleteDirectory(SOURCE_FOLDER);
+				d.Delete();
+
+				logger.log("deleting Data file");
 			//add the files needed to run it
 			try {
 				FileUtils.copyDirectory(new File(FILES), new File(OUTPUT_FOLDER));
@@ -75,14 +83,6 @@ public class Controller {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-
-			//Delete the Directory
-			DeleteDirectory d = new DeleteDirectory(OUTPUT_FOLDER);
-			d.Delete();
-			d = new DeleteDirectory(SOURCE_FOLDER);
-			d.Delete();
-
-			logger.log("deleting Data file");
 			
 			ch.setMailed(0);
 			
