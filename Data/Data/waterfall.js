@@ -2,8 +2,7 @@ var imageWidth = 300;
 
 var height = 2000;
 
-
-$(".imageContainer").width($(".image").length*imageWidth);
+(".imageContainer").width((".image").length*imageWidth);
    
 $(document).ready(function() {
 	$("img.hascaption").each(function() {

@@ -1,4 +1,4 @@
 var outnames =['./Data/outputs0.js', './Data/outputs1.js'];
-var starttimes =[29, 15600];
-var endtimes =[15596, 23270];
-var origintimes =[29, 4];
+var starttimes =[27, 7299];
+var endtimes =[7295, 18690];
+var origintimes =[27, 4];

@@ -7,9 +7,9 @@
 
     <title>...</title>
 
-    <link rel="stylesheet" type="text/css" href="./waterfall2.css" />
+     <link rel="stylesheet" type="text/css" href="./waterfall2.css3" /> 
 
-    <script src="./waterfall.js"></script>
+   <!-- <script type="text/javascript" src="./waterfall.js"></script> -->
 	
 	<!-- charts -->
 	<script type="text/javascript" src="./external/jquery-2.0.2.min.js"></script>
@@ -42,7 +42,7 @@
 
 			        var element = document.getElementById('media');
 			        style = window.getComputedStyle(element);
-			        var scrollPercent = ((element.scrollLeft) / (element.scrollWidth - element.clientWidth));
+			        var scrollPercent = ((element.scrollLeft) / (element.scrollWidth - element.clientWidth + .001));
 			        var startPercent = (starttimes[i] / endtimes[length-1]);
         			var endPercent = (endtimes[i] / endtimes[length-1]);
         			var calculatedPercent = (scrollPercent - startPercent)/(endPercent - startPercent);
@@ -117,7 +117,6 @@
 	
 	//Show an image for each increment% of the page loading
 	$increment = 10;
-	
 	
 	//get the total load time
 	function getmax($images){

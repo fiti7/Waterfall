@@ -1,0 +1,590 @@
+11/23/2013 03:47:42.449
+created
+11/23/2013 03:47:42.449
+running copier
+11/23/2013 03:47:42.449
+running screecapper
+11/23/2013 03:47:42.480
+copied blob, content, Destin1, invalid, kntd_20131123114737.dat
+11/23/2013 03:48:30.480
+copied blob, content, Destin1, invalid
+11/23/2013 03:51:38.919
+running renamer
+11/23/2013 03:51:38.919
+mypath = C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps
+11/23/2013 03:51:38.919
+capturing
+11/23/2013 03:51:39.125
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00001.jpg changed to0.201125562
+11/23/2013 03:51:41.054
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00030.jpg changed to2.135134493
+11/23/2013 03:51:41.358
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00034.jpg changed to2.439014176
+11/23/2013 03:51:42.468
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00048.jpg changed to3.548950495
+11/23/2013 03:51:43.383
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00062.jpg changed to4.464506802
+11/23/2013 03:51:44.297
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00076.jpg changed to5.379033369
+11/23/2013 03:51:45.313
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00091.jpg changed to6.39628165
+11/23/2013 03:51:46.357
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00105.jpg changed to7.437704233
+11/23/2013 03:51:47.335
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00119.jpg changed to8.415565107
+11/23/2013 03:51:48.389
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00133.jpg changed to9.471531717
+11/23/2013 03:51:49.347
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00147.jpg changed to10.427430861
+11/23/2013 03:51:50.316
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00161.jpg changed to11.396187784
+11/23/2013 03:51:51.372
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00175.jpg changed to12.454672032
+11/23/2013 03:51:52.287
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00188.jpg changed to13.37011799
+11/23/2013 03:51:53.318
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00202.jpg changed to14.39805087
+11/23/2013 03:51:54.343
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00216.jpg changed to15.422742555
+11/23/2013 03:51:55.367
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00230.jpg changed to16.446640285
+11/23/2013 03:51:56.298
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00244.jpg changed to17.377258283
+11/23/2013 03:51:57.345
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00258.jpg changed to18.424731076
+11/23/2013 03:51:58.295
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00272.jpg changed to19.374694549
+11/23/2013 03:51:59.349
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00286.jpg changed to20.430578467
+11/23/2013 03:52:00.300
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00300.jpg changed to21.380715147
+11/23/2013 03:52:01.358
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00314.jpg changed to22.440392284
+11/23/2013 03:52:02.316
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00328.jpg changed to23.398246425
+11/23/2013 03:52:03.375
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00341.jpg changed to24.456394598
+11/23/2013 03:52:04.488
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00354.jpg changed to25.568880402
+11/23/2013 03:52:05.364
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00367.jpg changed to26.444953479
+11/23/2013 03:52:06.352
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00381.jpg changed to27.432811991
+11/23/2013 03:52:07.339
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00395.jpg changed to28.419501082
+11/23/2013 03:52:08.327
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00409.jpg changed to29.406784382
+11/23/2013 03:52:09.312
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00421.jpg changed to30.393979682
+11/23/2013 03:52:09.504
+copied blob, content, Destin1, invalid, TransData.dat
+11/23/2013 03:52:10.345
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00434.jpg changed to31.426582987
+11/23/2013 03:52:11.341
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00449.jpg changed to32.422600917
+11/23/2013 03:52:11.560
+stopping capture
+11/23/2013 03:52:37.517
+copied blob, content, Destin1, invalid, kntd_20131123115237.dat
+11/23/2013 03:53:30.518
+copied blob, content, Destin1, invalid
+11/23/2013 03:56:38.943
+running renamer
+11/23/2013 03:56:38.943
+mypath = C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps
+11/23/2013 03:56:38.943
+capturing
+11/23/2013 03:56:39.099
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00001.jpg changed to300.179820899
+11/23/2013 03:56:41.029
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00030.jpg changed to302.110217081
+11/23/2013 03:56:41.335
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00034.jpg changed to302.415665119
+11/23/2013 03:56:42.350
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00049.jpg changed to303.432147661
+11/23/2013 03:56:43.328
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00063.jpg changed to4.384685484
+11/23/2013 03:56:44.344
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00077.jpg changed to5.400488051
+11/23/2013 03:56:45.360
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00091.jpg changed to6.41728432
+11/23/2013 03:56:46.330
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00105.jpg changed to307.412517513
+11/23/2013 03:56:46.330
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00105.jpg changed to7.387962437
+11/23/2013 03:56:47.470
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00119.jpg changed to8.528521363
+11/23/2013 03:56:47.470
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00119.jpg changed to308.553072248
+11/23/2013 03:56:48.393
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00133.jpg changed to309.473686181
+11/23/2013 03:56:49.409
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00147.jpg changed to310.491567224
+11/23/2013 03:56:50.328
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00161.jpg changed to311.410702477
+11/23/2013 03:56:51.351
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00175.jpg changed to312.434331738
+11/23/2013 03:56:52.368
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00189.jpg changed to313.451084705
+11/23/2013 03:56:53.400
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00202.jpg changed to314.483546372
+11/23/2013 03:56:54.335
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00215.jpg changed to315.414464408
+11/23/2013 03:56:55.386
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00228.jpg changed to316.466098904
+11/23/2013 03:56:55.386
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00228.jpg changed to16.441789948
+11/23/2013 03:56:56.337
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00241.jpg changed to317.418210694
+11/23/2013 03:56:56.337
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00241.jpg changed to17.393676571
+11/23/2013 03:56:57.399
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00254.jpg changed to18.455236909
+11/23/2013 03:56:58.349
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00267.jpg changed to19.40546075
+11/23/2013 03:56:59.357
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00280.jpg changed to320.438628932
+11/23/2013 03:57:00.335
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00294.jpg changed to21.39123464
+11/23/2013 03:57:01.374
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00308.jpg changed to322.455360109
+11/23/2013 03:57:02.337
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00322.jpg changed to323.41978799
+11/23/2013 03:57:03.372
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00336.jpg changed to24.427683407
+11/23/2013 03:57:03.372
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00336.jpg changed to324.452407499
+11/23/2013 03:57:04.357
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00350.jpg changed to25.413214529
+11/23/2013 03:57:05.342
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00364.jpg changed to26.398676368
+11/23/2013 03:57:06.331
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00377.jpg changed to27.387088303
+11/23/2013 03:57:07.339
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00390.jpg changed to328.419737704
+11/23/2013 03:57:08.492
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00403.jpg changed to29.548274432
+11/23/2013 03:57:09.423
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00416.jpg changed to30.478938525
+11/23/2013 03:57:09.423
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00416.jpg changed to330.50403501
+11/23/2013 03:57:09.540
+copied blob, content, Destin1, invalid, TransData.dat
+11/23/2013 03:57:10.342
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00429.jpg changed to31.399418362
+11/23/2013 03:57:11.377
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00442.jpg changed to332.458006814
+11/23/2013 03:57:11.573
+stopping capture
+11/23/2013 03:57:37.546
+copied blob, content, Destin1, invalid, kntd_20131123115737.dat
+11/23/2013 03:58:30.547
+copied blob, content, Destin1, invalid
+11/23/2013 04:01:38.893
+running renamer
+11/23/2013 04:01:38.893
+mypath = C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps
+11/23/2013 04:01:38.893
+capturing
+11/23/2013 04:01:38.996
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00001.jpg changed to0.102841004
+11/23/2013 04:01:41.027
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00031.jpg changed to2.134448652
+11/23/2013 04:01:41.256
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00035.jpg changed to602.337289795
+11/23/2013 04:01:42.271
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00050.jpg changed to603.353016654
+11/23/2013 04:01:43.265
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00064.jpg changed to4.373375387
+11/23/2013 04:01:44.281
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00078.jpg changed to5.389292774
+11/23/2013 04:01:45.298
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00092.jpg changed to6.405909969
+11/23/2013 04:01:46.334
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00104.jpg changed to7.442159549
+11/23/2013 04:01:47.620
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00119.jpg changed to8.728502645
+11/23/2013 04:01:48.336
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00132.jpg changed to9.441204679
+11/23/2013 04:01:49.258
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00147.jpg changed to10.366724542
+11/23/2013 04:01:50.294
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00162.jpg changed to11.399285664
+11/23/2013 04:01:51.349
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00176.jpg changed to612.430139585
+11/23/2013 04:01:51.349
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00176.jpg changed to312.405592052
+11/23/2013 04:01:52.300
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00190.jpg changed to613.38075342
+11/23/2013 04:01:52.300
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00190.jpg changed to13.406655595
+11/23/2013 04:01:53.354
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00204.jpg changed to614.43431302
+11/23/2013 04:01:54.303
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00218.jpg changed to615.383045331
+11/23/2013 04:01:55.357
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00232.jpg changed to616.437746976
+11/23/2013 04:01:56.307
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00246.jpg changed to617.389434132
+11/23/2013 04:01:57.272
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00260.jpg changed to318.328547064
+11/23/2013 04:01:58.317
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00274.jpg changed to619.398659606
+11/23/2013 04:01:59.267
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00288.jpg changed to620.349870724
+11/23/2013 04:02:00.326
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00302.jpg changed to621.407941512
+11/23/2013 04:02:01.284
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00315.jpg changed to622.367310091
+11/23/2013 04:02:02.272
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00328.jpg changed to323.330249795
+11/23/2013 04:02:03.281
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00341.jpg changed to324.337759408
+11/23/2013 04:02:04.274
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00354.jpg changed to325.330318239
+11/23/2013 04:02:05.341
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00367.jpg changed to26.448703397
+11/23/2013 04:02:06.330
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00380.jpg changed to27.437350558
+11/23/2013 04:02:07.295
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00393.jpg changed to628.375178409
+11/23/2013 04:02:07.295
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00393.jpg changed to328.351124515
+11/23/2013 04:02:08.315
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00406.jpg changed to29.423331737
+11/23/2013 04:02:09.316
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00419.jpg changed to630.398793701
+11/23/2013 04:02:09.316
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00419.jpg changed to330.374638676
+11/23/2013 04:02:09.575
+copied blob, content, Destin1, invalid, TransData.dat
+11/23/2013 04:02:10.403
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00432.jpg changed to31.511133957
+11/23/2013 04:02:11.327
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00445.jpg changed to632.41025717
+11/23/2013 04:02:11.331
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00445.jpg changed to332.38588871
+11/23/2013 04:02:12.495
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00459.jpg changed to33.604001626
+11/23/2013 04:02:13.320
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00473.jpg changed to634.401370845
+11/23/2013 04:02:13.320
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00473.jpg changed to34.427398175
+11/23/2013 04:02:13.320
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00473.jpg changed to334.376858512
+11/23/2013 04:02:14.496
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00487.jpg changed to635.578783896
+11/23/2013 04:02:15.333
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00501.jpg changed to336.390943821
+11/23/2013 04:02:15.989
+stopping capture
+11/23/2013 04:02:37.590
+copied blob, content, Destin1, invalid, kntd_20131123120237.dat
+11/23/2013 04:03:30.591
+copied blob, content, Destin1, invalid
+11/23/2013 04:06:39.060
+running renamer
+11/23/2013 04:06:39.060
+mypath = C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps
+11/23/2013 04:06:39.060
+capturing
+11/23/2013 04:06:39.185
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00001.jpg changed to900.266824694
+11/23/2013 04:06:41.197
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00030.jpg changed to302.305393004
+11/23/2013 04:06:41.197
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00030.jpg changed to2.136940868
+11/23/2013 04:06:41.429
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00034.jpg changed to602.486820811
+11/23/2013 04:06:42.441
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00048.jpg changed to903.523302822
+11/23/2013 04:06:43.436
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00062.jpg changed to4.37632688
+11/23/2013 04:06:44.456
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00076.jpg changed to5.395964292
+11/23/2013 04:06:45.481
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00090.jpg changed to6.421491
+11/23/2013 04:06:46.435
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00104.jpg changed to607.493873384
+11/23/2013 04:06:47.447
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00118.jpg changed to308.552906026
+11/23/2013 04:06:48.440
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00132.jpg changed to9.38111436
+11/23/2013 04:06:49.468
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00146.jpg changed to10.404754515
+11/23/2013 04:06:50.476
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00160.jpg changed to911.556260642
+11/23/2013 04:06:51.438
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00174.jpg changed to12.377538766
+11/23/2013 04:06:52.501
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00188.jpg changed to913.582562309
+11/23/2013 04:06:53.451
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00201.jpg changed to914.531382061
+11/23/2013 04:06:54.506
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00214.jpg changed to915.586928227
+11/23/2013 04:06:55.456
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00227.jpg changed to916.536850633
+11/23/2013 04:06:56.514
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00240.jpg changed to317.622024867
+11/23/2013 04:06:57.465
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00253.jpg changed to318.572038346
+11/23/2013 04:06:58.445
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00266.jpg changed to619.501901499
+11/23/2013 04:06:59.470
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00279.jpg changed to320.577819807
+11/23/2013 04:07:00.444
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00292.jpg changed to921.523927203
+11/23/2013 04:07:01.518
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00305.jpg changed to922.601665575
+11/23/2013 04:07:02.453
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00318.jpg changed to623.510783913
+11/23/2013 04:07:03.457
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00331.jpg changed to324.562791081
+11/23/2013 04:07:04.468
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00344.jpg changed to925.548042558
+11/23/2013 04:07:05.469
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00357.jpg changed to626.526876181
+11/23/2013 04:07:06.505
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00370.jpg changed to627.563267119
+11/23/2013 04:07:07.451
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00383.jpg changed to628.506562985
+11/23/2013 04:07:08.447
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00396.jpg changed to29.387876113
+11/23/2013 04:07:08.616
+copied blob, content, Destin1, invalid, TransData.dat
+11/23/2013 04:07:09.456
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00409.jpg changed to30.396030222
+11/23/2013 04:07:10.496
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00422.jpg changed to331.601709436
+11/23/2013 04:07:10.496
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00422.jpg changed to631.551220616
+11/23/2013 04:07:10.607
+stopping capture
+11/23/2013 04:07:37.627
+copied blob, content, Destin1, invalid, kntd_20131123120737.dat
+11/23/2013 04:08:30.628
+copied blob, content, Destin1, invalid
+11/23/2013 04:11:39.113
+running renamer
+11/23/2013 04:11:39.113
+mypath = C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps
+11/23/2013 04:11:39.113
+capturing
+11/23/2013 04:11:39.246
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00001.jpg changed to900.303886109
+11/23/2013 04:11:39.246
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00001.jpg changed to300.186061357
+11/23/2013 04:11:41.246
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00030.jpg changed to2.134818811
+11/23/2013 04:11:41.278
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00030.jpg changed to302.218081348
+11/23/2013 04:11:41.481
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00034.jpg changed to302.421239292
+11/23/2013 04:11:42.501
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00049.jpg changed to303.440825301
+11/23/2013 04:11:43.485
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00063.jpg changed to4.374702371
+11/23/2013 04:11:44.520
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00077.jpg changed to1205.603224432
+11/23/2013 04:11:45.538
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00091.jpg changed to1206.62108145
+11/23/2013 04:11:46.484
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00105.jpg changed to7.370342879
+11/23/2013 04:11:47.511
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00119.jpg changed to8.398422984
+11/23/2013 04:11:48.567
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00133.jpg changed to9.454340146
+11/23/2013 04:11:48.567
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00133.jpg changed to1209.647734279
+11/23/2013 04:11:49.584
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00147.jpg changed to910.641404983
+11/23/2013 04:11:49.584
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00147.jpg changed to610.691947999
+11/23/2013 04:11:49.584
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00147.jpg changed to310.523445019
+11/23/2013 04:11:49.584
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00147.jpg changed to1210.666136618
+11/23/2013 04:11:50.542
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00161.jpg changed to1211.622298085
+11/23/2013 04:11:51.491
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00175.jpg changed to1212.572522485
+11/23/2013 04:11:52.551
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00189.jpg changed to313.489447681
+11/23/2013 04:11:53.502
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00203.jpg changed to314.440469669
+11/23/2013 04:11:54.490
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00216.jpg changed to915.5474084
+11/23/2013 04:11:55.530
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00229.jpg changed to616.637431853
+11/23/2013 04:11:56.488
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00242.jpg changed to17.375827654
+11/23/2013 04:11:57.547
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00255.jpg changed to18.435913223
+11/23/2013 04:11:57.547
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00255.jpg changed to618.655473531
+11/23/2013 04:11:58.510
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00268.jpg changed to619.61542766
+11/23/2013 04:11:58.510
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00268.jpg changed to19.395988876
+11/23/2013 04:11:59.494
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00281.jpg changed to1220.574117101
+11/23/2013 04:12:00.483
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00294.jpg.swp changed to321.422019558
+11/23/2013 04:12:00.569
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00294.jpg changed to21.455495321
+11/23/2013 04:12:01.547
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00307.jpg changed to22.433634442
+11/23/2013 04:12:02.492
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00320.jpg changed to323.431198658
+11/23/2013 04:12:02.492
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00320.jpg changed to1223.573739679
+11/23/2013 04:12:03.548
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00333.jpg changed to324.487272265
+11/23/2013 04:12:03.548
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00333.jpg changed to1224.62974568
+11/23/2013 04:12:04.588
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00346.jpg changed to1225.670827717
+11/23/2013 04:12:04.588
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00346.jpg changed to325.528349274
+11/23/2013 04:12:05.530
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00359.jpg changed to26.416487291
+11/23/2013 04:12:06.526
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00372.jpg changed to27.415103875
+11/23/2013 04:12:07.511
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00385.jpg changed to928.565583056
+11/23/2013 04:12:07.511
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00385.jpg changed to328.448066444
+11/23/2013 04:12:08.553
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00398.jpg changed to629.661548046
+11/23/2013 04:12:08.557
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00398.jpg changed to1229.637382684
+11/23/2013 04:12:09.512
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00411.jpg changed to930.570141457
+11/23/2013 04:12:10.544
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00424.jpg changed to631.652430128
+11/23/2013 04:12:10.544
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00424.jpg changed to1231.62650728
+11/23/2013 04:12:11.521
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00437.jpg changed to632.630008284
+11/23/2013 04:12:11.521
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00437.jpg changed to32.410506642
+11/23/2013 04:12:11.654
+copied blob, content, Destin1, invalid, TransData.dat
+11/23/2013 04:12:12.604
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00450.jpg changed to33.490876354
+11/23/2013 04:12:12.604
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00450.jpg changed to333.541947091
+11/23/2013 04:12:13.542
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00463.jpg changed to34.429873629
+11/23/2013 04:12:13.949
+stopping capture
+11/23/2013 04:12:37.656
+copied blob, content, Destin1, invalid, kntd_20131123121237.dat
+11/23/2013 04:13:30.659
+copied blob, content, Destin1, invalid
+11/23/2013 04:17:08.972
+running renamer
+11/23/2013 04:17:08.972
+mypath = C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps
+11/23/2013 04:17:08.972
+capturing
+11/23/2013 04:17:09.077
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00001.jpg changed to329.964846091
+11/23/2013 04:17:11.050
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00030.jpg changed to631.986701103
+11/23/2013 04:17:11.363
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00034.jpg changed to1532.443800818
+11/23/2013 04:17:12.347
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00049.jpg changed to3.373839413
+11/23/2013 04:17:13.348
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00063.jpg changed to1234.407072966
+11/23/2013 04:17:14.372
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00077.jpg changed to1535.453034394
+11/23/2013 04:17:14.372
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00077.jpg changed to635.310527735
+11/23/2013 04:17:15.365
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00091.jpg changed to936.470582435
+11/23/2013 04:17:16.377
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00105.jpg changed to1537.45762101
+11/23/2013 04:17:16.377
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00105.jpg changed to637.315279177
+11/23/2013 04:17:17.346
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00119.jpg changed to1238.402554515
+11/23/2013 04:17:18.382
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00133.jpg changed to639.319746784
+11/23/2013 04:17:19.351
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00147.jpg changed to340.238402925
+11/23/2013 04:17:20.386
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00161.jpg changed to641.324925095
+11/23/2013 04:17:21.355
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00175.jpg changed to342.242988704
+11/23/2013 04:17:22.394
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00189.jpg changed to643.33299316
+11/23/2013 04:17:23.477
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00202.jpg changed to1244.535654951
+11/23/2013 04:17:23.477
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00202.jpg changed to644.417791088
+11/23/2013 04:17:24.361
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00215.jpg changed to345.249802698
+11/23/2013 04:17:24.361
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00215.jpg changed to15.387627478
+11/23/2013 04:17:25.385
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00228.jpg changed to646.324090632
+11/23/2013 04:17:26.354
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00241.jpg changed to1547.437441351
+11/23/2013 04:17:27.421
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00254.jpg changed to1548.501783886
+11/23/2013 04:17:28.484
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00267.jpg changed to1249.539310723
+11/23/2013 04:17:28.484
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00267.jpg changed to649.421356904
+11/23/2013 04:17:29.351
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00280.jpg changed to20.378646169
+11/23/2013 04:17:30.355
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00293.jpg changed to351.241417554
+11/23/2013 04:17:31.356
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00306.jpg changed to1252.411293056
+11/23/2013 04:17:32.373
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00319.jpg changed to1253.430340169
+11/23/2013 04:17:32.373
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00319.jpg changed to353.261404731
+11/23/2013 04:17:33.366
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00332.jpg changed to24.390818666
+11/23/2013 04:17:33.366
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00332.jpg changed to954.472453902
+11/23/2013 04:17:33.366
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00332.jpg changed to1554.446470152
+11/23/2013 04:17:34.393
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00345.jpg changed to1555.472969889
+11/23/2013 04:17:35.390
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00356.jpg changed to1556.47044359
+11/23/2013 04:17:36.371
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00371.jpg changed to657.308610731
+11/23/2013 04:17:36.371
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00371.jpg changed to27.3963568
+11/23/2013 04:17:37.511
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00384.jpg changed to358.401106286
+11/23/2013 04:17:37.684
+copied blob, content, Destin1, invalid, TransData.dat
+11/23/2013 04:17:38.348
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00398.jpg changed to1559.431818569
+11/23/2013 04:17:39.395
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00413.jpg changed to660.335788767
+11/23/2013 04:17:40.371
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00427.jpg changed to661.309401055
+11/23/2013 04:17:40.371
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00427.jpg changed to961.477835312
+11/23/2013 04:17:41.355
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00442.jpg changed to1562.435033782
+11/23/2013 04:17:42.384
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00456.jpg changed to963.492908177
+11/23/2013 04:17:42.387
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00456.jpg changed to663.324766416
+11/23/2013 04:17:43.388
+C:\Users\knadmin\Desktop\Dropbox\Data\Data\ScreenCaps\scap00470.jpg changed to1564.469675336
+11/23/2013 04:17:44.261
+stopping capture
+11/23/2013 04:18:07.702
+copied blob, content, Destin1, invalid, kntd_20131123121807.dat
+11/23/2013 04:18:30.703
+copied blob, content, Destin1, invalid

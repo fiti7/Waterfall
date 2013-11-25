@@ -7,7 +7,7 @@
 
     <title>...</title>
 
-    <link rel="stylesheet" type="text/css" href="./waterfall2.css" />
+    <link rel="stylesheet" type="text/css" href="./waterfall2.css3" />
 
     <script src="./waterfall.js"></script>
 	
@@ -43,10 +43,12 @@
 			        var element = document.getElementById('media');
 			        style = window.getComputedStyle(element);
 			        var scrollPercent = ((element.scrollLeft) / (element.scrollWidth - element.clientWidth));
+			        console.log(scrollPercent);
 			        var startPercent = (starttimes[i] / endtimes[length-1]);
         			var endPercent = (endtimes[i] / endtimes[length-1]);
         			var calculatedPercent = (scrollPercent - startPercent)/(endPercent - startPercent);
-										
+					console.log(calculatedPercent)
+					
 					//what is my current item?
 					//if I pass my current item on either side, then switch
 					//the problem: the time is not matched on start/end and the graph itself.
@@ -99,6 +101,7 @@
 	$dir = $_GET['link'];
 	//get the list of all files with .jpg extension in the directory and save it in an array named $images
 	$images = glob( $dir );
+	console.log($images);
 	//extract only the name of the file without the extension and save in an array named $images
 	
 	//sort the images by time. The string manipulation is necessary to get the title of the file
