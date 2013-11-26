@@ -1,14 +1,16 @@
-var imageWidth = 300;
+$(document).ready(function(e) {
+    var imageWidth = 418;
+    var height = 2000;
 
-var height = 2000;
+    $(".imageContainer").width($(".image").length*imageWidth);
+  });
 
-(".imageContainer").width((".image").length*imageWidth);
-   
-$(document).ready(function() {
-	$("img.hascaption").each(function() {
-		$(this).wrap('<div class="figure"></div>')
-		.after('<p class="caption">'+$(this).attr("title")+'</p>')
-		.removeAttr('title');
-	});
-	$(".figure").width($(this).find('img').width());
-});
+//   
+//$(document).ready(function() {
+//	$("img.hascaption").each(function() {
+//		$(this).wrap('<div class="figure"></div>')
+//		.after('<p class="caption">'+$(this).attr("title")+'</p>')
+//		.removeAttr('title');
+//	});
+//	$(".figure").width($(this).find('img').width());
+//});

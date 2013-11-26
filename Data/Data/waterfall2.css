@@ -6,7 +6,7 @@ body {background-color:black;}
 {color: white;
 	resize: both;
     max-width: 85%;
-    max-height: 30em; 
+    height: 30em; 
 	Margin-left:7.5%;
     Margin-right:7.5%;
     display: inline-block;

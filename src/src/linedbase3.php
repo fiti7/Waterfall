@@ -7,7 +7,7 @@
 
     <title>...</title>
 
-    <link rel="stylesheet" type="text/css" href="./waterfall2.css3" />
+    <link rel="stylesheet" type="text/css" href="./waterfall2.css" />
 
     <script src="./waterfall.js"></script>
 	

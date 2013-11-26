@@ -1,46 +1,46 @@
-
 body {background-color:black;}
 
 /*filmstrip container*/
 .media, #media
 {color: white;
 	resize: both;
+	
     max-width: 85%;
     max-height: 30em; 
 	Margin-left:7.5%;
     Margin-right:7.5%;
+    
     display: inline-block;
+    white-space: nowrap;
+
     overflow-x: scroll;
     -ms-overflow-x: auto;
     overflow-y: hidden;
     -ms-overflow-y: hidden;
-    white-space: nowrap;
+    
 }
 
-
-/*image container*/
 .image
-{background-color:black;
-    float: left;
-    height: 25em;
-    width: 25em;
-    margin: 1em;
-    text-align:center;
-    padding-left: 1em solid white;
+{
+float:left;
+height: 25em;
+width: 26em;
+margin: 0em;
+text-align:center;
+border: 0em solid white;
+
 
 }
 
-/*doubled for centering*/
 .imageContainer
 {
-        
-    float:left;
+float:left;
 
 }
 
 .container > div
 {
-	width: 500px;
+	width: 500em;
 	background-color: black;
     display: inline-block;
     border: solid 1px #000;

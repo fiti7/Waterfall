@@ -1,0 +1,25 @@
+.media
+{
+    width: 300px; 
+    height: 288px; 
+    float: left;
+    display: inline-block;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.image
+{
+    float: left;
+    height: 25em;
+    width: 25em;
+    margin: 1em;
+    text-align:center;
+    padding-left: 1em solid white;
+}
+
+.imageContainer
+{
+    float:left;
+}
