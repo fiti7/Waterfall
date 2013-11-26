@@ -22,7 +22,8 @@ public class Controller {
 
 	public static void main(String args[]) throws IOException, MessagingException{
 
-
+		DeleteDirectory df = new DeleteDirectory("C:\\Users\\knadmin\\Desktop\\Dropbox\\Data");
+		df.Delete();
 
 		//Runtime rt = Runtime.getRuntime();
 		//rt.exec("cmd /c c:\\path\\to\\python python\\test.py");
