@@ -8,14 +8,23 @@ import java.io.File;
 public class Renamer implements Runnable{
 	LoggerTest logger = new LoggerTest();
 	File afile = new File("");
-
+	long starttime = System.nanoTime();
+	
 	public Renamer(File bfile, LoggerTest mylogger){
 		afile = bfile;
 		logger = mylogger;
 	}
-
+	
+	public void setfile(String path){
+		afile = new File(path);
+	}
+	
+	public void setTime(){
+		starttime = System.nanoTime();
+	}
+	
 	public void run() {
-		long starttime = System.nanoTime();
+		starttime = System.nanoTime();
 		double name;
 		String filenames;
 		//psuedocode. 
@@ -27,7 +36,7 @@ public class Renamer implements Runnable{
 		while(afile.exists()){
 			//get all files 
 			myfiles = afile.listFiles();
-			for (int i = 0; i < myfiles.length; i++){
+			for (int i = 0; i <= myfiles.length; i++){
 				//if it hasnt been renamed
 
 				//TODO: to save time, just remember the names and format it later.

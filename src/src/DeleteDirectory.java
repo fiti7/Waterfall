@@ -86,7 +86,7 @@ public class DeleteDirectory{
 			else{
 			try {
 				d.DeleteFile(file.getAbsolutePath());
-			} catch (DbxException e) {
+			} catch (DbxException | NullPointerException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
