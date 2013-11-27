@@ -6,15 +6,17 @@
   	   <meta charset="utf-8">
 
     <title>...</title>
+    	<script type="text/javascript" src="./external/jquery-2.0.2.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="./waterfall2.css" />
+    <script type="text/javascript" src="./waterfall.js"></script>
+    
+	<script type="text/javascript" id="key" src="./Data/key.js"></script>
 
-    <script src="./waterfall.js"></script>
+     <link rel="stylesheet" type="text/css" href="./waterfall3.css" /> 
+
 	
 	<!-- charts -->
-	<script type="text/javascript" src="./external/jquery-2.0.2.min.js"></script>
 
-	<script type="text/javascript" id="key" src="./Data/key.js"></script>
 	
 	<div id="bigcontainer">
 
@@ -42,13 +44,11 @@
 
 			        var element = document.getElementById('media');
 			        style = window.getComputedStyle(element);
-			        var scrollPercent = ((element.scrollLeft) / (element.scrollWidth - element.clientWidth));
-			        console.log(scrollPercent);
+			        var scrollPercent = ((element.scrollLeft) / (element.scrollWidth - element.clientWidth + .001));
 			        var startPercent = (starttimes[i] / endtimes[length-1]);
         			var endPercent = (endtimes[i] / endtimes[length-1]);
         			var calculatedPercent = (scrollPercent - startPercent)/(endPercent - startPercent);
-					console.log(calculatedPercent)
-					
+										
 					//what is my current item?
 					//if I pass my current item on either side, then switch
 					//the problem: the time is not matched on start/end and the graph itself.
@@ -69,22 +69,7 @@
 
 						}
 					}
-						
-						
-// 					
-// 
-					// for (var i=0;i<length;i++) {
-// 					
-// 					
-					// //if the scrollbar is between any two subsequent thresholds or it is above the last threshold then swap it.
-					// if (((starttimes[i] < timeScrolled) && (timeScrolled < starttimes[(i+1) % length])) || (starttimes[i] == starttimes[starttimes.length-1] && timeScrolled > starttimes[i])){
-						// if (temp != i){
-						// $('script[src="' + outnames[temp] + '"]').remove();
-						// $('<script>').attr('src', outnames[i]).appendTo('head');
-						// temp = i;
-						// }
-					// }
-// }
+					
 					
                 }, 100);
             });
@@ -101,7 +86,6 @@
 	$dir = $_GET['link'];
 	//get the list of all files with .jpg extension in the directory and save it in an array named $images
 	$images = glob( $dir );
-	console.log($images);
 	//extract only the name of the file without the extension and save in an array named $images
 	
 	//sort the images by time. The string manipulation is necessary to get the title of the file
@@ -120,7 +104,6 @@
 	
 	//Show an image for each increment% of the page loading
 	$increment = 10;
-	
 	
 	//get the total load time
 	function getmax($images){
@@ -182,7 +165,8 @@
 	echo"<div class=\"image\">
 	<p>".$imagename."s</p>
 	<img src=".$image.
-	" height=\"300em\" style=\"max-width: 400em;\">
+	" height=\"300em\" style=\"max-width: 500em;
+	\">
 	<p>".round(100 * $imagename/$msecMax)."%</p>
 	</div>";
 	endforeach;
@@ -195,6 +179,6 @@
 <script src="./external/js/modules/exporting.js"></script>
 
 <div id="container" style="min-width: 25em; background-color:blue; max-width: 75em; height: 150em; margin: auto"></div>
-</div>
+</div>-->
   </body>
 </html>

@@ -14,15 +14,16 @@ public class Controller {
 	//private static String OUTPUT_FOLDER = "C:\\wamp\\www\\src\\Data\\";
 	//private static String PROCESS = "firefox.exe";
 	//private static String FILES = "C:\\wamp\\www\\src\\src\\";
-			//private static String DROPBOX = "C:\\Users\\knadmin\\Desktop\\Dropbox\\Data\\Data";
+			private static Dropbox DROPBOX = new Dropbox();
 			private static String SOURCE_FOLDER = "C:\\KNAgent\\Data";
 			private static String OUTPUT_FOLDER = "C:\\Users\\knadmin\\Desktop\\Dropbox\\Data\\Data";
 			private static String PROCESS = "TxnPlaybackEngine.exe";
 			private static String FILES = "C:\\Users\\knadmin\\workspace\\www\\src\\src";
 
 	public static void main(String args[]) throws IOException, MessagingException{
-
-		DeleteDirectory df = new DeleteDirectory("C:\\Users\\knadmin\\Desktop\\Dropbox\\Data");
+		
+		//delete and recreate filestructure on first run
+		DeleteDirectory df = new DeleteDirectory(OUTPUT_FOLDER, DROPBOX);
 		df.Delete();
 
 		//Runtime rt = Runtime.getRuntime();
@@ -49,15 +50,7 @@ public class Controller {
 			//			logger.log("automating");
 			
 			if (ch.isMailed() == 1){
-				//Delete the Directory
-				DeleteDirectory d = new DeleteDirectory(OUTPUT_FOLDER);
-				d.Delete();
-				d = new DeleteDirectory(OUTPUT_FOLDER + "\\ScreenCaps");
-				d.Delete();
-				d = new DeleteDirectory(SOURCE_FOLDER);
-				d.Delete();
 
-				logger.log("deleting Data file");
 			//add the files needed to run it
 			try {
 				FileUtils.copyDirectory(new File(FILES), new File(OUTPUT_FOLDER));
@@ -80,6 +73,15 @@ public class Controller {
 			
 			ch.setMailed(0);
 			
+			//Delete the Directory
+			DeleteDirectory d = new DeleteDirectory(OUTPUT_FOLDER, DROPBOX);
+			d.Delete();
+			d = new DeleteDirectory(OUTPUT_FOLDER + "\\ScreenCaps", DROPBOX);
+			d.Delete();
+			d = new DeleteDirectory(SOURCE_FOLDER);
+			d.Delete();
+
+			logger.log("deleting Data file");
 			//wait  ten minutes
 			try {
 				Thread.sleep(10000);

@@ -1,4 +1,5 @@
 $(document).ready(function(e) {
+	//the image width dictates how much length is given to scroll in the filmstrip
     var imageWidth = 418;
     var height = 2000;
 

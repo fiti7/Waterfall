@@ -2,14 +2,22 @@
 import java.io.File;
 import java.io.IOException;
 
-public class DeleteDirectory{
+import com.dropbox.core.DbxException;
 
+public class DeleteDirectory{
+	
+	private Dropbox d = null;
+	
 	public String SRC_FOLDER = "C:\\Users\\knadmin\\Desktop\\Data";
 
 	public DeleteDirectory(String source){
 		SRC_FOLDER = source;
 	}
-
+	
+	public DeleteDirectory(String source, Dropbox db){
+		SRC_FOLDER = source;
+		d = db;
+	}
 
 	public void Delete(){
 
@@ -72,7 +80,17 @@ public class DeleteDirectory{
 
 		}else{
 			//if file, then delete it
+			if (d != null){
 			file.delete();
+			}
+			else{
+			try {
+				d.DeleteFile(file.getAbsolutePath());
+			} catch (DbxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			}
 			System.out.println("File is deleted : " + file.getAbsolutePath());
 
 		}    

@@ -13,8 +13,6 @@ elements = ["START_MSEC", "FIRST_PACKET_DELTA", "CONNECT_DELTA", "PAGE_SEQ", "RE
 
 #first packet + connect , fpc - c / fpc
 
-import pprint 
-
 def main(source):
     lines = []
     with open(source, "r") as f:
@@ -151,7 +149,7 @@ def getmax(inputarray):
 #now we have [["START_MSEC", "FIRST_PACKET_DELTA", "CONNECT_DELTA", "PAGE_SEQ", "OBJECT_TEXT"], ["START_MSEC", "FIRST_PACKET_DELTA", "CONNECT_DELTA", "PAGE_SEQ", "OBJECT_TEXT"]]
 #where PAGE_SEQ should all be "1" for the first array and "2 for the second
 def splitTransactions(inputarray, maxseq):
-	
+    
 
     miniarray = []
 
@@ -219,7 +217,7 @@ def createoutputs(inputarray, maxseq):
         
         myout.write(str(num))
         
-        f = open(outnames[num], 'w')    
+        f = open("./Data" + outnames[num][1:], 'w')    
         #print to write to file
         sys.stdout = f
         #create a waterfall from the data
@@ -300,7 +298,6 @@ def createoutputs(inputarray, maxseq):
         var startPercent = (starttime / ", endtimes[-1] , ");\n\
         var endPercent = (endtime / ", endtimes[-1] , ");\n\
         calculatedPercent = (scrollPercent - startPercent)/(endPercent - startPercent);\n\
-        console.log(\"cp \" + calculatedPercent);\
         var mywidth =  (calculatedPercent * ($(chart.container).width() - ml)) + ml - 1 ;\n\
         if ((0 <= calculatedPercent) && (calculatedPercent <=1)){\n\
         myline = chart.renderer.rect(mywidth, 60, 1, myheight*.9625).attr(\n\
@@ -338,4 +335,5 @@ maxseq = getmax(newarray)
 reducetext(newarray[-1])
 output = splitTransactions(newarray, maxseq)
 createoutputs(output, maxseq)
-webbrowser.get('windows-default').open('http://localhost/Data/Data/linedbase3.php?link=./ScreenCapAt20131118014652/*.jpg')
+webbrowser.get('windows-default').open('http://localhost/Data/Data/linedbase3.php?link=./ScreenCaps/*.jpg')
+

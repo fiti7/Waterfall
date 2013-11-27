@@ -1,12 +1,12 @@
+
 body {background-color:black;}
 
 /*filmstrip container*/
 .media, #media
-{background-color: black;
-color: white;
+{color: white;
 	resize: both;
-    max-width: 85%; 
-    max-height: 30em; 
+    max-width: 85%;
+    height: 30em; 
 	Margin-left:7.5%;
     Margin-right:7.5%;
     display: inline-block;
@@ -27,6 +27,7 @@ color: white;
     margin: 1em;
     text-align:center;
     padding-left: 1em solid white;
+
 }
 
 /*doubled for centering*/
@@ -34,6 +35,7 @@ color: white;
 {
         
     float:left;
+
 }
 
 .container > div
@@ -43,6 +45,7 @@ color: white;
     display: inline-block;
     border: solid 1px #000;
 }
+
 .container
 {
     border: solid 1px #ff0000;
