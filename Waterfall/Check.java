@@ -19,35 +19,23 @@ import java.util.List;
 //TODO: Split into model/view/controller that automatically senses device/browser type
 
 public class Check implements Runnable{
-	
-	private String Msource = "";
+
 	private String SOURCE_PATH = "C:\\Users\\knadmin\\Desktop\\Data";
 	private String PROCESS = "TxnPlaybackEngine.exe";
 	//mailed is used to buffer mailing screencaps
-	private Dropbox DROPBOX = null;
 	private int mailed = 0; 
 	private boolean change = false;
 	private boolean found = false;
 	private boolean lastfound = false;
 	private static LoggerTest logger = new LoggerTest();
 	public static Process screencapProcess = null;
-	private static Renamer re = new Renamer(null, logger);
 	long starttime = System.nanoTime();
 
-	public Check(String source, String process, LoggerTest mylogger, Dropbox d) {
-		Msource = source;
-		SOURCE_PATH = source + "\\ScreenCaps";
-		PROCESS = process;
-		logger = mylogger;
-		DROPBOX = d;
-	}
-
 	public Check(String source, String process, LoggerTest mylogger) {
-		Msource = source;
 		SOURCE_PATH = source + "\\ScreenCaps";
 		PROCESS = process;
 		logger = mylogger;
-		}
+	}
 
 	public void run() {
 		SimpleDateFormat sdfDate = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -156,16 +144,6 @@ public class Check implements Runnable{
 
 	public Process startScreencap(String path){
 		try {
-			//Delete the Directory
-			if (DROPBOX!= null){
-			DeleteDirectory df = new DeleteDirectory(Msource, DROPBOX);
-			df.Delete();
-			}
-			else{
-			DeleteDirectory df = new DeleteDirectory(Msource);
-			df.Delete();
-			}
-			
 			Runtime rt = Runtime.getRuntime();
 			Process screencapProcess = null;
 			//sanity check- does this file already exist?
@@ -174,9 +152,8 @@ public class Check implements Runnable{
 
 			}
 			
-			re.setfile(path);
-			re.setTime();
-			Thread r = new Thread(re);
+
+			Thread r = new Thread(new Renamer(new File(path), logger));
 
 			logger.log("running renamer");
 			r.start();
@@ -204,11 +181,10 @@ public class Check implements Runnable{
 	}
 
 	public void stopScreencap(){
-		System.out.println("ceasing capture");
+		//System.out.println("ceasing capture");
 		screencapProcess.destroy();
 		screencapProcess = null;
 		this.setMailed(1);
-		logger.log("prepping for processing");
 	}
 
 	public String GetProcess(){

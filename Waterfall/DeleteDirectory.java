@@ -80,16 +80,16 @@ public class DeleteDirectory{
 
 		}else{
 			//if file, then delete it
-			if (d == null){
+			if (d != null){
 			file.delete();
 			}
 			else{
 			try {
 				d.DeleteFile(file.getAbsolutePath());
-			} catch (DbxException | NullPointerException e) {
+			} catch (DbxException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} 
+			}
 			}
 			System.out.println("File is deleted : " + file.getAbsolutePath());
 

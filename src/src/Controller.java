@@ -14,7 +14,7 @@ public class Controller {
 //	private static String OUTPUT_FOLDER = "C:\\Users\\Etai\\Desktop\\Dropbox\\Waterfall\\Data";
 //	private static String PROCESS = "firefox.exe";
 //	private static String FILES = "C:\\wamp\\www\\src\\src\\";
-			private static Dropbox DROPBOX = new Dropbox();
+//			private static Dropbox DROPBOX = new Dropbox();
 			private static String SOURCE_FOLDER = "C:\\KNAgent\\Data";
 			private static String OUTPUT_FOLDER = "C:\\Users\\knadmin\\Desktop\\Dropbox\\Waterfall\\Data";
 			private static String PROCESS = "TxnPlaybackEngine.exe";
@@ -23,7 +23,7 @@ public class Controller {
 	public static void main(String args[]) throws IOException, MessagingException, NullPointerException{
 		
 		//delete and recreate filestructure on first run
-		DeleteDirectory df = new DeleteDirectory(OUTPUT_FOLDER, DROPBOX);
+		DeleteDirectory df = new DeleteDirectory(OUTPUT_FOLDER);
 		df.Delete();
 
 		//Runtime rt = Runtime.getRuntime();
@@ -38,7 +38,7 @@ public class Controller {
 		f.start();
 
 		//start the thread to take screencaps
-		Check ch = new Check(OUTPUT_FOLDER, PROCESS, logger, DROPBOX);
+		Check ch = new Check(OUTPUT_FOLDER, PROCESS, logger);
 		Thread c = new Thread(ch);
 		logger.log("running screecapper");
 		c.start();
@@ -67,10 +67,9 @@ public class Controller {
 			}
 
 			//mail me the result
-//			//TODO: fix that sometimes it doesnt find files because it's renaming them.
 //			try{
 //				logger.log("trying to mail");
-//				Mail2 m = new Mail2(OUTPUT_FOLDER, logger);
+//				Mail m = new Mail(OUTPUT_FOLDER, logger);
 //				m.zipandmail();
 //				logger.log("mailed");
 //			}

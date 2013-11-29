@@ -6,14 +6,13 @@ import javax.mail.MessagingException;
 import org.apache.commons.io.FileUtils;
 
 public class TestSuite {
-//	private static String SOURCE_FOLDER = "C:\\wamp\\www\\src\\src\\";
-//	private static String OUTPUT_FOLDER = "C:\\Users\\Etai\\Desktop\\Dropbox\\Waterfall\\Data";
-//	private static String PROCESS = "firefox.exe";
-//	private static String FILES = "C:\\wamp\\www\\src\\src\\";
-//			private static Dropbox DROPBOX = new Dropbox();
-			private static String SOURCE_FOLDER = "C:\\KNAgent\\Data";
-			private static String OUTPUT_FOLDER = "C:\\Users\\knadmin\\Desktop\\Dropbox\\Waterfall\\Data";
-			private static String PROCESS = "TxnPlaybackEngine.exe";
+	//private static String SOURCE_FOLDER = "C:\\wamp\\www\\TestDataIn";
+	//private static String OUTPUT_FOLDER = "C:\\wamp\\www\\src\\Data";
+	//private static String PROCESS = "firefox.exe";
+	//private static String FILES = "C:\\wamp\\www\\src\\src";
+		private static String SOURCE_FOLDER = "C:\\KNAgent\\Data";
+			private static String OUTPUT_FOLDER = "C:\\Users\\knadmin\\workspace\\www\\src\\Data";
+		private static String PROCESS = "TxnPlaybackEngine.exe";
 			private static String FILES = "C:\\Users\\knadmin\\workspace\\www\\src\\src";
 
 	public TestSuite(){}
@@ -40,7 +39,7 @@ public class TestSuite {
 	}
 
 	public LoggerTest MailTest(LoggerTest logger){
-		Mail m = new Mail(OUTPUT_FOLDER,logger);
+		Mail2 m = new Mail2(OUTPUT_FOLDER,logger);
 		System.out.println("mailing...");
 		m.zipandmail();
 		return logger;
@@ -64,28 +63,28 @@ public class TestSuite {
 
 
 	public static void main(String args[]) throws IOException, MessagingException{
-//		new File(SOURCE_FOLDER).mkdir();
-//		DeleteDirectory d = new DeleteDirectory(SOURCE_FOLDER);
-//		d.Delete();
-		DeleteDirectory d = new DeleteDirectory(OUTPUT_FOLDER);
+		new File(SOURCE_FOLDER).mkdir();
+		DeleteDirectory d = new DeleteDirectory(SOURCE_FOLDER);
 		d.Delete();
-//
-//		TestSuite t = new TestSuite();
-//		LoggerTest myLogger = t.CopyFilesTest();
-//
-//		try {
-//			FileUtils.copyDirectory(new File(FILES), new File(OUTPUT_FOLDER));
-//		} catch (IOException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
-//
-//		System.out.println(new File(OUTPUT_FOLDER).toString());
-//
-//		t.MailTest(myLogger);
-//
-//		d.Delete();
-//		d = new DeleteDirectory(SOURCE_FOLDER);
-//		d.Delete();
+		d = new DeleteDirectory(OUTPUT_FOLDER);
+		d.Delete();
+
+		TestSuite t = new TestSuite();
+		LoggerTest myLogger = t.CopyFilesTest();
+
+		try {
+			FileUtils.copyDirectory(new File(FILES), new File(OUTPUT_FOLDER));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		System.out.println(new File(OUTPUT_FOLDER).toString());
+
+		t.MailTest(myLogger);
+
+		d.Delete();
+		d = new DeleteDirectory(SOURCE_FOLDER);
+		d.Delete();
 	}
 }

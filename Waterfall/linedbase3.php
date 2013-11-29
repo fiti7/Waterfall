@@ -6,11 +6,11 @@
   	   <meta charset="utf-8">
 
     <title>...</title>
-    	<script type="text/javascript" src="./Data/external/jquery-2.0.2.min.js"></script>
+    	<script type="text/javascript" src="./external/jquery-2.0.2.min.js"></script>
 
     <script type="text/javascript" src="./waterfall.js"></script>
     
-	<script type="text/javascript" id="key" src="./Data/Data/key.js"></script>
+	<script type="text/javascript" id="key" src="./Data/key.js"></script>
 
      <link rel="stylesheet" type="text/css" href="./waterfall3.css" /> 
 
@@ -174,9 +174,9 @@
 
   </div>
 </div>
-<script src="./Data/external/js/highcharts.js"></script>
-<script src="./Data/external/js/highcharts-more.js"></script>
-<script src="./Data/external/js/modules/exporting.js"></script>
+<script src="./external/js/highcharts.js"></script>
+<script src="./external/js/highcharts-more.js"></script>
+<script src="./external/js/modules/exporting.js"></script>
 
 <div id="container" style="min-width: 25em; background-color:blue; max-width: 75em; height: 150em; margin: auto"></div>
 </div>-->

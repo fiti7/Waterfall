@@ -329,11 +329,11 @@ def createoutputs(inputarray, maxseq):
 #how are they related?
 #figure out how to match- change the names so they match
 
-data = main(".Waterfall/Data/TransData.dat")
+data = main("./Data/TransData.dat")
 newarray = formatdata(data, elements)
 maxseq = getmax(newarray)
 reducetext(newarray[-1])
 output = splitTransactions(newarray, maxseq)
 createoutputs(output, maxseq)
-webbrowser.get('windows-default').open('http://localhost/Waterfall/linedbase3.php?link=./ScreenCaps/*.jpg')
+webbrowser.get('windows-default').open('http://localhost/Data/Data/linedbase3.php?link=./ScreenCaps/*.jpg')
 
