@@ -1,8 +1,0 @@
-11/27/2013 05:58:10.197
-created
-11/27/2013 05:58:10.199
-running copier
-11/27/2013 05:58:10.204
-running screecapper
-11/27/2013 05:58:10.754
-copied Automate.java, Check.java, Controller.java, CopyFiles.java, DeleteDirectory.java, Dropbox.java, formatchart4.py, index.htm, index.php, linedbase3.php, LoggerTest.java, Mail2.java, map.txt, Renamer.java, TestSuite.java, testzip.zip, waterfall.js, waterfall2.css, waterfall3.css, __pycache__

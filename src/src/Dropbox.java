@@ -2,6 +2,7 @@
 import com.dropbox.core.*;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class Dropbox {
@@ -50,12 +51,12 @@ public class Dropbox {
 			}
 		}
 		
-		public void upload(String filename) throws IOException, DbxException{
+		public void upload(String sourcepath, String targetpath) throws IOException, DbxException{
        
-		File inputFile = new File(filename);
+		File inputFile = new File(sourcepath);
         FileInputStream inputStream = new FileInputStream(inputFile);
-
-            DbxEntry.File uploadedFile = client.uploadFile(filename,
+                
+            DbxEntry.File uploadedFile = client.uploadFile(targetpath,
                 DbxWriteMode.add(), inputFile.length(), inputStream);
             System.out.println("Uploaded: " + uploadedFile.toString());
             inputStream.close();
@@ -67,6 +68,30 @@ public class Dropbox {
         for (DbxEntry child : listing.children) {
             System.out.println("	" + child.name + ": " + child.toString());
         }
+		}
+		
+		public ArrayList<String> ListFolders(String path)throws DbxException{
+	        DbxEntry.WithChildren listing = client.getMetadataWithChildren(path);
+	        System.out.println("Files in the root path:");
+	        ArrayList<String> children = new ArrayList<String>();
+	        for (DbxEntry child : listing.children) {
+	            children.add(child.toString());
+	        }
+	        return children;
+			}
+		
+		public void recursiveUpload(String sourcedir, String targetdir) throws DbxException, IOException{
+			if (new File(sourcedir).isDirectory()){
+				   ArrayList<String> mlist = ListFolders(sourcedir);
+				   for(int i = 0; i < mlist.size(); i++){
+					   recursiveUpload(mlist.get(i), targetdir + "\\" + 
+				   (sourcedir.lastIndexOf("\\") != -1 ? sourcedir.substring(sourcedir.lastIndexOf("\\")) : sourcedir.substring(sourcedir.lastIndexOf("/"))) );
+				   }
+			}
+			else {
+				upload(sourcedir, targetdir);
+			}
+			
 		}
 		
 		public com.dropbox.core.DbxEntry.File DownloadFiles(String filename) throws DbxException, IOException{

@@ -157,7 +157,7 @@ public class Check implements Runnable{
 	public Process startScreencap(String path){
 		try {
 			//Delete the Directory
-			if (DROPBOX!= null){
+			if (DROPBOX != null){
 			DeleteDirectory df = new DeleteDirectory(Msource, DROPBOX);
 			df.Delete();
 			}

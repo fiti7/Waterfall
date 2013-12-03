@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- version check
 <!-- localhost/linedbase3.php?link=./Data/ScreenCapAt1381654112396/*.jpg  -->
 
 <html lang"en">
@@ -10,7 +11,7 @@
 
     <script type="text/javascript" src="./waterfall.js"></script>
     
-	<script type="text/javascript" id="key" src="./Data/Data/key.js"></script>
+	<script type="text/javascript" id="key" src="./Data/key.js"></script>
 
      <link rel="stylesheet" type="text/css" href="./waterfall3.css" /> 
 
@@ -27,6 +28,7 @@
 	endtimes - the time each waterfall ends
 	-->
 	<script type="text/javascript" >
+	console.log(outnames);
 	var length = outnames.length;
 	var index;
 	
@@ -52,6 +54,10 @@
 					//what is my current item?
 					//if I pass my current item on either side, then switch
 					//the problem: the time is not matched on start/end and the graph itself.
+					
+					//idea: everytime the mark is hit, rewrite the first line of the .js file stating current = ??
+					//Then keep everything on one file. 
+					
 					if (calculatedPercent < 0){
 						if (i != 0){
 							$('script[src="' + outnames[i] + '"]').remove();

@@ -7,6 +7,8 @@ import javax.mail.MessagingException;
 
 import org.apache.commons.io.FileUtils;
 
+import com.dropbox.core.DbxException;
+
 
 
 public class Controller {
@@ -14,7 +16,7 @@ public class Controller {
 //	private static String OUTPUT_FOLDER = "C:\\Users\\Etai\\Desktop\\Dropbox\\Waterfall\\Data";
 //	private static String PROCESS = "firefox.exe";
 //	private static String FILES = "C:\\wamp\\www\\src\\src\\";
-//			private static Dropbox DROPBOX = new Dropbox();
+			private static Dropbox DROPBOX = new Dropbox();
 			private static String SOURCE_FOLDER = "C:\\KNAgent\\Data";
 			private static String OUTPUT_FOLDER = "C:\\Users\\knadmin\\Desktop\\Dropbox\\Waterfall\\Data";
 			private static String PROCESS = "TxnPlaybackEngine.exe";
@@ -23,7 +25,7 @@ public class Controller {
 	public static void main(String args[]) throws IOException, MessagingException, NullPointerException{
 		
 		//delete and recreate filestructure on first run
-		DeleteDirectory df = new DeleteDirectory(OUTPUT_FOLDER);
+		DeleteDirectory df = new DeleteDirectory(OUTPUT_FOLDER, DROPBOX);
 		df.Delete();
 
 		//Runtime rt = Runtime.getRuntime();
@@ -33,12 +35,12 @@ public class Controller {
 		logger.log("created");
 
 		//start the thread to copy files as tHe agent runs. 
-		Thread f = new Thread(new CopyFiles(SOURCE_FOLDER, OUTPUT_FOLDER, logger));
+		Thread f = new Thread(new CopyFiles(SOURCE_FOLDER, OUTPUT_FOLDER, logger, DROPBOX));
 		logger.log("running copier");
 		f.start();
 
 		//start the thread to take screencaps
-		Check ch = new Check(OUTPUT_FOLDER, PROCESS, logger);
+		Check ch = new Check(OUTPUT_FOLDER, PROCESS, logger, DROPBOX);
 		Thread c = new Thread(ch);
 		logger.log("running screecapper");
 		c.start();
@@ -60,10 +62,14 @@ public class Controller {
 			logger.log("processing....");
 			//add the files needed to run it
 			try {
-				FileUtils.copyDirectory(new File(FILES), new File(OUTPUT_FOLDER));
+				//FileUtils.copyDirectory(new File(FILES), new File(OUTPUT_FOLDER, DROPBOX));
+				DROPBOX.recursiveUpload(FILES, OUTPUT_FOLDER);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+			} catch (DbxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 
 			//mail me the result
