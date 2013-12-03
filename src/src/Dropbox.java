@@ -81,6 +81,8 @@ public class Dropbox {
 			}
 		
 		public void recursiveUpload(String sourcedir, String targetdir) throws DbxException, IOException{
+			sourcedir = format(sourcedir);
+			targetdir = format(targetdir);
 			if (new File(sourcedir).isDirectory()){
 				   ArrayList<String> mlist = ListFolders(sourcedir);
 				   for(int i = 0; i < mlist.size(); i++){
@@ -92,6 +94,13 @@ public class Dropbox {
 				upload(sourcedir, targetdir);
 			}
 			
+		}
+		
+		public String format(String filename){
+			if(filename.substring(0, 1) != "/"){
+        		filename = "/" + filename.substring(filename.indexOf("Dropbox") + "Dropbox\\".length());
+        	}
+			return filename;
 		}
 		
 		public com.dropbox.core.DbxEntry.File DownloadFiles(String filename) throws DbxException, IOException{
@@ -109,8 +118,9 @@ public class Dropbox {
 		
 		
 		public void DeleteFile(String filename)throws DbxException, IOException{
-	        FileOutputStream outputStream = new FileOutputStream(filename);
-	            try {
+			format(filename);
+			FileOutputStream outputStream = new FileOutputStream(filename);
+	            try {   
 					client.delete(filename);
 	            }finally{
 	            outputStream.close();
