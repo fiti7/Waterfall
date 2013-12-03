@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.dropbox.core.DbxException;
+
 //TODO: Split into model/view/controller that automatically senses device/browser type
 
 public class Check implements Runnable{
@@ -158,8 +160,7 @@ public class Check implements Runnable{
 		try {
 			//Delete the Directory
 			if (DROPBOX != null){
-			DeleteDirectory df = new DeleteDirectory(Msource, DROPBOX);
-			df.Delete();
+			DROPBOX.recursiveDelete(Msource);
 			}
 			else{
 			DeleteDirectory df = new DeleteDirectory(Msource);
@@ -189,6 +190,9 @@ public class Check implements Runnable{
 
 			return screencapProcess;
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DbxException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 

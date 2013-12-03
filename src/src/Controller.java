@@ -12,22 +12,29 @@ import com.dropbox.core.DbxException;
 
 
 public class Controller {
-//	private static String SOURCE_FOLDER = "C:\\wamp\\www\\src\\src\\";
-//	private static String OUTPUT_FOLDER = "C:\\Users\\Etai\\Desktop\\Dropbox\\Waterfall\\Data";
-//	private static String PROCESS = "firefox.exe";
-//	private static String FILES = "C:\\wamp\\www\\src\\src\\";
+	private static String SOURCE_FOLDER = "C:\\wamp\\www\\src\\src\\";
+	private static String OUTPUT_FOLDER = "C:/Users/Etai/Desktop/Dropbox/Waterfall/Data";
+	private static String PROCESS = "firefox.exe";
+	private static String FILES = "C:\\wamp\\www\\src\\src\\";
 			private static Dropbox DROPBOX = new Dropbox();
-			private static String SOURCE_FOLDER = "C:\\KNAgent\\Data";
-			private static String OUTPUT_FOLDER = "C:\\Users\\knadmin\\Desktop\\Dropbox\\Waterfall\\Data";
-			private static String PROCESS = "TxnPlaybackEngine.exe";
-			private static String FILES = "C:\\Users\\knadmin\\workspace\\www\\src\\src";
+//			private static String SOURCE_FOLDER = "C:\\KNAgent\\Data";
+//			private static String OUTPUT_FOLDER = "C:\\Users\\knadmin\\Desktop\\Dropbox\\Waterfall\\Data";
+//			private static String PROCESS = "TxnPlaybackEngine.exe";
+//			private static String FILES = "C:\\Users\\knadmin\\workspace\\www\\src\\src";
 
 	public static void main(String args[]) throws IOException, MessagingException, NullPointerException{
 		
 		//delete and recreate filestructure on first run
-		DeleteDirectory df = new DeleteDirectory(OUTPUT_FOLDER, DROPBOX);
-		df.Delete();
-
+//		DeleteDirectory df = new DeleteDirectory(OUTPUT_FOLDER, DROPBOX);
+//		df.Delete();
+		
+		try {
+			DROPBOX.recursiveDelete("C:/Users/Etai/Desktop/Dropbox/Waterfall/Data");
+		} catch (DbxException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		
 		//Runtime rt = Runtime.getRuntime();
 		//rt.exec("cmd /c c:\\path\\to\\python python\\test.py");
 		LoggerTest logger = new LoggerTest(OUTPUT_FOLDER);

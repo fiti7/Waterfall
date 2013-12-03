@@ -53,6 +53,7 @@ public class Dropbox {
 		
 		public void upload(String sourcepath, String targetpath) throws IOException, DbxException{
        
+		targetpath = dbformat(targetpath);
 		File inputFile = new File(sourcepath);
         FileInputStream inputStream = new FileInputStream(inputFile);
                 
@@ -63,6 +64,7 @@ public class Dropbox {
 		}
 		
 		public void ListFolders() throws DbxException{
+		
         DbxEntry.WithChildren listing = client.getMetadataWithChildren("/");
         System.out.println("Files in the root path:");
         for (DbxEntry child : listing.children) {
@@ -71,23 +73,39 @@ public class Dropbox {
 		}
 		
 		public ArrayList<String> ListFolders(String path)throws DbxException{
+			path = dbformat(path);
 	        DbxEntry.WithChildren listing = client.getMetadataWithChildren(path);
 	        System.out.println("Files in the root path:");
 	        ArrayList<String> children = new ArrayList<String>();
 	        for (DbxEntry child : listing.children) {
+	        	if (child.isFile()){
+	            System.out.println("	" + child.name + ": " + child.toString());
 	            children.add(child.toString());
+	        	}
 	        }
 	        return children;
 			}
 		
+		//sourcedir is actual path of file
+		//targetdir is dropbox path "Desktop/Dbox/Waterfall/Data => /Data"
 		public void recursiveUpload(String sourcedir, String targetdir) throws DbxException, IOException{
-			sourcedir = format(sourcedir);
-			targetdir = format(targetdir);
+			targetdir = dbformat(targetdir);
+			
+			sourcedir = lastcharformat(sourcedir);
+			targetdir = lastcharformat(targetdir);
+			
 			if (new File(sourcedir).isDirectory()){
-				   ArrayList<String> mlist = ListFolders(sourcedir);
-				   for(int i = 0; i < mlist.size(); i++){
-					   recursiveUpload(mlist.get(i), targetdir + "\\" + 
-				   (sourcedir.lastIndexOf("\\") != -1 ? sourcedir.substring(sourcedir.lastIndexOf("\\")) : sourcedir.substring(sourcedir.lastIndexOf("/"))) );
+				   File[] mlist = new File(sourcedir).listFiles();
+				   System.out.println("source: " + sourcedir + ", mylist: " + mlist + ", targetdir: " + targetdir);
+				   for(int i = 0; i < mlist.length; i++){
+					   System.out.println("newsource: " + mlist[i].getAbsolutePath() + " oldsource: " + sourcedir + ", newtarget: " + targetdir + "/" + 
+							   getname(sourcedir));
+							   
+					   recursiveUpload(mlist[i].getAbsolutePath(), targetdir + "/" + 
+				   //add the end of the last source to keep directory structure.
+				   getname(sourcedir) + "/" + getname(mlist[i].getAbsolutePath())
+				   
+							   );
 				   }
 			}
 			else {
@@ -96,10 +114,42 @@ public class Dropbox {
 			
 		}
 		
-		public String format(String filename){
-			if(filename.substring(0, 1) != "/"){
-        		filename = "/" + filename.substring(filename.indexOf("Dropbox") + "Dropbox\\".length());
+		//sourcedir here is the dropboxpath
+		public void recursiveDelete(String sourcedir) throws DbxException, IOException{
+			System.out.println(sourcedir + new File(sourcedir).isDirectory());
+			if (new File(sourcedir).isDirectory()){
+				   File[] mlist = new File(sourcedir).listFiles();
+				   for(int i = 0; i < mlist.length; i++){
+					   System.out.println("newfile: " + mlist[i].getAbsolutePath().replace("\\", "/"));
+					   recursiveDelete(mlist[i].getAbsolutePath().replace("\\", "/"));
+				   }
+			}
+			else {
+				DeleteFile(sourcedir);
+			}
+			
+		}
+		
+		public static String lastcharformat(String targetdir){
+			//removes the last char if it's "\\" or "/"
+			String lastchar = targetdir.substring(targetdir.length() - 1);
+			System.out.println("lastchar: "  + lastchar);
+			System.out.println("old: " + targetdir);
+			targetdir = (lastchar.equals("\\") || lastchar.equals("/")) ? targetdir.substring(0, targetdir.length()-1) : targetdir;
+			System.out.println("new: " + targetdir);
+			return targetdir;
+		}
+		
+		public static String getname(String source){
+			return source.lastIndexOf("\\") != -1 ? source.substring(source.lastIndexOf("\\") + 1) : source.substring(source.lastIndexOf("/") + 1);
+		}
+		
+		public static String dbformat(String filename){
+			//System.out.println("input: " + filename);
+			if(filename.contains("Waterfall")){
+        		filename = "/" + filename.substring(filename.indexOf("Waterfall") + "Waterfall/".length());
         	}
+			//System.out.println("output: " + filename);
 			return filename;
 		}
 		
@@ -118,13 +168,31 @@ public class Dropbox {
 		
 		
 		public void DeleteFile(String filename)throws DbxException, IOException{
-			format(filename);
-			FileOutputStream outputStream = new FileOutputStream(filename);
+			filename = dbformat(filename);
+			System.out.println("deleting " + filename + " at " + getname(filename));
+			FileOutputStream outputStream = new FileOutputStream(getname(filename));
 	            try {   
 					client.delete(filename);
 	            }finally{
 	            outputStream.close();
 				}
+		}
+		
+		public static void main(String[] args) {
+			String mfile = "C:/Users/Etai/Desktop/Dropbox/Waterfall/";
+			mfile = lastcharformat(mfile);
+			
+//			System.out.println(new File(mfile + "/Data").isDirectory());
+			Dropbox d = new Dropbox();
+			try {
+				d.recursiveDelete(mfile + "/Data");
+			} catch (DbxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 }

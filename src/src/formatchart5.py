@@ -443,6 +443,6 @@ reducetext(array[0][-1])
 output = splitTransactions(dataarray, maxseq)
 #print(output) 
 createoutputs(output, maxseq, linearray)
-webbrowser.get('windows-default').open('http://localhost/Waterfall/linedbase3.php?link=./ScreenCaps/*.jpg')
+webbrowser.get('windows-default').open('http://localhost/Waterfall/Data/linedbase3.php?link=./ScreenCaps/*.jpg')
 
 #print(main("C:\\Users\\Etai\\Desktop\\TransData.dat"))
