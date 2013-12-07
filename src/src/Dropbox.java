@@ -62,20 +62,20 @@ public class Dropbox {
 		File inputFile = new File(sourcepath);
         FileInputStream inputStream = new FileInputStream(inputFile);
                 
-        if(new File(sourcepath).length()!= 0 && new File(sourcepath).getName().contains("scap")){
-			double name = System.nanoTime() -  starttime;
-			name = ((long)name/1000000000.0);
-			//rename it
-			File myfile = new File(sourcepath  + "\\" +String.format("%.3f",name)+".jpg");
-			System.out.println(getname(sourcepath) + " changed to" + name);
-			boolean success = new File(sourcepath).renameTo(myfile);
-		}
-        if (!getname(targetpath).equals(getname(sourcepath))){
-		targetpath = dbformat(targetpath) + "/" + getname(sourcepath);
-        }
-        else{
+//        if(new File(sourcepath).length()!= 0 && new File(sourcepath).getName().contains("scap")){
+//			double name = System.nanoTime() -  starttime;
+//			name = ((long)name/1000000000.0);
+//			//rename it
+//			File myfile = new File(sourcepath  + "\\" +String.format("%.3f",name)+".jpg");
+//			System.out.println(getname(sourcepath) + " changed to" + name);
+//			boolean success = new File(sourcepath).renameTo(myfile);
+//		}
+//        if (!getname(targetpath).equals(getname(sourcepath))){
+//		targetpath = dbformat(targetpath) + "/" + getname(sourcepath);
+//        }
+//        else{
         targetpath = dbformat(targetpath);
-        }
+//        }
         System.out.println("uploading " + sourcepath + " to " + targetpath);
         
             DbxEntry.File uploadedFile = client.uploadFile(targetpath,
@@ -98,7 +98,7 @@ public class Dropbox {
 	        DbxEntry.WithChildren listing = client.getMetadataWithChildren(path);
 	        ArrayList<String> children = new ArrayList<String>();
 	        for (DbxEntry child : listing.children) {
-	            children.add(path + child.path);
+	            children.add((path + child.path).replace("//", "/"));
 	        }
 	        System.out.println("Files in the root path: " + children.toString());
 	        return children;
@@ -205,8 +205,14 @@ public class Dropbox {
 			System.out.println("deleting " + filename + " at " + getname(filename));
 			FileOutputStream outputStream = new FileOutputStream(getname(filename));
 	            try {   
-	            	if (new File(filename).isFile()){
+	            	if (new File(filename).isFile() || new File(filename).length() == 0){
 					client.delete(dbformat(filename));}
+	            	else if (new File(filename).isDirectory()){
+	            		recursiveDelete(filename);
+	            	} 
+	            	else{
+	            		client.delete(filename);
+	            	}
 	            }
 	            finally{
 	            outputStream.close();
@@ -231,7 +237,20 @@ public class Dropbox {
 				}
 					}
 				
-			}			
+			}
+
+		public void buffer(String dpath, Dropbox d) throws NullPointerException, DbxException, IOException {
+			ArrayList<String> files = d.ListFolders(dpath);
+			try{
+			if (files.size() > 1){
+				d.DeleteFile(files.get(2));
+				buffer(dpath, d);
+			}
+			}catch(IndexOutOfBoundsException e){
+				e.printStackTrace();
+				return;
+			}
+		}			
 		
 		
 //		public static void main(String[] args) throws IOException {

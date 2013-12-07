@@ -184,12 +184,12 @@ public class Check implements Runnable{
 
 			}
 //			
-//			re.setfile(path);
-//			re.setTime();
-//			Thread r = new Thread(re);
+			re.setfile(path);
+			re.setTime();
+			Thread r = new Thread(re);
 //
-//			logger.log("running renamer");
-//			r.start();
+			logger.log("running renamer");
+			r.start();
 //			starttime = System.nanoTime();
 //			float calc = 0;
 			logger.log("mypath = " + path);
@@ -222,6 +222,7 @@ public class Check implements Runnable{
 		System.out.println("ceasing capture");
 		screencapProcess.destroy();
 		screencapProcess = null;
+		//TODO: doublecheck vlc is not still running, end it if it is.
 		this.setMailed(1);
 		logger.log("prepping for processing");
 	}

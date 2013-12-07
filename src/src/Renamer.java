@@ -84,7 +84,7 @@ public class Renamer implements Runnable{
 			while(afile.exists()){
 				//get all files 
 				myfiles = afile.listFiles();
-				for (int i = 0; i <= myfiles.length; i++){
+				for (int i = 0; i < myfiles.length; i++){
 					//if it hasnt been renamed
 
 					//TODO: to save time, just remember the names and format it later.

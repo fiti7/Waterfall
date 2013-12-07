@@ -46,7 +46,8 @@ public class CopyFiles implements Runnable{
 					}
 					if (!mystring.equals(temp)){
 						FileUtils.copyDirectory(new File(SOURCE_FOLDER), new File(OUTPUT_FOLDER));
-						logger.log("copied " + mystring.substring(0,mystring.length()-2));
+						logger.log("copied " + mystring.substring(0,mystring.length()-2) + "\nfrom " + 
+						SOURCE_FOLDER + " to " + OUTPUT_FOLDER);
 					}
 					temp = mystring;
 					//give it a rest

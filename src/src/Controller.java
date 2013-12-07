@@ -12,27 +12,24 @@ import com.dropbox.core.DbxException;
 
 
 public class Controller {
-	//private static String SOURCE_FOLDER = "C:\\wamp\\www\\src\\src";
-	private static String SOURCE_FOLDER = "C:/wamp/www/src/external/FreeStopwatch/Langs";
-	private static String OUTPUT_FOLDER = "C:/Users/Etai/Desktop/temp";
-	private static String DROPBOX_FOLDER = "C:/Users/Etai/Desktop/Dropbox/Apps/Waterfall/Data";
-	private static String PROCESS = "firefox.exe";
-	private static String FILES = "C:/wamp/www/src/external/FreeStopwatch/Langs/en.txt";
+//	private static String SOURCE_FOLDER = "C:/wamp/www/src/external/FreeStopwatch/Langs";
+//	private static String OUTPUT_FOLDER = "C:/Users/Etai/Desktop/temp";
+//	private static String DROPBOX_FOLDER = "C:/Users/Etai/Desktop/Dropbox/Apps/Waterfall";
+//	private static String PROCESS = "firefox.exe";
+//	private static String FILES = "C:/wamp/www/src/src";
 			private static Dropbox DROPBOX = new Dropbox();
-//			private static String SOURCE_FOLDER = "C:\\KNAgent\\Data";
-//			private static String OUTPUT_FOLDER = "C:\\Users\\knadmin\\Desktop\\Dropbox\\Apps\\Waterfall\\Data";
-//			private static String PROCESS = "TxnPlaybackEngine.exe";
-//			private static String FILES = "C:\\Users\\knadmin\\workspace\\www\\src\\src";
+			private static String SOURCE_FOLDER = "C:/KNAgent/Data";
+			private static String OUTPUT_FOLDER = "C:/Users/knadmin/Desktop/Data";
+			private static String DROPBOX_FOLDER = "C:/Users/knadmin/Desktop/Dropbox/Apps/Waterfall";
+			private static String PROCESS = "TxnPlaybackEngine.exe";
+			private static String FILES = "C:/Users/knadmin/workspace/www/src/src";
 
 	public static void main(String args[]) throws IOException, MessagingException, NullPointerException{
 		
 		//delete and recreate filestructure on first run
-		try {
-			DROPBOX.recursiveDelete(OUTPUT_FOLDER);
-		} catch (DbxException e4) {
-			// TODO Auto-generated catch block
-			e4.printStackTrace();
-		}
+//			DeleteDirectory df = new DeleteDirectory(OUTPUT_FOLDER);
+//			df.Delete();
+
 		
 		//Runtime rt = Runtime.getRuntime();
 		//rt.exec("cmd /c c:\\path\\to\\python python\\test.py");
@@ -41,14 +38,14 @@ public class Controller {
 		logger.log("created");
 
 		//start the thread to copy files as tHe agent runs. 
-		Thread f = new Thread(new CopyFiles(SOURCE_FOLDER, OUTPUT_FOLDER, logger, DROPBOX));
+		Thread f = new Thread(new CopyFiles(SOURCE_FOLDER, OUTPUT_FOLDER, logger));
 		logger.log("running copier");
 		f.start();
 
 		//start the thread to take screencaps
-		Check ch = new Check(OUTPUT_FOLDER, PROCESS, logger, DROPBOX);
+		Check ch = new Check(OUTPUT_FOLDER, PROCESS, logger);
 		Thread c = new Thread(ch);
-		logger.log("running screecapper");
+		logger.log("running screencapper");
 		c.start();
 
 
@@ -68,9 +65,10 @@ public class Controller {
 			logger.log("processing....");
 			//add the files needed to run it
 			try {
-				//FileUtils.copyDirectory(new File(FILES), new File(OUTPUT_FOLDER));
+				FileUtils.copyDirectory(new File(FILES), new File(OUTPUT_FOLDER));
 				DROPBOX.start();
-				DROPBOX.recursiveUpload(FILES, OUTPUT_FOLDER);
+				DROPBOX.recursiveUpload(OUTPUT_FOLDER, DROPBOX_FOLDER + "/" + System.currentTimeMillis());
+				
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -88,11 +86,19 @@ public class Controller {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			finally{
+				try {
+					DROPBOX.buffer(DROPBOX_FOLDER, DROPBOX);
+				} catch (DbxException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 
 			
 			ch.setMailed(0);
 
-			logger.log("round");
+			logger.log("round finished");
 			}
 		}
 	}
