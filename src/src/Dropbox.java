@@ -242,8 +242,8 @@ public class Dropbox {
 		public void buffer(String dpath, Dropbox d) throws NullPointerException, DbxException, IOException {
 			ArrayList<String> files = d.ListFolders(dpath);
 			try{
-			if (files.size() > 1){
-				d.DeleteFile(files.get(2));
+			if (files.size() > 5){
+				d.DeleteFile(files.get(0));
 				buffer(dpath, d);
 			}
 			}catch(IndexOutOfBoundsException e){
