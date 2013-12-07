@@ -12,27 +12,26 @@ import com.dropbox.core.DbxException;
 
 
 public class Controller {
-	private static String SOURCE_FOLDER = "C:\\wamp\\www\\src\\src\\";
-	private static String OUTPUT_FOLDER = "C:/Users/Etai/Desktop/Dropbox/Waterfall/Data";
+	//private static String SOURCE_FOLDER = "C:\\wamp\\www\\src\\src";
+	private static String SOURCE_FOLDER = "C:/wamp/www/src/external/FreeStopwatch/Langs";
+	private static String OUTPUT_FOLDER = "C:/Users/Etai/Desktop/temp";
+	private static String DROPBOX_FOLDER = "C:/Users/Etai/Desktop/Dropbox/Apps/Waterfall/Data";
 	private static String PROCESS = "firefox.exe";
-	private static String FILES = "C:\\wamp\\www\\src\\src\\";
+	private static String FILES = "C:/wamp/www/src/external/FreeStopwatch/Langs/en.txt";
 			private static Dropbox DROPBOX = new Dropbox();
 //			private static String SOURCE_FOLDER = "C:\\KNAgent\\Data";
-//			private static String OUTPUT_FOLDER = "C:\\Users\\knadmin\\Desktop\\Dropbox\\Waterfall\\Data";
+//			private static String OUTPUT_FOLDER = "C:\\Users\\knadmin\\Desktop\\Dropbox\\Apps\\Waterfall\\Data";
 //			private static String PROCESS = "TxnPlaybackEngine.exe";
 //			private static String FILES = "C:\\Users\\knadmin\\workspace\\www\\src\\src";
 
 	public static void main(String args[]) throws IOException, MessagingException, NullPointerException{
 		
 		//delete and recreate filestructure on first run
-//		DeleteDirectory df = new DeleteDirectory(OUTPUT_FOLDER, DROPBOX);
-//		df.Delete();
-		
 		try {
-			DROPBOX.recursiveDelete("C:/Users/Etai/Desktop/Dropbox/Waterfall/Data");
-		} catch (DbxException e2) {
+			DROPBOX.recursiveDelete(OUTPUT_FOLDER);
+		} catch (DbxException e4) {
 			// TODO Auto-generated catch block
-			e2.printStackTrace();
+			e4.printStackTrace();
 		}
 		
 		//Runtime rt = Runtime.getRuntime();
@@ -69,31 +68,31 @@ public class Controller {
 			logger.log("processing....");
 			//add the files needed to run it
 			try {
-				//FileUtils.copyDirectory(new File(FILES), new File(OUTPUT_FOLDER, DROPBOX));
+				//FileUtils.copyDirectory(new File(FILES), new File(OUTPUT_FOLDER));
+				DROPBOX.start();
 				DROPBOX.recursiveUpload(FILES, OUTPUT_FOLDER);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
-			} catch (DbxException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			//mail me the result
+			} //mail me the result
 //			try{
 //				logger.log("trying to mail");
 //				Mail m = new Mail(OUTPUT_FOLDER, logger);
 //				m.zipandmail();
 //				logger.log("mailed");
 //			}
-//			catch(RuntimeException e2){
-//				e2.printStackTrace();
-//			}
+//			
+			catch(RuntimeException e2){
+				e2.printStackTrace();
+			} catch (DbxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			
 			ch.setMailed(0);
 
-			logger.log("deleting Data file");
+			logger.log("round");
 			}
 		}
 	}

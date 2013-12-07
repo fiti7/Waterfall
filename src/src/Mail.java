@@ -32,7 +32,7 @@ public class Mail {
 	public Mail(String OUTPUT, LoggerTest mlogger) {
 		OUTPUT_FOLDER = OUTPUT;
 		logger = mlogger;
-		OUTPUT_ZIP_FILE = OUTPUT + "\\Data.zip";
+		OUTPUT_ZIP_FILE = OUTPUT + "/Data.zip";
 	}
 
 	public void zipandmail(){
@@ -109,7 +109,7 @@ public class Mail {
 		String name = node.getName();
 
 		//add files only
-		if(node.isFile() && !name.substring(name.lastIndexOf(".") + 1, name.length()).equals("zip")){
+		if(node.isFile() && !name.substring(name.lastIndexOf(".") + 1, name.length()).equals("zip") && node.getAbsoluteFile().length() > 0){
 			fileList.add(generateZipEntry(node.getAbsoluteFile().toString()));
 		}
 		else if (name.substring(name.lastIndexOf(".") + 1, name.length()).equals("zip")){

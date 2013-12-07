@@ -38,7 +38,7 @@ public class Check implements Runnable{
 
 	public Check(String source, String process, LoggerTest mylogger, Dropbox d) {
 		Msource = source;
-		SOURCE_PATH = source + "\\ScreenCaps";
+		SOURCE_PATH = source + "/ScreenCaps";
 		PROCESS = process;
 		logger = mylogger;
 		DROPBOX = d;
@@ -95,7 +95,16 @@ public class Check implements Runnable{
 					this.stopScreencap();
 				}
 			} 
-			this.clean(path);
+			if (DROPBOX == null){
+			this.clean(path);}
+			else{
+//				try {
+//					DROPBOX.clean(path);
+//				} catch (DbxException | IOException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+			}
 		}
 	}
 
@@ -174,15 +183,15 @@ public class Check implements Runnable{
 				new File(path).mkdir();
 
 			}
-			
-			re.setfile(path);
-			re.setTime();
-			Thread r = new Thread(re);
-
-			logger.log("running renamer");
-			r.start();
-			starttime = System.nanoTime();
-			float calc = 0;
+//			
+//			re.setfile(path);
+//			re.setTime();
+//			Thread r = new Thread(re);
+//
+//			logger.log("running renamer");
+//			r.start();
+//			starttime = System.nanoTime();
+//			float calc = 0;
 			logger.log("mypath = " + path);
 
 			//TODO: find a way to get the timestamp using vlc
@@ -207,6 +216,8 @@ public class Check implements Runnable{
 		}
 	}
 
+	
+	
 	public void stopScreencap(){
 		System.out.println("ceasing capture");
 		screencapProcess.destroy();
