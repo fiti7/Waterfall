@@ -22,7 +22,7 @@ public class Controller {
 			private static String OUTPUT_FOLDER = "C:/Users/knadmin/Desktop/Data";
 			private static String DROPBOX_FOLDER = "C:/Users/knadmin/Desktop/Dropbox/Apps/Waterfall";
 			private static String PROCESS = "TxnPlaybackEngine.exe";
-			private static String FILES = "C:/Users/knadmin/workspace/www/src/src";
+			private static String FILES = "C:/Users/knadmin/workspace/www/src";
 
 	public static void main(String args[]) throws IOException, MessagingException, NullPointerException{
 		
@@ -67,8 +67,10 @@ public class Controller {
 			try {
 				FileUtils.copyDirectory(new File(FILES), new File(OUTPUT_FOLDER));
 				DROPBOX.start();
-				DROPBOX.recursiveUpload(OUTPUT_FOLDER, DROPBOX_FOLDER + "/" + System.currentTimeMillis());
-				
+				String newpath =  DROPBOX_FOLDER + "/" + System.currentTimeMillis();
+				DROPBOX.recursiveUpload(OUTPUT_FOLDER, newpath);
+				DROPBOX.upload(FILES + "/formatchart5.py", newpath);
+				DROPBOX.upload(FILES + "/README.txt", newpath);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

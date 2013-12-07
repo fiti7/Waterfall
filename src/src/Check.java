@@ -7,6 +7,8 @@
  * 
  */
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -35,6 +37,9 @@ public class Check implements Runnable{
 	public static Process screencapProcess = null;
 	private static Renamer re = new Renamer(null, logger);
 	long starttime = System.nanoTime();
+	private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	private double width = screenSize.getWidth();
+	private double height = screenSize.getHeight();
 
 	public Check(String source, String process, LoggerTest mylogger, Dropbox d) {
 		Msource = source;
@@ -46,7 +51,7 @@ public class Check implements Runnable{
 
 	public Check(String source, String process, LoggerTest mylogger) {
 		Msource = source;
-		SOURCE_PATH = source + "\\ScreenCaps";
+		SOURCE_PATH = source + "/ScreenCaps";
 		PROCESS = process;
 		logger = mylogger;
 		}
@@ -195,7 +200,7 @@ public class Check implements Runnable{
 			logger.log("mypath = " + path);
 
 			//TODO: find a way to get the timestamp using vlc
-			screencapProcess = rt.exec("C:\\VLC\\vlc screen:// --dshow-vdev=screen-capture-recorder --dshow-fps=5 -I dummy --dummy-quiet --rate=1 --video-filter=scene --vout=dummy --scene-format=jpg --scene-ratio=1 --scene-prefix=snap --scene-path=" + path +" --scene-prefix=scap vlc://quit");
+			screencapProcess = rt.exec("C:\\VLC\\vlc screen:// --dshow-vdev=screen-capture-recorder --screen-width="+(width)+" --screen-height=" + (height-50) + "--dshow-fps=5 -I dummy --dummy-quiet --rate=1 --video-filter=scene --vout=dummy --scene-format=jpg --scene-ratio=1 --scene-prefix=snap --scene-path=" + path +" --scene-prefix=scap vlc://quit");
 
 			return screencapProcess;
 		} catch (IOException e) {
@@ -273,6 +278,11 @@ public class Check implements Runnable{
 	public static void main(String[] args) throws InterruptedException, IOException{
 		long starttime = (long)System.nanoTime();
 		float calc = 0;
+		
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = screenSize.getWidth();
+		double height = screenSize.getHeight();
+		
 		//		Thread.sleep(1000);
 		//		long check = ((long)System.nanoTime() - starttime);
 		//		System.out.println(getTime(starttime, calc));
@@ -300,8 +310,8 @@ public class Check implements Runnable{
 		//		//TODO: logfile --logfile(string)    --logfile("+logger.getPath().replace("\\", "\\\\")+")
 
 		Runtime.getRuntime().exec("C:\\VLC\\vlc screen:// " 
-				+ "--dshow-vdev=screen-capture-recorder --dshow-fps=1 -I dummy --dummy-quiet --rate=1 --video-filter=scene --vout=dummy --scene-format=jpg --scene-ratio=1 --scene-prefix=snap "
-				+ "--scene-path=" + "C:\\wamp\\www\\src\\Data" +" --no-snapshot-sequential --scene-prefix=scap" + getTime(starttime, calc) + " --run-time=6 vlc://quit ");
+				+ "--dshow-vdev=screen-capture-recorder --screen-width="+(width)+" --screen-height=" + (height-50) + "--dshow-fps=1 -I dummy --dummy-quiet --rate=1 --video-filter=scene --vout=dummy --scene-format=jpg --scene-ratio=1 --scene-prefix=snap "
+				+ "--scene-path=" + "C:/Users/Etai/Desktop/temp/ScreenCaps " +" --no-snapshot-sequential --scene-prefix=scap" + " --run-time=6 vlc://quit ");
 
 
 	}
