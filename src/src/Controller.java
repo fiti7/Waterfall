@@ -12,17 +12,17 @@ import com.dropbox.core.DbxException;
 
 
 public class Controller {
-//	private static String SOURCE_FOLDER = "C:/wamp/www/src/external/FreeStopwatch/Langs";
-//	private static String OUTPUT_FOLDER = "C:/Users/Etai/Desktop/temp";
-//	private static String DROPBOX_FOLDER = "C:/Users/Etai/Desktop/Dropbox/Apps/Waterfall";
-//	private static String PROCESS = "firefox.exe";
-//	private static String FILES = "C:/wamp/www/src/src";
+	private static String SOURCE_FOLDER = "C:/wamp/www/src/external/FreeStopwatch/Langs";
+	private static String OUTPUT_FOLDER = "C:/Users/Etai/Desktop/temp";
+	private static String DROPBOX_FOLDER = "C:/Users/Etai/Desktop/Dropbox/Apps/Waterfall";
+	private static String PROCESS = "firefox.exe";
+	private static String FILES = "C:/wamp/www/src/src";
 			private static Dropbox DROPBOX = new Dropbox();
-			private static String SOURCE_FOLDER = "C:/KNAgent/Data";
-			private static String OUTPUT_FOLDER = "C:/Users/knadmin/Desktop/Data";
-			private static String DROPBOX_FOLDER = "C:/Users/knadmin/Desktop/Dropbox/Apps/Waterfall";
-			private static String PROCESS = "TxnPlaybackEngine.exe";
-			private static String FILES = "C:/Users/knadmin/workspace/www/src";
+//			private static String SOURCE_FOLDER = "C:/KNAgent/Data";
+//			private static String OUTPUT_FOLDER = "C:/Users/knadmin/Desktop/Data";
+//			private static String DROPBOX_FOLDER = "C:/Users/knadmin/Desktop/Dropbox/Apps/Waterfall";
+//			private static String PROCESS = "TxnPlaybackEngine.exe";
+//			private static String FILES = "C:/Users/knadmin/workspace/www/src";
 
 	public static void main(String args[]) throws IOException, MessagingException, NullPointerException{
 		
@@ -69,19 +69,12 @@ public class Controller {
 				DROPBOX.start();
 				String newpath =  DROPBOX_FOLDER + "/" + System.currentTimeMillis();
 				DROPBOX.recursiveUpload(OUTPUT_FOLDER, newpath);
-				DROPBOX.upload(FILES + "/formatchart5.py", newpath);
-				DROPBOX.upload(FILES + "/README.txt", newpath);
+				DROPBOX.upload(FILES + "/formatchart5.py", newpath + "/RUNME.py");
+				DROPBOX.upload(FILES + "/README.txt", newpath + "/README.txt");
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} //mail me the result
-//			try{
-//				logger.log("trying to mail");
-//				Mail m = new Mail(OUTPUT_FOLDER, logger);
-//				m.zipandmail();
-//				logger.log("mailed");
-//			}
-//			
 			catch(RuntimeException e2){
 				e2.printStackTrace();
 			} catch (DbxException e) {

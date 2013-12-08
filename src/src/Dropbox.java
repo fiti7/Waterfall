@@ -62,26 +62,16 @@ public class Dropbox {
 		File inputFile = new File(sourcepath);
         FileInputStream inputStream = new FileInputStream(inputFile);
                 
-//        if(new File(sourcepath).length()!= 0 && new File(sourcepath).getName().contains("scap")){
-//			double name = System.nanoTime() -  starttime;
-//			name = ((long)name/1000000000.0);
-//			//rename it
-//			File myfile = new File(sourcepath  + "\\" +String.format("%.3f",name)+".jpg");
-//			System.out.println(getname(sourcepath) + " changed to" + name);
-//			boolean success = new File(sourcepath).renameTo(myfile);
-//		}
-//        if (!getname(targetpath).equals(getname(sourcepath))){
-//		targetpath = dbformat(targetpath) + "/" + getname(sourcepath);
-//        }
-//        else{
         targetpath = dbformat(targetpath);
-//        }
+
+        if (!new File(sourcepath).getName().contains("scap") && !new File(sourcepath).getName().equals(".dropbox")){
         System.out.println("uploading " + sourcepath + " to " + targetpath);
         
             DbxEntry.File uploadedFile = client.uploadFile(targetpath,
                 DbxWriteMode.add(), inputFile.length(), inputStream);
             System.out.println("Uploaded: " + uploadedFile.toString());
             inputStream.close();
+        }
 		}
 		
 //		public void ListFolders() throws DbxException{
@@ -117,12 +107,13 @@ public class Dropbox {
 				   File[] mlist = new File(sourcedir).listFiles();
 				   System.out.println("source: " + sourcedir + ", mylist: " + mlist + ", targetdir: " + targetdir);
 				   for(int i = 0; i < mlist.length; i++){
-					   //System.out.println("newsource: " + mlist[i].getAbsolutePath() + " oldsource: " + sourcedir + ", newtarget: " + targetdir + "/" + 
-							  // getname(sourcedir));
+					   System.out.println("newsource: " + mlist[i].getAbsolutePath() + " oldsource: " + sourcedir + ", newtarget: " + targetdir + "/" + 
+							   getname(sourcedir));
 							   
 					   recursiveUpload(mlist[i].getAbsolutePath(), targetdir + "/" + 
 				   //add the end of the last source to keep directory structure.
-				   getname(sourcedir) + "/" + getname(mlist[i].getAbsolutePath())
+				  // getname(sourcedir) + "/" +
+				    getname(mlist[i].getAbsolutePath())
 				   
 							   );
 				   }
@@ -276,7 +267,6 @@ public class Dropbox {
 //				e.printStackTrace();
 //			}
 //		}
-
 
 		
 }
