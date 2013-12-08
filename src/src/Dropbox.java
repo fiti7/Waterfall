@@ -218,7 +218,7 @@ public class Dropbox {
 						   System.out.println("newfile: " + new File(sourcedir + "/" + getname(mlist.get(i))).getAbsolutePath().replace("\\", "/"));
 						   recursiveDelete(new File(sourcedir + "/" + getname(mlist.get(i))).getAbsolutePath().replace("\\", "/"));
 					   }
-				}
+				}  
 				else {
 					try{
 					if(new File(sourcedir).length() == 0 && new File(sourcedir) != null){
