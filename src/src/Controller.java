@@ -12,17 +12,17 @@ import com.dropbox.core.DbxException;
 
 
 public class Controller {
-	private static String SOURCE_FOLDER = "C:/wamp/www/src/external/FreeStopwatch/Langs";
-	private static String OUTPUT_FOLDER = "C:/Users/Etai/Desktop/temp";
-	private static String DROPBOX_FOLDER = "C:/Users/Etai/Desktop/Dropbox/Apps/Waterfall";
-	private static String PROCESS = "firefox.exe";
-	private static String FILES = "C:/wamp/www/src/src";
+//	private static String SOURCE_FOLDER = "C:/wamp/www/src/external/FreeStopwatch/Langs";
+//	private static String OUTPUT_FOLDER = "C:/Users/Etai/Desktop/temp";
+//	private static String DROPBOX_FOLDER = "C:/Users/Etai/Desktop/Dropbox/Apps/Waterfall";
+//	private static String PROCESS = "firefox.exe";
+//	private static String FILES = "C:/wamp/www/src/src";
 			private static Dropbox DROPBOX = new Dropbox();
-//			private static String SOURCE_FOLDER = "C:/KNAgent/Data";
-//			private static String OUTPUT_FOLDER = "C:/Users/knadmin/Desktop/Data";
-//			private static String DROPBOX_FOLDER = "C:/Users/knadmin/Desktop/Dropbox/Apps/Waterfall";
-//			private static String PROCESS = "TxnPlaybackEngine.exe";
-//			private static String FILES = "C:/Users/knadmin/workspace/www/src";
+			private static String SOURCE_FOLDER = "C:/KNAgent/Data";
+			private static String OUTPUT_FOLDER = "C:/Users/knadmin/Desktop/Data";
+			private static String DROPBOX_FOLDER = "C:/Users/knadmin/Desktop/Dropbox/Apps/Waterfall";
+			private static String PROCESS = "TxnPlaybackEngine.exe";
+			private static String FILES = "C:/Users/knadmin/workspace/www/src";
 
 	public static void main(String args[]) throws IOException, MessagingException, NullPointerException{
 		
