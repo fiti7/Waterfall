@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 public class Dropbox {
-    final String APP_KEY = "4a09sz1p6zl7mm2";
+    private static final int buffer = 8;
+	final String APP_KEY = "4a09sz1p6zl7mm2";
     final String APP_SECRET = "pk6ggm5pc4n885s";
     private DbxClient client;
-    private long starttime = System.nanoTime();
     		
 		public Dropbox(){
 
@@ -52,11 +52,7 @@ public class Dropbox {
 			}
 		}
 		
-		public void start(){
-		    starttime = System.nanoTime();
-		}
-		
-		public void upload(String sourcepath, String targetpath) throws IOException, DbxException{
+		public void upload(String sourcepath, String targetpath) throws IOException, DbxException, FileNotFoundException{
        
 		
 		File inputFile = new File(sourcepath);
@@ -97,7 +93,7 @@ public class Dropbox {
 		
 		//sourcedir is actual path of file
 		//targetdir is dropbox path "Desktop/Dbox/Waterfall/Data => /Data"
-		public void recursiveUpload(String sourcedir, String targetdir) throws DbxException, IOException{
+		public void recursiveUpload(String sourcedir, String targetdir) throws DbxException, IOException, FileNotFoundException{
 			targetdir = dbformat(targetdir);
 			
 			sourcedir = lastcharformat(sourcedir);
@@ -233,7 +229,7 @@ public class Dropbox {
 		public void buffer(String dpath, Dropbox d) throws NullPointerException, DbxException, IOException {
 			ArrayList<String> files = d.ListFolders(dpath);
 			try{
-			if (files.size() > 5){
+			if (files.size() > buffer){
 				d.DeleteFile(files.get(0));
 				buffer(dpath, d);
 			}

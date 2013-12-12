@@ -1,0 +1,28 @@
+12/11/2013 18:56:34.501
+created
+12/11/2013 18:56:34.512
+running screencapper
+12/11/2013 18:57:25.316
+running renamer
+12/11/2013 18:57:25.324
+mypath = C:/Users/Etai/Desktop/temp/ScreenCaps
+12/11/2013 18:57:25.402
+capturing
+12/11/2013 18:57:42.454
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00001.jpg changed to16.528709917
+12/11/2013 18:57:43.007
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00005.jpg changed to17.664472856
+12/11/2013 18:57:43.470
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00009.jpg changed to18.128369152
+12/11/2013 18:57:45.787
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00020.jpg changed to20.445411638
+12/11/2013 18:57:49.461
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00034.jpg changed to24.120429294
+12/11/2013 18:57:51.427
+stopping capture
+12/11/2013 18:57:51.440
+prepping for processing
+12/11/2013 18:57:51.474
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00051.jpg changed to26.132204397
+12/11/2013 18:57:51.686
+processing....

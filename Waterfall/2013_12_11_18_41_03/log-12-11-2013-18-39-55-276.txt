@@ -1,0 +1,26 @@
+12/11/2013 18:41:04.976
+round finished
+12/11/2013 18:42:47.324
+running renamer
+12/11/2013 18:42:47.331
+mypath = C:/Users/Etai/Desktop/temp/ScreenCaps
+12/11/2013 18:42:47.851
+capturing
+12/11/2013 18:42:57.306
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00001.jpg.swp changed to9.916763082
+12/11/2013 18:42:57.328
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00001.jpg changed to9.93642633
+12/11/2013 18:42:58.015
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00004.jpg changed to10.62387399
+12/11/2013 18:43:00.129
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00013.jpg changed to12.737920987
+12/11/2013 18:43:02.758
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00023.jpg changed to15.362968552
+12/11/2013 18:43:04.522
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00038.jpg changed to17.133787815
+12/11/2013 18:43:12.819
+stopping capture
+12/11/2013 18:43:12.830
+prepping for processing
+12/11/2013 18:43:13.209
+processing....

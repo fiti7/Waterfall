@@ -24,12 +24,13 @@ import com.dropbox.core.DbxException;
 
 public class Check implements Runnable{
 	
+	private boolean alive = true;
 	private String Msource = "";
 	private String SOURCE_PATH = "C:\\Users\\knadmin\\Desktop\\Data";
 	private String PROCESS = "TxnPlaybackEngine.exe";
-	//mailed is used to buffer mailing screencaps
+	//running is used to buffer mailing screencaps
 	private Dropbox DROPBOX = null;
-	private int mailed = 0; 
+	private int ran = 0; 
 	private boolean change = false;
 	private boolean found = false;
 	private boolean lastfound = false;
@@ -41,27 +42,17 @@ public class Check implements Runnable{
 	private double width = screenSize.getWidth();
 	private double height = screenSize.getHeight();
 
-	public Check(String source, String process, LoggerTest mylogger, Dropbox d) {
-		Msource = source;
-		SOURCE_PATH = source + "/ScreenCaps";
-		PROCESS = process;
-		logger = mylogger;
-		DROPBOX = d;
-	}
 
-	public Check(String source, String process, LoggerTest mylogger) {
+	public Check(String source, String process, LoggerTest mylogger, boolean uploading) {
 		Msource = source;
 		SOURCE_PATH = source + "/ScreenCaps";
 		PROCESS = process;
 		logger = mylogger;
+		alive = !uploading;
 		}
 
 	public void run() {
-		SimpleDateFormat sdfDate = new SimpleDateFormat("yyyyMMddHHmmss");
-		Date now = new Date();
-
-		String strDate = sdfDate.format(now);
-
+		ran = 0; 
 
 
 		//define the path the pictures will be dumped to.
@@ -101,8 +92,8 @@ public class Check implements Runnable{
 				}
 			} 
 			if (DROPBOX == null){
-			this.clean(path);}
-			else{
+			//this.clean(path);}
+			//else{
 //				try {
 //					DROPBOX.clean(path);
 //				} catch (DbxException | IOException e) {
@@ -138,7 +129,7 @@ public class Check implements Runnable{
 	}
 
 	public void waitForChange(){
-		while (this.GetChange() == false){
+		while (this.GetChange() == false || alive == false){
 			if (this.AmIRunning()) {
 				//System.out.println("I am running");
 				this.SetLastFound(this.GetFound());
@@ -172,14 +163,14 @@ public class Check implements Runnable{
 
 	public Process startScreencap(String path){
 		try {
-			//Delete the Directory
-			if (DROPBOX != null){
-			DROPBOX.recursiveDelete(Msource);
-			}
-			else{
-			DeleteDirectory df = new DeleteDirectory(Msource);
-			df.Delete();
-			}
+//			//Delete the Directory
+//			if (DROPBOX != null){
+//			DROPBOX.recursiveDelete(Msource);
+//			}
+//			else{
+//			DeleteDirectory df = new DeleteDirectory(Msource);
+//			df.Delete();
+//			}
 			
 			Runtime rt = Runtime.getRuntime();
 			Process screencapProcess = null;
@@ -206,20 +197,17 @@ public class Check implements Runnable{
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (DbxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} 
 		return null;
 	}
-
-	public void clean(String path){
-		for (File file : new File(path).listFiles()){	
-			if (file.length() == 0){
-				file.delete();
-			}
-		}
-	}
+//
+//	public void clean(String path){
+//		for (File file : new File(path).listFiles()){	
+//			if (file.length() == 0){
+//				file.delete();
+//			}
+//		}
+//	}
 
 	
 	
@@ -228,7 +216,7 @@ public class Check implements Runnable{
 		screencapProcess.destroy();
 		screencapProcess = null;
 		//TODO: doublecheck vlc is not still running, end it if it is.
-		this.setMailed(1);
+		this.setRunning(1);
 		logger.log("prepping for processing");
 	}
 
@@ -259,12 +247,12 @@ public class Check implements Runnable{
 	}
 	
 
-	public int isMailed() {
-		return mailed;
+	public int isRunning() {
+		return ran;
 	}
 
-	public void setMailed(int mailed) {
-		this.mailed = mailed;
+	public void setRunning(int running) {
+		this.ran = running;
 	}
 
 	public static String getTime(long starttime, float calc){
@@ -274,7 +262,15 @@ public class Check implements Runnable{
 		System.out.println(mystring + " created");
 		return mystring;
 	}
+	
+	public void kill(boolean uploading){
+		alive = !uploading;
+	}
 
+	public void revive(boolean uploading){
+		alive = !uploading;
+	}
+	
 	public static void main(String[] args) throws InterruptedException, IOException{
 		long starttime = (long)System.nanoTime();
 		float calc = 0;

@@ -2,6 +2,8 @@
 import java.io.File;
 import java.io.IOException;
 import java.net.SocketException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.mail.MessagingException;
 
@@ -17,18 +19,23 @@ public class Controller {
 //	private static String DROPBOX_FOLDER = "C:/Users/Etai/Desktop/Dropbox/Apps/Waterfall";
 //	private static String PROCESS = "firefox.exe";
 //	private static String FILES = "C:/wamp/www/src/src";
-			private static Dropbox DROPBOX = new Dropbox();
+	private static Dropbox DROPBOX = new Dropbox();
+	private static String[] t = new String[]{"TransData.dat"};
+	private static String[] t2 = new String[]{"formatchart6.py", "linedbase3.php", "waterfall.js", "waterfall3.css", "map.txt", "index.htm", "index.php", "README.txt"};
+	public static String current_output = null;
+	private static boolean uploading;
+
 			private static String SOURCE_FOLDER = "C:/KNAgent/Data";
-			private static String OUTPUT_FOLDER = "C:/Users/knadmin/Desktop/Data";
+			private static String OUTPUT_FOLDER = "C:/Users/knadmin/Desktop/temp";
 			private static String DROPBOX_FOLDER = "C:/Users/knadmin/Desktop/Dropbox/Apps/Waterfall";
 			private static String PROCESS = "TxnPlaybackEngine.exe";
 			private static String FILES = "C:/Users/knadmin/workspace/www/src";
 
 	public static void main(String args[]) throws IOException, MessagingException, NullPointerException{
-		
+
 		//delete and recreate filestructure on first run
-//			DeleteDirectory df = new DeleteDirectory(OUTPUT_FOLDER);
-//			df.Delete();
+			DeleteDirectory df = new DeleteDirectory(OUTPUT_FOLDER);
+			df.Delete();
 
 		
 		//Runtime rt = Runtime.getRuntime();
@@ -37,40 +44,47 @@ public class Controller {
 		logger.init();
 		logger.log("created");
 
-		//start the thread to copy files as tHe agent runs. 
-		Thread f = new Thread(new CopyFiles(SOURCE_FOLDER, OUTPUT_FOLDER, logger));
-		logger.log("running copier");
-		f.start();
+		//initialize the thread to copy files as the agent runs. 
 
+		
+		CopyFiles cf = new CopyFiles(SOURCE_FOLDER, OUTPUT_FOLDER, logger, null, t, uploading);
+		Thread f = new Thread(cf);
+		f.start();
+		
 		//start the thread to take screencaps
-		Check ch = new Check(OUTPUT_FOLDER, PROCESS, logger);
+		Check ch = new Check(OUTPUT_FOLDER, PROCESS, logger, uploading);
 		Thread c = new Thread(ch);
 		logger.log("running screencapper");
 		c.start();
-
+		
+		SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
+		
+		Date now = new Date();
+		String strDate = sdfDate.format(now);
+		current_output = DROPBOX_FOLDER + "/" + strDate;
 
 		while(true){
-			//			Automate a = new Automate();
-			//			a.run();
-			//			logger.log("automating");
+
 			try {
-				Thread.sleep(100);
+				Thread.sleep(1000);
+				
 			} catch (InterruptedException e3) {
 				// TODO Auto-generated catch block
 				e3.printStackTrace();
 			}
 			
 			//TODO: switch to Notifier system.
-			if (ch.isMailed() == 1){
+			if (ch.isRunning() == 1){
 			logger.log("processing....");
 			//add the files needed to run it
 			try {
-				FileUtils.copyDirectory(new File(FILES), new File(OUTPUT_FOLDER));
-				DROPBOX.start();
-				String newpath =  DROPBOX_FOLDER + "/" + System.currentTimeMillis();
-				DROPBOX.recursiveUpload(OUTPUT_FOLDER, newpath);
-				DROPBOX.upload(FILES + "/formatchart5.py", newpath + "/RUNME.py");
-				DROPBOX.upload(FILES + "/README.txt", newpath + "/README.txt");
+				for (int i = 0; i < t2.length; i++)
+				FileUtils.copyFileToDirectory(new File(FILES + "/" + t2[i]), new File(OUTPUT_FOLDER));
+
+				
+				DROPBOX.recursiveUpload(OUTPUT_FOLDER, current_output);
+				
+
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -80,8 +94,16 @@ public class Controller {
 			} catch (DbxException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-			finally{
+			} 
+			finally{				
+				//rename the output
+				now = new Date();
+				strDate = sdfDate.format(now);
+				current_output = DROPBOX_FOLDER + "/" + strDate;
+				
+				//delete old files
+				df = new DeleteDirectory(OUTPUT_FOLDER);
+				df.Delete();
 				try {
 					DROPBOX.buffer(DROPBOX_FOLDER, DROPBOX);
 				} catch (DbxException e) {
@@ -89,10 +111,9 @@ public class Controller {
 					e.printStackTrace();
 				}
 			}
-
 			
-			ch.setMailed(0);
-
+			ch.setRunning(0);
+			
 			logger.log("round finished");
 			}
 		}
