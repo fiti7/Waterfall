@@ -1,0 +1,14 @@
+12/11/2013 18:39:29.482
+round finished
+12/11/2013 18:44:19.823
+running renamer
+12/11/2013 18:44:19.823
+mypath = C:/Users/knadmin/Desktop/temp/ScreenCaps
+12/11/2013 18:44:19.823
+capturing
+12/11/2013 18:44:23.195
+stopping capture
+12/11/2013 18:44:23.195
+prepping for processing
+12/11/2013 18:44:23.519
+processing....

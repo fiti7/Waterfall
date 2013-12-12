@@ -85,7 +85,26 @@ public class CopyFiles implements Runnable{
 							for(int j = 0; j < desiredFiles.length; j ++){
 								for(int i = 0; i < mylist.length; i ++){
 									if(mylist[i].contains(desiredFiles[j])){
+										System.out.println(mylist[i]);
+										if (new File(mylist[i]).exists){
 										FileUtils.copyFileToDirectory(new File(mylist[i]), new File(OUTPUT_FOLDER));
+										}
+										else{
+											String mystring = "";
+											for(int k=0; k<mylist.length; k++){
+												mystring+= (mylist[k] + ", ");
+											}
+											if (!mystring.equals(temp)){
+												FileUtils.copyDirectory(new File(SOURCE_FOLDER), new File(OUTPUT_FOLDER));
+												logger.log("copied " + mystring.substring(0,mystring.length()-2) + "\nfrom " + 
+														SOURCE_FOLDER + " to " + OUTPUT_FOLDER);
+											}
+											temp = mystring;
+											//give it a rest
+											//System.out.println("copying");
+											Thread.sleep(1000);
+										}
+										
 									}
 								}
 							}
