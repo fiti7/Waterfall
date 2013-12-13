@@ -86,7 +86,7 @@ public class CopyFiles implements Runnable{
 								for(int i = 0; i < mylist.length; i ++){
 									if(mylist[i].contains(desiredFiles[j])){
 										System.out.println(mylist[i]);
-										if (new File(mylist[i]).exists){
+										if (new File(mylist[i]).exists()){
 										FileUtils.copyFileToDirectory(new File(mylist[i]), new File(OUTPUT_FOLDER));
 										}
 										else{

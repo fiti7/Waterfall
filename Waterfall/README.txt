@@ -15,7 +15,7 @@ When Check finishes capturing, more programs are copied to the output folder and
 
 b. User Interaction
 
-The client now has received the data and screenshots, either by mail or Dropbox. From here, a user can run the RUNME.py file aka formatchart4.py
+The client now has received the data and screenshots, either by mail or Dropbox. From here, a user can run the RUNME.py file
 This will process the .dat file created by the agent. This data is formatted into a key and a number of output files; these will turn into the waterfall.
 
 The python file will ask the user's default browser* to open the linedbase.php file. 
@@ -67,7 +67,7 @@ I have prepared automate.java which will open and run any program (read: wamp) o
 
 III. Waterfall
 
-FormatChart.py / RUNME.py processes the data using the map.txt file to interpret the .dat file and extract the parts useful for the waterfall
+FormatChart.py processes the data using the map.txt file to interpret the .dat file and extract the parts useful for the waterfall
 It writes those parts into new javascript files (one for each transaction). And a key containing the paths to the files, and the transaction's start and end times. 
 
 The python file will ask the user's default browser (currently only chrome works) to open the linedbase.php file.
