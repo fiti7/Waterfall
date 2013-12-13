@@ -29,7 +29,7 @@ public class Controller {
 			private static String OUTPUT_FOLDER = "C:/Users/knadmin/Desktop/temp";
 			private static String DROPBOX_FOLDER = "C:/Users/knadmin/Desktop/Dropbox/Apps/Waterfall";
 			private static String PROCESS = "TxnPlaybackEngine.exe";
-			private static String FILES = "C:/Users/knadmin/workspace/www/src";
+			private static String FILES = "C:/Users/knadmin/workspace/www/src/src";
 
 	public static void main(String args[]) throws IOException, MessagingException, NullPointerException{
 
