@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 public class Dropbox {
-    private static final int buffer = 8;
+    private static final int buffer = 12;
 	final String APP_KEY = "4a09sz1p6zl7mm2";
     final String APP_SECRET = "pk6ggm5pc4n885s";
     private DbxClient client;

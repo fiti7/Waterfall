@@ -3,7 +3,7 @@
 #Time to First Byte: 221 ms
 #Content Download: 115 ms
 
-
+import os
 import pprint
 import sys
 import operator
@@ -81,7 +81,7 @@ def main(source):
             return lines
      
 def finditem(input):
-    with open("./map.txt", "r") as f:
+    with open(sys.argv[0] + "/../map.txt", "r") as f:
         try:
             items = f.readlines()
         
@@ -227,8 +227,8 @@ def reducetext(inputarray):
 #write to .js files for later use. 
 def createoutputs(inputarray, maxseq, linearray):
     
-    if not os.path.exists('./Data'):
-        os.makedirs('./Data')
+    if not os.path.exists(sys.argv[0] + "/../Data"):
+        os.makedirs(sys.argv[0] + "/../Data")
     
     myout = sys.stdout
     outnames = []   #the names of the files
@@ -271,7 +271,7 @@ def createoutputs(inputarray, maxseq, linearray):
         
         #myout.write(str(num))
         
-        f = open( outnames[num][1:], 'w')    
+        f = open(sys.argv[0] + "/../" + outnames[num][1:], 'w')    
         #print to write to file
         sys.stdout = f
         #create a waterfall from the data
@@ -421,7 +421,7 @@ def createoutputs(inputarray, maxseq, linearray):
         #solution - find the start and endtime related to this waterfall
         #derive time using the max endtime * scroll percent
         #new percent should be the range of startime/maxend - endtime/maxend
-    f = open('./Data/key.js', 'w')
+    f = open(sys.argv[0] + '/../Data/key.js', 'w')
     sys.stdout = f
     print("var outnames =" + str(outnames) + ";")
     print("var starttimes =" + str(starttimes) + ";")
@@ -435,18 +435,20 @@ def createoutputs(inputarray, maxseq, linearray):
 #how are they related?
 #figure out how to match- change the names so they match
  
-data = main("./Data/TransData.dat")
+#print(sys.argv[0].split("/")[-2])
+# 
+data = main(sys.argv[0] + "/../TransData.dat")
 #print(data)
 array = formatdata(data, elements)
 linearray = array[1]
 dataarray = array[0]
-#print(newarray)
+#print(dataarray)
 maxseq = getmax(dataarray)
 #print(maxseq)
 reducetext(array[0][-1])
 output = splitTransactions(dataarray, maxseq)
 #print(output) 
 createoutputs(output, maxseq, linearray)
-webbrowser.get('windows-default').open('http://localhost/Waterfall/')#Data/linedbase3.php?link=./ScreenCaps/*.jpg')
+webbrowser.get('windows-default').open('http://localhost/Waterfall/' + sys.argv[0].split("\\")[-2] + '/linedbase3.php?')
 
 #print(main("C:\\Users\\Etai\\Desktop\\TransData.dat"))
