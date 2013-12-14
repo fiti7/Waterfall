@@ -8,7 +8,6 @@ import pprint
 import sys
 import operator
 import webbrowser
-import glob
 
 elements = ["START_MSEC", "DNS_LOOKUP_MSEC", "CONNECT_DELTA", "SSL_HANDSHAKE_DELTA",
              "REDIR_DELTA", "REQUEST_DELTA", 
@@ -440,7 +439,7 @@ def createoutputs(inputarray, maxseq, linearray):
 # 
 
 if not os.path.exists(sys.argv[0] + "/../TransData.dat"):
-    dat = glob.glob(sys.argv[0] + "/../*.dat")
+    dat = glob(sys.argv[0] + "/../*.dat")
     data = main(sys.argv[0] + dat[-1])
 else:
     data = main(sys.argv[0] + "/../TransData.dat")
