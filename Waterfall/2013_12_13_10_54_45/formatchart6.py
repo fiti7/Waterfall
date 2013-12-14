@@ -437,12 +437,7 @@ def createoutputs(inputarray, maxseq, linearray):
  
 #print(sys.argv[0].split("/")[-2])
 # 
-
-if not os.path.exists(sys.argv[0] + "/../TransData.dat"):
-    dat = glob(sys.argv[0] + "/../*.dat")
-    data = main(sys.argv[0] + dat[-1])
-else:
-    data = main(sys.argv[0] + "/../TransData.dat")
+data = main(sys.argv[0] + "/../TransData.dat")
 #print(data)
 array = formatdata(data, elements)
 linearray = array[1]

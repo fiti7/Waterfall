@@ -1,0 +1,53 @@
+12/13/2013 10:54:46.893
+round finished
+12/13/2013 10:54:54.988
+copied blob, content, Destin1, invalid, kntd_20131213185454.dat
+from C:/KNAgent/Data to C:/Users/knadmin/Desktop/temp
+12/13/2013 10:55:18.989
+copied blob, content, Destin1, invalid
+from C:/KNAgent/Data to C:/Users/knadmin/Desktop/temp
+12/13/2013 10:58:56.256
+running renamer
+12/13/2013 10:58:56.256
+mypath = C:/Users/knadmin/Desktop/temp/ScreenCaps
+12/13/2013 10:58:56.256
+capturing
+12/13/2013 10:59:00.725
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00049.jpg changed to4.469205444
+12/13/2013 10:59:02.148
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00064.jpg changed to5.891913917
+12/13/2013 10:59:02.473
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00001.jpg changed to6.217368409
+12/13/2013 10:59:03.469
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00078.jpg changed to7.2132095
+12/13/2013 10:59:04.791
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00092.jpg changed to8.53448469
+12/13/2013 10:59:05.421
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00030.jpg changed to9.164387653
+12/13/2013 10:59:05.827
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00034.jpg changed to9.570644873
+12/13/2013 10:59:06.113
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00106.jpg changed to9.856732909
+12/13/2013 10:59:07.433
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00120.jpg changed to11.177063566
+12/13/2013 10:59:08.755
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00134.jpg changed to12.498377587
+12/13/2013 10:59:10.076
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00148.jpg changed to13.819642441
+12/13/2013 10:59:11.397
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00162.jpg changed to15.141009263
+12/13/2013 10:59:12.718
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00176.jpg changed to16.462219361
+12/13/2013 10:59:14.040
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00190.jpg changed to17.783509636
+12/13/2013 10:59:15.361
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00204.jpg changed to19.104873664
+12/13/2013 10:59:28.003
+copied blob, content, Destin1, invalid, TransData.dat
+from C:/KNAgent/Data to C:/Users/knadmin/Desktop/temp
+12/13/2013 10:59:33.801
+stopping capture
+12/13/2013 10:59:33.801
+prepping for processing
+12/13/2013 10:59:33.916
+processing....

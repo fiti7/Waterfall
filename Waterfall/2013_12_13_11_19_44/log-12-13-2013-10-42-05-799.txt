@@ -1,0 +1,55 @@
+12/13/2013 11:19:46.754
+round finished
+12/13/2013 11:19:54.177
+copied blob, content, Destin1, invalid, kntd_20131213191954.dat
+from C:/KNAgent/Data to C:/Users/knadmin/Desktop/temp
+12/13/2013 11:20:19.177
+copied blob, content, Destin1, invalid
+from C:/KNAgent/Data to C:/Users/knadmin/Desktop/temp
+12/13/2013 11:23:55.553
+running renamer
+12/13/2013 11:23:55.553
+mypath = C:/Users/knadmin/Desktop/temp/ScreenCaps
+12/13/2013 11:23:55.553
+capturing
+12/13/2013 11:24:00.023
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00048.jpg changed to4.468917139
+12/13/2013 11:24:00.548
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00001.jpg changed to4.993341892
+12/13/2013 11:24:03.493
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00030.jpg changed to7.938709809
+12/13/2013 11:24:03.900
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00034.jpg changed to8.345913238
+12/13/2013 11:24:06.744
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00063.jpg changed to11.189636393
+12/13/2013 11:24:09.714
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00077.jpg changed to14.159359081
+12/13/2013 11:24:09.996
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00203.jpg changed to14.441552768
+12/13/2013 11:24:11.136
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00091.jpg changed to15.582266182
+12/13/2013 11:24:11.216
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00216.jpg changed to15.661332097
+12/13/2013 11:24:20.223
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00105.jpg changed to24.669126943
+12/13/2013 11:24:21.646
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00119.jpg changed to26.092245523
+12/13/2013 11:24:23.069
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00133.jpg changed to27.51493025
+12/13/2013 11:24:24.492
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00147.jpg changed to28.937835396
+12/13/2013 11:24:25.915
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00161.jpg changed to30.360514535
+12/13/2013 11:24:27.338
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00175.jpg changed to31.783475275
+12/13/2013 11:24:28.760
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00189.jpg changed to33.206246046
+12/13/2013 11:24:29.191
+copied blob, content, Destin1, invalid, TransData.dat
+from C:/KNAgent/Data to C:/Users/knadmin/Desktop/temp
+12/13/2013 11:24:31.027
+stopping capture
+12/13/2013 11:24:31.027
+prepping for processing
+12/13/2013 11:24:31.769
+processing....
