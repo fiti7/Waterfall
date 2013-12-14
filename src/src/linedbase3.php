@@ -9,11 +9,11 @@
     <title>...</title>
     	<script type="text/javascript" src="../external/jquery-2.0.2.min.js"></script>
 
-    <script type="text/javascript" src="./waterfall.js"></script>
+    <script type="text/javascript" src="../external/waterfall.js"></script>
     
 	<script type="text/javascript" id="key" src="./Data/key.js"></script>
 
-     <link rel="stylesheet" type="text/css" href="./waterfall3.css" /> 
+     <link rel="stylesheet" type="text/css" href="../external/waterfall3.css" /> 
 
 	
 	<!-- charts -->
