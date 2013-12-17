@@ -21,7 +21,7 @@ public class Controller {
 //	private static String FILES = "C:/wamp/www/src/src";
 	private static Dropbox DROPBOX = new Dropbox();
 	private static String[] t = new String[]{"TransData.dat"};
-	private static String[] t2 = new String[]{"formatchart6.py", "linedbase3.php", "waterfall.js", "waterfall3.css", "map.txt", "index.htm", "index.php", "README.txt"};
+	private static String[] t2 = new String[]{"formatchart8.py", "linedbase4.php", "waterfall.js", "waterfall3.css", "map.txt", "index.htm", "index.php", "README.txt"};
 	public static String current_output = null;
 	private static boolean uploading;
 

@@ -1,0 +1,22 @@
+12/13/2013 16:24:48.690
+round finished
+12/13/2013 16:25:18.488
+copied blob, content, Destin1, invalid
+from C:/KNAgent/Data to C:/Users/knadmin/Desktop/temp
+12/13/2013 16:28:55.755
+running renamer
+12/13/2013 16:28:55.755
+mypath = C:/Users/knadmin/Desktop/temp/ScreenCaps
+12/13/2013 16:28:55.755
+capturing
+12/13/2013 16:28:57.279
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00001.jpg changed to1.524045375
+12/13/2013 16:29:31.491
+copied blob, content, Destin1, invalid, TransData.dat
+from C:/KNAgent/Data to C:/Users/knadmin/Desktop/temp
+12/13/2013 16:29:36.730
+stopping capture
+12/13/2013 16:29:36.730
+prepping for processing
+12/13/2013 16:29:37.696
+processing....
