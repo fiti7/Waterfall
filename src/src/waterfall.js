@@ -1,3 +1,15 @@
+/**
+ * waterfall.js
+ * Used to help create a scrolling filmstrip of images
+ * 
+ * 
+ * @author Etai Klein
+ * Keynote Systems Intern
+ * 
+ * Last modified 12/18/13
+ **/
+
+
 $(document).ready(function(e) {
 	//the image width dictates how much length is given to scroll in the filmstrip
     var imageWidth = 450;
@@ -5,13 +17,3 @@ $(document).ready(function(e) {
 
     $(".imageContainer").width($(".image").length*imageWidth);
   });
-
-//   
-//$(document).ready(function() {
-//	$("img.hascaption").each(function() {
-//		$(this).wrap('<div class="figure"></div>')
-//		.after('<p class="caption">'+$(this).attr("title")+'</p>')
-//		.removeAttr('title');
-//	});
-//	$(".figure").width($(this).find('img').width());
-//});

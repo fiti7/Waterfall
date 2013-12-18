@@ -1,87 +1,81 @@
 /*
- * Program to work in the background of a server running a web performance agent
- * Takes screencaps whenever a browser is running
+ * Check.java
+ * Thread to work in the background of a server running a web performance agent
+ * Takes screencaps whenever the agent is running
  * 
  * @author Etai Klein 9/1/13
+ * Keynote Systems Intern
  * 
- * 
+ * Last modified 12/18/13
  */
-
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
-import com.dropbox.core.DbxException;
-
-//TODO: Split into model/view/controller that automatically senses device/browser type
 
 public class Check implements Runnable{
 	
-	private boolean alive = true;
-	private String Msource = "";
-	private String SOURCE_PATH = "C:\\Users\\knadmin\\Desktop\\Data";
-	private String PROCESS = "TxnPlaybackEngine.exe";
-	//running is used to buffer mailing screencaps
-	private Dropbox DROPBOX = null;
+	private String target_path = "";
+	private String process = "";
+	
+	//used to buffer uploading screencaps
 	private int ran = 0; 
+	
+	//help find and track the running process
 	private boolean change = false;
 	private boolean found = false;
 	private boolean lastfound = false;
-	private static LoggerTest logger = new LoggerTest();
+	
+	//for logging
+	private static LoggerTest logger = null;
+	
+	//to kill screencapture
 	public static Process screencapProcess = null;
+	
+	//to rename the files 
 	private static Renamer re = new Renamer(null, logger);
-	long starttime = System.nanoTime();
+	
+	//to crop the images
 	private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	private double width = screenSize.getWidth();
 	private double height = screenSize.getHeight();
 
-
-	public Check(String source, String process, LoggerTest mylogger, boolean uploading) {
-		Msource = source;
-		SOURCE_PATH = source + "/ScreenCaps";
-		PROCESS = process;
+	public Check(String source, String pross, LoggerTest mylogger) {
+		target_path = source + "/ScreenCaps";
+		process = pross;
 		logger = mylogger;
-		alive = !uploading;
 		}
 
+	
 	public void run() {
 		ran = 0; 
-
-
-		//define the path the pictures will be dumped to.
-		String path = SOURCE_PATH;// + strDate;
-		System.out.println("mypath = " + path);
-
 		//check if we are running to start
 		if (this.AmIRunning()){
 			this.SetFound(true);
 			this.SetLastFound(true);
 			System.out.println("I started running");
 			if (screencapProcess== null){
-				path = SOURCE_PATH;// + sdfDate.format(new Date());
-				screencapProcess= this.startScreencap(path);
+				screencapProcess= this.startScreencap(target_path);
 
 			}
 		}
 
-
 		//loop check if a browser has been opened or closed.
 		while(true){
+			//waits for the browser to be opened or closed
 			this.waitForChange();
+			
+			//and change the variables accordingly
 			this.SetChange(false);
 			this.SetLastFound(this.GetFound());
 
 			//Once a browser has been opened or closed capture screen or stop capture.
 			if (this.GetFound() == true){
-				path = SOURCE_PATH;// + sdfDate.format(new Date());
-				screencapProcess= this.startScreencap(path);
+				screencapProcess= this.startScreencap(target_path);
 				logger.log("capturing");
 			}
 			else {
@@ -91,21 +85,14 @@ public class Check implements Runnable{
 					this.stopScreencap();
 				}
 			} 
-			if (DROPBOX == null){
-			//this.clean(path);}
-			//else{
-//				try {
-//					DROPBOX.clean(path);
-//				} catch (DbxException | IOException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-			}
+			
+			
 		}
 	}
 
+	//is the browser running?
 	public boolean AmIRunning(){
-		//code snippet next 18 lines from http://www.rgagnon.com/javadetails/java-0593.html
+		//code snippet next 18 lines modified from http://www.rgagnon.com/javadetails/java-0593.html
 		List<String> processes = new ArrayList<String>();
 		try {
 			String line;
@@ -125,193 +112,102 @@ public class Check implements Runnable{
 			err.printStackTrace();
 		}
 
-		return (processes.contains(PROCESS));
+		return (processes.contains(process));
 	}
 
+	//sleeps until the agent changes state from starting to stopping or vice versa
 	public void waitForChange(){
-		while (this.GetChange() == false || alive == false){
+		//until lastfound != found...
+		while (this.GetChange() == false){
+			
+			//Is the current process running?
 			if (this.AmIRunning()) {
-				//System.out.println("I am running");
+				//if so, lastfound = found
 				this.SetLastFound(this.GetFound());
+				//and we found it to be running
 				this.SetFound(true);
 
 				//wait a second
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 			else{
+				//set lastfound = found
 				this.SetLastFound(this.GetFound());
+				//and it is not running
 				this.SetFound(false);
-				//ystem.out.println("I am not running");
 				//wait a second
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
+			
 			if (this.GetFound() != this.GetLastFound()){
 				this.SetChange(true);
 			}
 		}
 	}	
 
+
 	public Process startScreencap(String path){
 		try {
-//			//Delete the Directory
-//			if (DROPBOX != null){
-//			DROPBOX.recursiveDelete(Msource);
-//			}
-//			else{
-//			DeleteDirectory df = new DeleteDirectory(Msource);
-//			df.Delete();
-//			}
 			
+			//the runtime will let us execute external programs (like the screencapper)
 			Runtime rt = Runtime.getRuntime();
+			//reset tracking
 			Process screencapProcess = null;
 			//sanity check- does this file already exist?
 			if (!(new File(path).exists())){
 				new File(path).mkdir();
 
 			}
-//			
+			
+			//start the screencapture renamer. 
+			//This will be unnecessary with a better screencap process 
 			re.setfile(path);
 			re.setTime();
 			Thread r = new Thread(re);
-//
 			logger.log("running renamer");
 			r.start();
-//			starttime = System.nanoTime();
-//			float calc = 0;
+			
+
 			logger.log("mypath = " + path);
 
-			//TODO: find a way to get the timestamp using vlc
+			//TODO: fill in more accurate screencap process and nix renamer
 			screencapProcess = rt.exec("C:\\VLC\\vlc screen:// --dshow-vdev=screen-capture-recorder --screen-width="+(width)+" --screen-height=" + (height-50) + "--dshow-fps=5 -I dummy --dummy-quiet --rate=1 --video-filter=scene --vout=dummy --scene-format=jpg --scene-ratio=1 --scene-prefix=snap --scene-path=" + path +" --scene-prefix=scap vlc://quit");
 
 			return screencapProcess;
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 		return null;
 	}
-//
-//	public void clean(String path){
-//		for (File file : new File(path).listFiles()){	
-//			if (file.length() == 0){
-//				file.delete();
-//			}
-//		}
-//	}
 
-	
-	
+	//stops capture and notifies the controller
 	public void stopScreencap(){
 		System.out.println("ceasing capture");
 		screencapProcess.destroy();
 		screencapProcess = null;
 		//TODO: doublecheck vlc is not still running, end it if it is.
+		//this signals to Controller.java to process and send the data.
 		this.setRunning(1);
 		logger.log("prepping for processing");
 	}
 
-	public String GetProcess(){
-		return PROCESS;
-	}
-
-	public boolean GetFound(){
-		return found;
-	}
-	public void SetFound(boolean newFound){
-		found = newFound;
-		return;
-	}
-	public boolean GetLastFound(){
-		return lastfound;
-	}
-	public void SetLastFound(boolean newFound){
-		lastfound = newFound;
-		return;
-	}
-	public boolean GetChange(){
-		return change;
-	}
-	public void SetChange(boolean newChange){
-		change = newChange;
-		return;
-	}
-	
-
-	public int isRunning() {
-		return ran;
-	}
-
-	public void setRunning(int running) {
-		this.ran = running;
-	}
-
-	public static String getTime(long starttime, float calc){
-		String mystring = String.valueOf((calc = (float) (((long)System.nanoTime() - starttime)/1000000000.00))).substring(0, 7); 
-		//Math.max(0, String.valueOf(calc).length() - 5));
-		logger.log(mystring + " created");
-		System.out.println(mystring + " created");
-		return mystring;
-	}
-	
-	public void kill(boolean uploading){
-		alive = !uploading;
-	}
-
-	public void revive(boolean uploading){
-		alive = !uploading;
-	}
-	
-	public static void main(String[] args) throws InterruptedException, IOException{
-		long starttime = (long)System.nanoTime();
-		float calc = 0;
-		
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		double width = screenSize.getWidth();
-		double height = screenSize.getHeight();
-		
-		//		Thread.sleep(1000);
-		//		long check = ((long)System.nanoTime() - starttime);
-		//		System.out.println(getTime(starttime, calc));
-		//		System.out.println((""+((long)System.nanoTime() - starttime)/1000000000.00).replaceAll("(.*)(\\d{5}$)","$2"));
-		//		System.out.println((""+((long)System.nanoTime() - starttime)/1000000000.00).replaceAll("(\\d{5})(.*)$","$1"));
-		//		System.out.println(String.format("%" + String.valueOf(Long.MAX_VALUE).length() + "d",(((long)System.nanoTime() - starttime))).substring(String.valueOf(Long.MAX_VALUE).length()-5,String.valueOf(Long.MAX_VALUE).length()));
-		//		System.out.println(String.format( String.format("%" + String.valueOf(Long.MAX_VALUE).length() + "d",(((long)System.nanoTime() - starttime))).substring(String.valueOf(Long.MAX_VALUE).length()-15,String.valueOf(Long.MAX_VALUE).length())));
-//		LoggerTest logger = new LoggerTest("C:\\Users\\knadmin\\workspace\\www\\src\\Data");
-//		logger.init();
-//		System.out.println(logger.getPath());
-//		//		String lp = logger.getPath();
-//
-//		//alt way. - save this for later 
-//		//take a single screencap
-//		Thread r = new Thread(new Renamer(new File("C:\\Users\\knadmin\\workspace\\www\\src\\Data"), logger));
-//
-//		logger.log("running renamer");
-//		r.start();
-		//		for (int i=0;i<10;i++){
-		//			//test results. At 1sec per capture, it works with ~.2 precision. This breaks at less than a second.
-		//			Thread.sleep(100); 
-		//		Runtime.getRuntime().exec("C:\\VLC\\vlc screen:// "
-		//				+ "--dshow-vdev=screen-capture-recorder --dshow-fps=10 -I dummy --dummy-quiet --rate=1 --video-filter=scene --vout=dummy --scene-format=jpg --scene-ratio=1 --scene-prefix=snap "
-		//				+ "--scene-path=" + "C:\\wamp\\www\\src\\Data" +" --no-snapshot-sequential --scene-prefix=scap" + getTime(starttime, calc) + " --run-time=0.01 vlc://quit ");
-		//		//TODO: logfile --logfile(string)    --logfile("+logger.getPath().replace("\\", "\\\\")+")
-
-		Runtime.getRuntime().exec("C:\\VLC\\vlc screen:// " 
-				+ "--dshow-vdev=screen-capture-recorder --screen-width="+(width)+" --screen-height=" + (height-50) + "--dshow-fps=1 -I dummy --dummy-quiet --rate=1 --video-filter=scene --vout=dummy --scene-format=jpg --scene-ratio=1 --scene-prefix=snap "
-				+ "--scene-path=" + "C:/Users/Etai/Desktop/temp/ScreenCaps " +" --no-snapshot-sequential --scene-prefix=scap" + " --run-time=6 vlc://quit ");
-
-
-	}
-
+	//setters and getters
+	public String GetProcess(){return process;}
+	public boolean GetFound(){return found;}
+	public void SetFound(boolean newFound){found = newFound;return;}
+	public boolean GetLastFound(){return lastfound;}
+	public void SetLastFound(boolean newFound){lastfound = newFound;return;}
+	public boolean GetChange(){return change;}
+	public void SetChange(boolean newChange){change = newChange;return;}
+	public int isRunning() {return ran;}
+	public void setRunning(int running) {this.ran = running;}
 
 }
-

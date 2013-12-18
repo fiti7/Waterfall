@@ -1,3 +1,14 @@
+/*
+ * Mail.java
+ * Zips and Mails Files
+ * 
+ * 
+ * @author Etai Klein
+ * Keynote Systems Intern
+ * 
+ * Last modified 12/18/13
+ */
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -7,7 +18,6 @@ import java.util.List;
 import java.util.Properties;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
-
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
@@ -19,16 +29,21 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+
+//TODO: insert a valid username and password to use
 public class Mail {
+	
+	private final String username = "";
+	private final String password = "";
+	
 	private List<String> fileList = new ArrayList<String>();
 	private String OUTPUT_ZIP_FILE = "C:\\Users\\knadmin\\Desktop\\Data\\Data.zip";
 	private static String OUTPUT_FOLDER = "C:\\Users\\knadmin\\Desktop\\Data";
+	//to check if the source file is too large
 	private static final Integer TENMB = 10485760;
 	private static LoggerTest logger = new LoggerTest();
 	
-	private final String username = "etaiklein@gmail.com";
-	private final String password = "Supercow1";
-	
+
 	public Mail(String OUTPUT, LoggerTest mlogger) {
 		OUTPUT_FOLDER = OUTPUT;
 		logger = mlogger;
@@ -36,9 +51,11 @@ public class Mail {
 	}
 
 	public void zipandmail(){
+		//is the sourcefile too large?
 		long filesize = amITooBig(OUTPUT_FOLDER, TENMB/2);
 		logger.log("size = " + String.valueOf(filesize));
-
+		
+		//if it's not empty, then zip, mail and delete it.
 		if ((filesize > 1)){
 			logger.log("zipping");
 			zipmain();
@@ -51,7 +68,11 @@ public class Mail {
 		}
 	}
 
+	//prompts zipping the file
 	public void zipmain(){
+		if (!new File(OUTPUT_FOLDER).exists()){
+			new File(OUTPUT_FOLDER).mkdir();
+		}
 		this.generateFileList(new File(OUTPUT_FOLDER));
 		this.zipIt(OUTPUT_ZIP_FILE);
 
@@ -61,6 +82,8 @@ public class Mail {
 	/**
 	 * Zip it
 	 * @param zipFile output ZIP file location
+	 * 
+	 * Code from Internet (TODO: find source)
 	 */
 	public void zipIt(String zipFile){
 
@@ -103,6 +126,8 @@ public class Mail {
 	 * Traverse a directory and get all files,
 	 * and add the file into fileList  
 	 * @param node file or directory
+	 * 
+	 * Code from Internet (TODO: find source)
 	 */
 	public void generateFileList(File node){
 
@@ -130,6 +155,8 @@ public class Mail {
 	 * Format the file path for zip
 	 * @param file file path
 	 * @return Formatted file path
+	 * 
+	 * Code from Internet (TODO: find source)
 	 */
 	private String generateZipEntry(String file){
 		return file.substring(OUTPUT_FOLDER.length()+1, file.length());
@@ -183,6 +210,7 @@ public class Mail {
 		}
 	}
 
+	//functon to delete a directory if it is too large
 	public long amITooBig(String f, Integer s){
 		long size = new File(f).length();
 		if(size > s){
@@ -198,13 +226,6 @@ public class Mail {
 		f.delete();
 		f = new File(OUTPUT_FOLDER);
 		
-	}
-
-	public static void main(String[] args){
-		LoggerTest mlogger = new LoggerTest("C:\\wamp\\www\\src\\logger");
-		logger.init();
-		Mail m = new Mail("C:\\wamp\\www\\src\\Data", mlogger);
-		m.zipandmail();
 	}
 
 }

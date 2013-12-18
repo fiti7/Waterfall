@@ -1,22 +1,20 @@
-
+/*
+ * DeleteDirectory.java
+ * Recursively deletes the Files in a Directory
+ * 
+ * @author Etai Klein
+ * Keynote Systems Intern
+ * 
+ * Last modified 12/18/13
+ */
 import java.io.File;
 import java.io.IOException;
 
-import com.dropbox.core.DbxException;
-
 public class DeleteDirectory{
-	
-	private Dropbox d = null;
-	
-	public String SRC_FOLDER = "C:\\Users\\knadmin\\Desktop\\Data";
+	public String SRC_FOLDER = "";
 
 	public DeleteDirectory(String source){
 		SRC_FOLDER = source;
-	}
-	
-	public DeleteDirectory(String source, Dropbox db){
-		SRC_FOLDER = source;
-		d = db;
 	}
 
 	public void Delete(){
@@ -24,34 +22,24 @@ public class DeleteDirectory{
 		File directory = new File(SRC_FOLDER);
 
 		//make sure directory exists
-		if(!directory.exists()){
-
-			System.out.println("Directory does not exist.");
-			System.exit(0);
-
-		}else{
-
+		if(directory.exists()){
 			try{
-
 				delete(directory);
 
 			}catch(IOException e){
 				e.printStackTrace();
-				System.exit(0);
 			}
 		}
-
-		System.out.println("Done");
-
+		System.out.println("Done Deleting");
 	}
 
-	public void delete(File file)
-			throws IOException{
+	public void delete(File file) throws IOException{
 
 		if(file.isDirectory()){
 
-			//directory is empty, then delete it
+			//if directory is empty, then delete it
 			if(file.list().length==0){
+		//If you don't want to preserve directory structure, recomment this in
 
 				//file.delete();
 				System.out.println("Directory is not deleted : " 
@@ -63,15 +51,17 @@ public class DeleteDirectory{
 				String files[] = file.list();
 
 				for (String temp : files) {
-					//construct the file structure
+					//reconstruct the directory structure
 					File fileDelete = new File(file, temp);
 
-					//recursive delete
+					//recursively delete
 					delete(fileDelete);
 				}
-
+				
+				
 				//check the directory again, if empty then delete it
 				if(file.list().length==0){
+	//If you don't want to preserve directory structure, recomment this in
 					//file.delete();
 					System.out.println("Directory is not deleted : " 
 							+ file.getAbsolutePath());
@@ -80,22 +70,11 @@ public class DeleteDirectory{
 
 		}else{
 			//if file, then delete it
-			if (d == null){
 			file.delete();
-			}
-			else{
-			try {
-				d.DeleteFile(file.getAbsolutePath());
-			} catch (DbxException | NullPointerException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} 
-			}
-			System.out.println("File is deleted : " + file.getAbsolutePath());
 
-		}    
-		//REPLACE THE OLD DIRECTORY
-		new File(SRC_FOLDER).mkdir();
+			//replace the old source directory if it was deleted
+			new File(SRC_FOLDER).mkdir();
 
+		}
 	}
 }

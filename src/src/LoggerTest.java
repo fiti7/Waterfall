@@ -1,3 +1,14 @@
+/*
+ * LoggerTest.java
+ * Built for custom logging
+ * 
+ * 
+ * @author Etai Klein
+ * Keynote Systems Intern
+ * 
+ * Last modified 12/18/13
+ */
+
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,8 +23,10 @@ import java.util.Date;
 
 public class LoggerTest {
 	public static String PATH = "C:\\Users\\knadmin\\workspace\\www\\src\\Data\\logger";
+	//formats for naming
 	private static SimpleDateFormat sdfDate = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss.SSS");
 	private static SimpleDateFormat nameformat = new SimpleDateFormat("MM-dd-yyyy-HH-mm-ss-SSS");
+	//for multiple files case
 	private static String fullpath = "";
 
 	public LoggerTest(){}
@@ -27,15 +40,18 @@ public class LoggerTest {
 		fullpath = PATH + "\\" + String.valueOf("log-" + nameformat.format(new Date())) + ".txt";
 		File file = new File(fullpath);
 		file.delete();
-		boolean mybool = false;
+		
+		
+		boolean success = false;
 		try {
-			mybool = file.createNewFile();
+			success = file.createNewFile();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return mybool; } 
+		return success; } 
 
+	//adds to log file and also prints to console. Any other measurements you want to add go here.
 	public void log(String mystring){
 		try {
 			System.out.println(mystring);
@@ -51,15 +67,18 @@ public class LoggerTest {
 		return fullpath;
 	}
 
+	//prints the logfile
 	public String toString(){
 		String mystring = "";
 		InputStream input;
 		try {
+			//streams the file
 			input = new BufferedInputStream(new FileInputStream(fullpath));
 
 			byte[] buffer = new byte[8192];
 
 			for (int length = 0; (length = input.read(buffer)) != -1;) {
+				//writes it to the console
 				System.out.write(buffer, 0, length);
 				mystring += length;
 
@@ -68,14 +87,8 @@ public class LoggerTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		//also returns a string representation
 		return mystring;
 	}
 
-	public static void main(String[] args) {
-		LoggerTest logger = new LoggerTest("C:\\wamp\\www\\src\\logger");
-		logger.init();
-		logger.log("message1");
-		logger.log("message2");
-
-	}
 }

@@ -1,97 +1,65 @@
+/*
+ * CopyFiles.java
+ * Thread to work in the background of a server running a web performance agent
+ * Copies files recursively and periodically from one directory to another
+ * 
+ * @author Etai Klein
+ * Keynote Systems Intern
+ * 
+ * Last modified 12/18/13
+ */
+
 import java.io.File;
 import java.io.IOException;
-
 import org.apache.commons.io.FileUtils;
 
-import com.dropbox.core.DbxException;
-
 public class CopyFiles implements Runnable{
-	private String SOURCE_FOLDER = "C:\\KNAgent\\Data";
-	private String OUTPUT_FOLDER = "C:\\Users\\knadmin\\Desktop\\Data";
-	private LoggerTest logger = new LoggerTest();
-	private Dropbox d = null;
-	private boolean alive = true;
-	private String[] desiredFiles = null;
+	private String SOURCE_FOLDER = "";
+	private String OUTPUT_FOLDER = "";
+	private LoggerTest logger = null;
 
-	public CopyFiles(String source, String output, LoggerTest mylogger, Dropbox dr, String[] lfiles, boolean uploading){
+	public CopyFiles(String source, String output, LoggerTest mylogger){
 		SOURCE_FOLDER = source;
 		OUTPUT_FOLDER = output;
 		logger = mylogger;
-		d = dr;
-		desiredFiles = lfiles;
-		alive = !uploading;
 	}
 
-	public CopyFiles(String source, String output, LoggerTest mylogger, Dropbox dr, boolean uploading){
-		SOURCE_FOLDER = source;
-		OUTPUT_FOLDER = output;
-		logger = mylogger;
-		d = dr;
-		alive = !uploading;
-	}
-
-	public void run(){
-		run(true);
-	}
-
-	public void kill(boolean uploading){
-		alive = !uploading;
-	}
-
-	public void revive(boolean uploading){
-		alive = !uploading;
-	}
-
-	public void run(boolean newbool) {
-		alive = true;
+	public void run() {
 		String temp = "";
-		while(newbool){
-			
-			while (alive == false){
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			
+		while(true){
+
+			//sanity check - do I have a folder to copy to?
 			if (!(new File(OUTPUT_FOLDER).exists())){
 				new File(OUTPUT_FOLDER).mkdir();
 			}
 
-				try {
-					
-					if (new File(SOURCE_FOLDER).exists()){
-						//copies directories
-						String[] mylist = new File(SOURCE_FOLDER).list();
+			try {
 
-							String mystring = "";
-							for(int i=0; i<mylist.length; i++){
-								mystring+= (mylist[i] + ", ");
-							}
-							if (!mystring.equals(temp)){
-								FileUtils.copyDirectory(new File(SOURCE_FOLDER), new File(OUTPUT_FOLDER));
-								logger.log("copied " + mystring.substring(0,mystring.length()-2) + "\nfrom " + 
-										SOURCE_FOLDER + " to " + OUTPUT_FOLDER);
-							}
-							temp = mystring;
-							//give it a rest
-							//System.out.println("copying");
-							Thread.sleep(1000);
-						}
+				//if my source exists
+				if (new File(SOURCE_FOLDER).exists()){
+					//list the folders
+					String[] mylist = new File(SOURCE_FOLDER).list();
 
+					//clear and rebuild a list of the contents
+					String mystring = "";
+					for(int i=0; i<mylist.length; i++){
+						mystring+= (mylist[i] + ", ");
 					}
-				 catch (IOException | InterruptedException | IllegalArgumentException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//if there is a change, copy the new files
+					if (!mystring.equals(temp)){
+						FileUtils.copyDirectory(new File(SOURCE_FOLDER), new File(OUTPUT_FOLDER));
+						logger.log("copied " + mystring.substring(0,mystring.length()-2) + "\nfrom " + 
+								SOURCE_FOLDER + " to " + OUTPUT_FOLDER);
+					}
+					temp = mystring;
+					//give it a rest
+					Thread.sleep(1000);
 				}
 			}
-
-
+			catch (IOException | InterruptedException | IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 }
-
-
-}
-
-
