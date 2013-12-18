@@ -1,8 +1,14 @@
-#TODO: put in order. 
-#Initial Connection: 115 ms
-#Time to First Byte: 221 ms
-#Content Download: 115 ms
-
+# 
+#  formatchart.py
+#  Takes .dat file data and outputs .js files to run Highchart charts
+#  
+#
+#  @author Etai Klein
+#  Keynote Systems Intern
+#   
+#  Last modified 12/18/13
+#  
+ 
 import os
 import pprint
 import sys
@@ -11,22 +17,22 @@ import webbrowser
 import glob
 import ast
 
+#which elements of the mapped data are we using?
 elements = ["START_MSEC", "DNS_LOOKUP_MSEC", "CONNECT_DELTA", "SSL_HANDSHAKE_DELTA",
              "REDIR_DELTA", "REQUEST_DELTA", 
              "FIRST_BYTE_MSEC",
-             #"CONTENT_BYTE",  
-            "CONN_STRING_TEXT",
-             "MS_FIRST_PAINT_MSEC", "DOM_INTERACTIVE_MSEC", 
-             "PAGE_SEQ", "RECORD_SEQ", "OBJECT_TEXT"]
-#elements = ["START_MSEC", "FIRST_PACKET_DELTA", "CONNECT_DELTA", "PAGE_SEQ", "RECORD_SEQ", "OBJECT_TEXT"]
-# elements = ["START_MSEC", "DNS_LOOKUP_MSEC", "CONNECT_DELTA", "SSL_HANDSHAKE_DELTA",
-#                          "REDIR_DELTA", "REQUEST_DELTA", "FIRST_BYTE_MSEC", "CONTENT_BYTE",
-#             "FIRST_PACKET_DELTA", "CONNECT_DELTA","PAGE_SEQ", "RECORD_SEQ", "OBJECT_TEXT"]
+             #new elements can be added until this point
+             #beyond here, the rest are referred to in order
+            "CONN_STRING_TEXT", #the domain strings
+             "MS_FIRST_PAINT_MSEC", "DOM_INTERACTIVE_MSEC", #rendered lines
+             "PAGE_SEQ", "RECORD_SEQ", #transaction/page numbers
+             "OBJECT_TEXT" #the page string
+             ] 
+
+#if you add new elements, make sure the colors match up
 
 colors = ["\'transparent\'", "\'yellow\'", "\'orange\'", "\'pink\'", "\'light green\'", "\'dark green\'", 
-          "\'light blue\'"]#, "\'dark blue\'"]
-
-#colors = ["light blue", "dark green", "light green", "pink", "orange", "yellow", "transparent"]
+          "\'light blue\'"]
 
 # START_MSEC - white
 # DNS_LOOKUP_MSEC - yellow
@@ -35,43 +41,48 @@ colors = ["\'transparent\'", "\'yellow\'", "\'orange\'", "\'pink\'", "\'light gr
 # REDIR_DELTA - light green
 # REQUEST_DELTA - Dark Green
 # FIRST_BYTE_MSEC - light blue
-# CONTENT_BYTE - dark blue ???
-# client time ???
+# content download - how is this generated? - Blue
+# client time - how is this generated? - Dark blue
 # MS_FIRST_PAINT_MSEC - greenline
 # DOM_INTERACTIVE_MSEC - redline
 
-#                 DNS Lookup - yellow
-#                 Init Connection - orange
-#                 SSl - pink
-#                 Redirection - light green
-#                 Request time - Dark green
-#                 First Byte Download - light blue
-#                 Content Download - Blue
-#                 Client Time - Dark Blue
-#                 Time to first paint - lime green line
-#                 Time to interactive page - red line
-#first packet + connect , fpc - c / fpc
 
+#written data manipulation section
+#--------------------------------------------------
+
+
+#the main data processing function
 def main(source):
     lines = []
+    #opens the .dat file and reads each lines to a list
     with open(source, "r") as f:
         try:
             items = f.readlines()
-            #print(items)
+            
+            #for each line
             for item in items:
                 i = 0
                 j = ""
+
                 while (i < len(item)):
+                    #find the '='
                     if item[i] == "=":
+                        #there will be either 2 or 3 characters indicating the element
                         if item[i-3] == ' ':
+                            #if it's 2 then slice it
                             j = item[i-2:i]
+                            #and find the mapping
                             j = finditem(j)
                             if j!= None:
+                                #and replace it
                                 item = item[0:i-2] + j + item[i:-1]
                         else:  
+                            #if it is 3 chars long
                             j = item[i-3:i]
+                            #find the mapping
                             j = finditem(j)
                             if j!= None:
+                                #and replace it
                                 item = item[0:i-3] + j + item[i:-1]
                     i+=1
                 lines.append(item)                  
@@ -82,7 +93,8 @@ def main(source):
             pass
         finally:
             return lines
-     
+        
+#searches the map.txt file for an equivalent to a .dat file element
 def finditem(input):
     with open(sys.argv[0] + "/../map.txt", "r") as f:
         try:
@@ -91,7 +103,9 @@ def finditem(input):
             j = 0
             while j < len(items):
                 item = items[j]
-
+                
+                #these lines aren't useful to us
+                #TODO: double check they aren't useful
                 while (item[0] != ("C" or "T")):
                     item = items[j] 
                     j+=1
@@ -130,8 +144,11 @@ def finditem(input):
         except:
             pass
 
+#Takes data from the mapping and organizes it into lists to be used as highchart data sets
 def formatdata(data, elements):
     myarray = []
+    
+    #holds the MS_FIRST_PAINT_MSEC and DOM_INTERACTIVE_MSEC element data which has to be handled differently
     linearray = []
     #we want this in the form [[start, middle, end, label]...]
     
@@ -164,6 +181,7 @@ def formatdata(data, elements):
     #sometimes it comes out of order- sorting it by time here. 
     myarray.sort(key=lambda x: int(x[0]))    
 
+    #create a blank array with space for each element
     newarray = []
     for element in elements:
         newarray.append([])
@@ -173,8 +191,10 @@ def formatdata(data, elements):
         while (i < len(newarray)):
             newarray[i].append(item[i])
             i+=1
+            
     return (newarray, linearray)
 
+#gets the last pagesequence 
 def getmax(inputarray):
     maxseq = 1
 
@@ -193,10 +213,8 @@ def getmax(inputarray):
 #where PAGE_SEQ should all be "1" for the first array and "2 for the second
 def splitTransactions(inputarray, maxseq):
     
-
     miniarray = []
 
-        
     #and split the current array in n arrays where n is the number of transactions
     i = 0
     while i < (len(inputarray[-3]) - 1):
@@ -217,7 +235,7 @@ def splitTransactions(inputarray, maxseq):
     #make a new output file for each transaction, write the chart to a new file for each
     return miniarray
 
-#for easier display
+#concatenates domain and object strings. Then slices it to fit in the waterfall better
 def reducetext(inputarrayA, inputarrayB):
     i = 0
     while i < (len(inputarrayA) - 1):
@@ -227,9 +245,10 @@ def reducetext(inputarrayA, inputarrayB):
         
     return inputarrayA
 
-#write to .js files for later use. 
+#writes .js files for highcharts
 def createoutputs(inputarray, maxseq, linearray):
     
+    #makes a folder to put the files in
     if not os.path.exists(sys.argv[0] + "/../Data"):
         os.makedirs(sys.argv[0] + "/../Data")
     
@@ -242,7 +261,7 @@ def createoutputs(inputarray, maxseq, linearray):
     #for each transaction
     for num in range(maxseq):
         #make a new file
-        name = './Data/outputs' + str(num) + '.js'
+        name = './Data/outputs.js'
         outnames.append(name)
         
         #get the time each sequence starts and ends
@@ -252,7 +271,8 @@ def createoutputs(inputarray, maxseq, linearray):
         endtime = 0
         
         n = 0
-        # -1 b/c we deleted our first set of strings, and another -1 because we dont want to use the second. 
+        # -1 b/c we deleted our set of domains - CONN_STRING_TEXT in reducetext(), 
+        #-1 b/c we dont want to use the second - OBJECT_TEXT. 
         while (n < len(elements)-2):
             endtime += int(inputarray[num][n][-1])
             n += 1
@@ -273,22 +293,21 @@ def createoutputs(inputarray, maxseq, linearray):
         
     for num in range(maxseq):
         
-        #myout.write(str(num))
         
         f = open(sys.argv[0] + "/../" + outnames[num][1:], 'w')    
-        #print to write to file
+        #print to write to file. use myout.write() to write to console in this mode
         sys.stdout = f
         #create a waterfall from the data
-        #ml is going to be my margin line boundary (for text left of the waterfall)
-        print("var current = "+inputarray[num][-3][-1]+";\
-        var ml = 275; var myline; var calculatedPercent = 0;\n\
-        var starttime = " , starttimes[num] , ";\n\
-        var endtime = " , endtimes[num] , ";\n\
+        print("\
+        //ml is the margin line boundary (for text left of the waterfall)\n\
+        var ml = 275; \
+        \var myline"+inputarray[num][-3][-1]+"; var calculatedPercent = 0;\n\
             $(function main() {\n\
-            $(\'#container\').highcharts({\n\
+            //different containers are shown/hid to display the different waterfalls\n\
+            $(\'#container"+inputarray[num][-3][-1]+"\').highcharts({\n\
                 chart: {marginLeft: ml,\n\
                     type: \'bar\',\n\
-                    renderTo: \'container\'\n\
+                    renderTo: \'container"+inputarray[num][-3][-1]+"\'\n\
                 },\n\
                 legend: {\n\
                     enabled: false\n\
@@ -299,18 +318,21 @@ def createoutputs(inputarray, maxseq, linearray):
                 title: {\n\
                     text: \'Waterfall\'\
                 },\n\
+                //the axis labels. \
                  xAxis: {categories:"
                  ,inputarray[num][-1],",\
                  alternateGridColor: '#FDFFD5'\
                  },\n\
                          yAxis: [{\n\
                          labels:{ format: \"{value:.3f}\", formatter: function(){return ((this.value) / 1000) + 's';}}, \n\
+                    //the starttimes\n\
                     min: \"" , starttimes[num] , "\",\n\
                     title: false,\n\
                 },{\
                 linkedTo:0,\
                 labels:{ format: \"{value:.3f}\", formatter: function(){return ((this.value) / 1000) + 's';}}, \n\
                 title: false,\n\
+                //opposite lets us render the bars horizontally\n\
                 opposite:true\
                 }],\
                 legend: {\
@@ -327,46 +349,22 @@ def createoutputs(inputarray, maxseq, linearray):
         i = len(inputarray[num]) - 2
         while (i >= 0):
             
+            #loop through the colors for each data set
             print("{")
-#             if (i == 0):
-#                 print ("color: \'transparent\',")
-#                 
-#                 
             if (i < len(colors)):
                 print ("color: " + colors[i] + ",")
-                
-                
+                      
             print("\n\
             showInLegend: false, data: "
             + (str(inputarray[num][i])).replace("'",""))
             
             if (i == 0):
                 print( ",yaxis: 1")
-                
-
-                    
-                #if this category, then this color
-#                 DNS Lookup - yellow
-#                 Init Connection - orange
-#                 SSl - pink
-#                 Redirection - light green
-#                 Request time - Dark green
-#                 First Byte Download - light blue
-#                 Content Download - Blue
-#                 Client Time - Dark Blue
-#                 Time to first paint - lime green line
-#                 Time to interactive page - red line
                 print("}\
                             ]\
             });\
         });\
         ")
-                
-#           data: [
-#       {y: 34.4, color: 'red'},     // this point is red
-#       21.8,                        // default blue
-#       {y: 20.1, color: '#aaff99'}, // this will be greenish
-#       20]                          // default blue       
                 
             else:
                 print("},")
@@ -375,9 +373,12 @@ def createoutputs(inputarray, maxseq, linearray):
         # creates the line and links it to the scrollbar, refreshing every 1000 milliseconds
         print("$(setInterval(\n\
         function makeline(chart) {\n\
-        if(myline !== undefined){\n\
-        $(myline.element).remove();};\n\
-        var chart = $('#container').highcharts();\n\
+        var current = "+inputarray[num][-3][-1]+";\
+        var starttime = " , starttimes[num] , ";\n\
+        var endtime = " , endtimes[num] , ";\n\
+        if(myline"+inputarray[num][-3][-1]+" !== undefined){\n\
+        $(myline"+inputarray[num][-3][-1]+".element).remove();};\n\
+        var chart = $('#container"+inputarray[num][-3][-1]+"').highcharts();\n\
         var element = document.getElementById('media');\n\
         style = window.getComputedStyle(element);\n\
         var scrollPercent = ((element.scrollLeft) / (element.scrollWidth - element.clientWidth));\n\
@@ -387,6 +388,8 @@ def createoutputs(inputarray, maxseq, linearray):
         calculatedPercent = (scrollPercent - startPercent)/(endPercent - startPercent);\n\
         var mywidth =  (calculatedPercent * ($(chart.container).width() - ml)) + ml - 1 ;")
         
+        # draws the first paint and interactive lines
+        # since they're different for each waterfall, it is easier to list all of them each time with conditions
         for item in linearray:
             if(item[-4] != 0):
                     print("\
@@ -407,23 +410,17 @@ def createoutputs(inputarray, maxseq, linearray):
             {'stroke-width': 1,stroke: 'limegreen',zIndex: 4}).add();\
             }\
             ")
-            
+        
+        #render the line attached to the image scrollbar.
+        #The second line at 0 > calculatedPercent keeps the line visible at the starting position
         print("if ((0 <= calculatedPercent) && (calculatedPercent <=1)){\n\
-        myline = chart.renderer.rect(mywidth, 60, 1, myheight*.9625).attr(\n\
+        myline"+inputarray[num][-3][-1]+" = chart.renderer.rect(mywidth, 60, 1, myheight*.9625).attr(\n\
         {'stroke-width': 2,stroke: 'red',zIndex: 10}).add();}\
-        if(0 > calculatedPercent){ myline = chart.renderer.rect(ml, 60, 1, myheight*.9625).attr(\n\
+        if(0 > calculatedPercent){ myline"+inputarray[num][-3][-1]+" = chart.renderer.rect(ml, 60, 1, myheight*.9625).attr(\n\
         {'stroke-width': 2,stroke: 'red',zIndex: 10}).add();} }, 100));")
         f.close()
 
-
-        #new scrollpercent working the range from starttime to endtime
-        
-        #myvars - the percent .media has scrolled
-        #all  start and endtimes
-        
-        #solution - find the start and endtime related to this waterfall
-        #derive time using the max endtime * scroll percent
-        #new percent should be the range of startime/maxend - endtime/maxend
+    #add useful data to a key file
     f = open(sys.argv[0] + '/../Data/key.js', 'w')
     sys.stdout = f
     print("var outnames =" + str(outnames) + ";")
@@ -431,7 +428,14 @@ def createoutputs(inputarray, maxseq, linearray):
     print("var endtimes =" + str(endtimes) + ";")
     print("var origintimes =" + str(origintimes) + ";")
     f.close()
-    
+
+
+
+#image manipulation section
+#---------------------------------------------------------------------
+
+
+#comparison function to sort images
 def cmp(a, b):
     explodeda = a.split("/")
     explodedb = b.split("/")
@@ -450,7 +454,8 @@ def imagesGetMax(images):
         return msecMax
     else:
         return 1
-    
+
+#Picks images to display incrementally
 def reduceImages(increment, images, msecMax):
     #create a dictionary of (percent complete , image)
     newimages = {}
@@ -477,23 +482,12 @@ def reduceImages(increment, images, msecMax):
     return n
     
 
-#image manipulation
-#get the list of all files with .jpg extension in the directory and save it in an array named $images
-    #sort the images by time. The string manipulation is necessary to get the title of the file
-    #Show an image for each increment% of the page loading
-    #get the total load time
-    #use only the images whose timestamp are closest to each percentila
-    #what is my max?
-    #create keyvalue pairs of [percent complete => %image]
-    #for each target percentage, find the closest image percentage and put that in the array
-    #output a .js file
-
-    
-
+#Manipulates images and ouputs a .js file to write the images to html
 def processImages():
     
     increment = 10
     
+     #get the list of all files with .jpg extension in the directory and save it in an array named $images
     dir = sys.argv[0] + '/../Screencaps/*.jpg'
     images = glob.glob(dir)
     
@@ -501,8 +495,11 @@ def processImages():
     #sort the images by time. The string manipulation is necessary to get the title of the file
     images.sort(key = lambda x: x.split("/")[-1][0:-4]) 
     
+        #get the total load time
     msecMax = imagesGetMax(images);
     
+    #create keyvalue pairs of [percent complete => %image]
+    #for each target percentage, find the closest image percentage and put that in the array
     #[(percentage, image path)]
     reducedimages = reduceImages(increment, images, msecMax)
     reducedimages.sort(key=lambda x: x[1])
@@ -524,30 +521,27 @@ def processImages():
     
     f.close()
     
-#find the related picture files and data files. Open the pages
-#how are they related?
-#figure out how to match- change the names so they match
- 
-#print(sys.argv[0].split("/")[-2])
-# 
-# 
+
+# Running the program
+
+
 processImages()
- 
+
+#is there a Transdata.dat file? If not, grab another .dat file
 if not os.path.exists(sys.argv[0] + "/../TransData.dat"):
     dat = glob.glob(sys.argv[0] + "/../*.dat")
     data = main(sys.argv[0] + dat[-1])
-else:
+else: 
     data = main(sys.argv[0] + "/../TransData.dat")
-#print(data)
+
+#'translate the .dat file'
 array = formatdata(data, elements)
-linearray = array[1]
-dataarray = array[0]
-#print(dataarray)
-maxseq = getmax(dataarray)
-#print(maxseq)
-dataarray[-1] = reducetext(dataarray[-1], dataarray[-6])
-del dataarray[-6]
-output = splitTransactions(dataarray, maxseq)
-#print(output) 
-createoutputs(output, maxseq, linearray)
-webbrowser.get('windows-default').open(sys.argv[0] + '/../linedbase4.html')
+linearray = array[1] #contains the first paint and interactive information which are rendered as lines
+dataarray = array[0] #contains the rest
+maxseq = getmax(dataarray) # gets the max load time
+dataarray[-1] = reducetext(dataarray[-1], dataarray[-6]) #concatenates domain and object text
+del dataarray[-6] #deletes object text. TODO: add to reducetext
+output = splitTransactions(dataarray, maxseq) #split into lists of lists for .js outputs
+createoutputs(output, maxseq, linearray) #produces .js files
+#opens the html file
+webbrowser.get('windows-default').open(sys.argv[0] + '/../waterfall.html')
