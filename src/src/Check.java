@@ -19,27 +19,27 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Check implements Runnable{
-	
+
 	private String target_path = "";
 	private String process = "";
-	
+
 	//used to buffer uploading screencaps
 	private int ran = 0; 
-	
+
 	//help find and track the running process
 	private boolean change = false;
 	private boolean found = false;
 	private boolean lastfound = false;
-	
+
 	//for logging
 	private static LoggerTest logger = null;
-	
+
 	//to kill screencapture
 	public static Process screencapProcess = null;
-	
+
 	//to rename the files 
 	private static Renamer re = new Renamer(null, logger);
-	
+
 	//to crop the images
 	private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	private double width = screenSize.getWidth();
@@ -49,9 +49,9 @@ public class Check implements Runnable{
 		target_path = source + "/ScreenCaps";
 		process = pross;
 		logger = mylogger;
-		}
+	}
 
-	
+
 	public void run() {
 		ran = 0; 
 		//check if we are running to start
@@ -69,7 +69,7 @@ public class Check implements Runnable{
 		while(true){
 			//waits for the browser to be opened or closed
 			this.waitForChange();
-			
+
 			//and change the variables accordingly
 			this.SetChange(false);
 			this.SetLastFound(this.GetFound());
@@ -86,8 +86,8 @@ public class Check implements Runnable{
 					this.stopScreencap();
 				}
 			} 
-			
-			
+
+
 		}
 	}
 
@@ -120,7 +120,7 @@ public class Check implements Runnable{
 	public void waitForChange(){
 		//until lastfound != found...
 		while (this.GetChange() == false){
-			
+
 			//Is the current process running?
 			if (this.AmIRunning()) {
 				//if so, lastfound = found
@@ -147,7 +147,7 @@ public class Check implements Runnable{
 					e.printStackTrace();
 				}
 			}
-			
+
 			if (this.GetFound() != this.GetLastFound()){
 				this.SetChange(true);
 			}
@@ -157,7 +157,7 @@ public class Check implements Runnable{
 
 	public Process startScreencap(String path){
 		try {
-			
+
 			//the runtime will let us execute external programs (like the screencapper)
 			Runtime rt = Runtime.getRuntime();
 			//reset tracking
@@ -167,15 +167,16 @@ public class Check implements Runnable{
 				new File(path).mkdir();
 
 			}
-			
+
 			//start the screencapture renamer. 
 			//This will be unnecessary with a better screencap process 
+			re = new Renamer(null, logger);
 			re.setfile(path);
 			re.setTime();
 			Thread r = new Thread(re);
 			logger.log("running renamer");
 			r.start();
-			
+
 
 			logger.log("mypath = " + path);
 
@@ -199,22 +200,22 @@ public class Check implements Runnable{
 		this.setRunning(1);
 		logger.log("prepping for processing");
 	}
-	
+
 	public void Process(String commandlinePath, String pythonPath, String filePath){
-	try {
-		System.out.println("running file processor");
-		Process process = Runtime.getRuntime().exec(commandlinePath +" /c " + pythonPath + " " + filePath, null, null);
-		Scanner scanner = new Scanner(process.getInputStream());
-		while (scanner.hasNext()) {
-			System.out.println(scanner.nextLine());
+		try {
+			System.out.println("running file processor");
+			Process process = Runtime.getRuntime().exec(commandlinePath +" /c " + pythonPath + " " + filePath, null, null);
+			Scanner scanner = new Scanner(process.getInputStream());
+			while (scanner.hasNext()) {
+				System.out.println(scanner.nextLine());
+			}
+			scanner.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		scanner.close();
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
 	}
-	}
-	
+
 
 	//setters and getters
 	public String GetProcess(){return process;}

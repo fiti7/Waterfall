@@ -40,7 +40,6 @@
   <!-- Todo: programmatically add divs if possible -->
   <!-- Waterfall containers-->
   
-  <div id="container0" class= "container"></div>
   <div id="container1" class= "container"></div>
   <div id="container2" class= "container"></div>
   <div id="container3" class= "container"></div>
@@ -90,7 +89,7 @@
 	document.writeln("<script type=\"text/javascript\" src="+outnames[15]+"\>\</script\>");
 
 
-	var i = 0;
+	var i = 1;
 	var hi = 0;
 	
 	$(document).ready(function(){
@@ -101,14 +100,13 @@
 			        var element = document.getElementById('media');
 			        style = window.getComputedStyle(element);
 			        var scrollPercent = ((element.scrollLeft) / (element.scrollWidth - element.clientWidth + .001));
-			        var startPercent = (starttimes[i] / endtimes[length-1]);
-        			var endPercent = (endtimes[i] / endtimes[length-1]);
+			        var startPercent = (starttimes[i-1] / endtimes[length-1]);
+        			var endPercent = (endtimes[i-1] / endtimes[length-1]);
         			var calculatedPercent = (scrollPercent - startPercent)/(endPercent - startPercent);
 										
-					
 					//if we scroll past the beginning of a waterfall, switch it out for the previous
 					if (calculatedPercent < 0){
-						if (i != 0){
+						if (i != 1){
      						$('#container'+(i).toString()).hide();
      						$('#container' +(i-1).toString()).show();
      					    console.log("moved down" + (i-1).toString());
@@ -117,7 +115,7 @@
 					}
 					//if we scroll past the end of a waterfall, switch it out for the next
 					if (calculatedPercent >= 1){
-						if (i != length-1){
+						if (i != length){
 							i = i + 1;
      						$('#container'+(i-1).toString()).hide();
      						$('#container' +(i).toString()).show();

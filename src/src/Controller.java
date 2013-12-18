@@ -21,12 +21,12 @@ import com.dropbox.core.DbxException;
 
 
 public class Controller {
-	
+
 
 	private static Dropbox DROPBOX = new Dropbox();
 	//how many runs do we want in our dropbox folder?
 	private static final int BUFFER = 12;
-	
+
 	//additional files we want to copy to dropbox
 	private static String[] filePaths = new String[]{"waterfall.html", "waterfall.js", "waterfall.css", "map.txt", "README.txt"};
 	private static String[] directoryPaths = new String[]{"Data"};
@@ -50,7 +50,7 @@ public class Controller {
 	private static String commandlinePath = "C:/Windows/System32/cmd.exe";
 	private static String pythonPath = "C:/python33/python.exe";
 	private static String filePath = "/formatchart.py";
-	
+
 	//commented out section for local testing
 
 	//			private static String SOURCE_FOLDER = "C:/wamp/www/src/external/FreeStopwatch/Langs";
@@ -87,10 +87,10 @@ public class Controller {
 		Date now = new Date();
 		String strDate = sdfDate.format(now);
 		current_output = DROPBOX_FOLDER + "/" + strDate;
-		
+
 		//the capture loop
 		while(true){
-			
+
 			//rest
 			try {
 				Thread.sleep(1000);
@@ -109,7 +109,7 @@ public class Controller {
 					//add the additional necessary files
 					for (int i = 0; i < filePaths.length; i++)
 						FileUtils.copyFileToDirectory(new File(FILES + "/" + filePaths[i]), new File(OUTPUT_FOLDER));
-					for (int i = 0; i < filePaths.length; i++)
+					for (int i = 0; i < directoryPaths.length; i++)
 						FileUtils.copyDirectoryToDirectory(new File(FILES + "/" + directoryPaths[i]), new File(OUTPUT_FOLDER));
 					//and upload it to Dropbox
 					DROPBOX.recursiveUpload(OUTPUT_FOLDER, current_output);
@@ -142,7 +142,7 @@ public class Controller {
 						e.printStackTrace();
 					}
 				}
-				
+
 				//let Check.java know we've finished uploading
 				ch.setRunning(0);
 

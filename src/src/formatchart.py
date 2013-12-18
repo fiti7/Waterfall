@@ -261,7 +261,7 @@ def createoutputs(inputarray, maxseq, linearray):
     #for each transaction
     for num in range(maxseq):
         #make a new file
-        name = './Data/outputs.js'
+        name = './Data/outputs'+str(num)+'.js'
         outnames.append(name)
         
         #get the time each sequence starts and ends
@@ -301,7 +301,7 @@ def createoutputs(inputarray, maxseq, linearray):
         print("\
         //ml is the margin line boundary (for text left of the waterfall)\n\
         var ml = 275; \
-        \var myline"+inputarray[num][-3][-1]+"; var calculatedPercent = 0;\n\
+        var myline"+inputarray[num][-3][-1]+"; var calculatedPercent = 0;\n\
             $(function main() {\n\
             //different containers are shown/hid to display the different waterfalls\n\
             $(\'#container"+inputarray[num][-3][-1]+"\').highcharts({\n\
@@ -504,6 +504,10 @@ def processImages():
     reducedimages = reduceImages(increment, images, msecMax)
     reducedimages.sort(key=lambda x: x[1])
     
+
+    if not os.path.exists(sys.argv[0] + "/../Data"):
+        os.makedirs(sys.argv[0] + "/../Data")
+    
     f = open(sys.argv[0] + '/../Data/images.js', 'w')
     sys.stdout = f
     
@@ -530,7 +534,7 @@ processImages()
 #is there a Transdata.dat file? If not, grab another .dat file
 if not os.path.exists(sys.argv[0] + "/../TransData.dat"):
     dat = glob.glob(sys.argv[0] + "/../*.dat")
-    data = main(sys.argv[0] + dat[-1])
+    data = main(dat[-1])
 else: 
     data = main(sys.argv[0] + "/../TransData.dat")
 
