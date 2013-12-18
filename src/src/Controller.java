@@ -11,8 +11,11 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import javax.mail.MessagingException;
+
 import org.apache.commons.io.FileUtils;
+
 import com.dropbox.core.DbxException;
 
 
@@ -25,7 +28,9 @@ public class Controller {
 	private static final int BUFFER = 12;
 	
 	//additional files we want to copy to dropbox
-	private static String[] t2 = new String[]{"formatchart8.py", "linedbase5.html", "waterfall.js", "waterfall4.css", "map.txt", "index.htm", "index.php", "README.txt"};
+	private static String[] filePaths = new String[]{"waterfall.html", "waterfall.js", "waterfall.css", "map.txt", "README.txt"};
+	private static String[] directoryPaths = new String[]{"Data"};
+
 	//and the root of their location
 	private static String FILES = "C:/Users/knadmin/workspace/www/src/src";
 
@@ -41,6 +46,11 @@ public class Controller {
 	//When this process is running we start taking screencaps
 	private static String PROCESS = "TxnPlaybackEngine.exe";
 
+	//used to run python processing file
+	private static String commandlinePath = "C:/Windows/System32/cmd.exe";
+	private static String pythonPath = "C:/python33/python.exe";
+	private static String filePath = "/formatchart.py";
+	
 	//commented out section for local testing
 
 	//			private static String SOURCE_FOLDER = "C:/wamp/www/src/external/FreeStopwatch/Langs";
@@ -93,11 +103,14 @@ public class Controller {
 			//Waiting for Check.java to let us know it has finished capturing images
 			if (ch.isRunning() == 1){
 				logger.log("processing....");
-				
+				//runs python file to create javascript files to create the data for waterfall.html
+				ch.Process(commandlinePath, pythonPath, filePath);
 				try {
 					//add the additional necessary files
-					for (int i = 0; i < t2.length; i++)
-						FileUtils.copyFileToDirectory(new File(FILES + "/" + t2[i]), new File(OUTPUT_FOLDER));
+					for (int i = 0; i < filePaths.length; i++)
+						FileUtils.copyFileToDirectory(new File(FILES + "/" + filePaths[i]), new File(OUTPUT_FOLDER));
+					for (int i = 0; i < filePaths.length; i++)
+						FileUtils.copyDirectoryToDirectory(new File(FILES + "/" + directoryPaths[i]), new File(OUTPUT_FOLDER));
 					//and upload it to Dropbox
 					DROPBOX.recursiveUpload(OUTPUT_FOLDER, current_output);
 

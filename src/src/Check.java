@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Check implements Runnable{
 	
@@ -198,6 +199,22 @@ public class Check implements Runnable{
 		this.setRunning(1);
 		logger.log("prepping for processing");
 	}
+	
+	public void Process(String commandlinePath, String pythonPath, String filePath){
+	try {
+		System.out.println("running file processor");
+		Process process = Runtime.getRuntime().exec(commandlinePath +" /c " + pythonPath + " " + filePath, null, null);
+		Scanner scanner = new Scanner(process.getInputStream());
+		while (scanner.hasNext()) {
+			System.out.println(scanner.nextLine());
+		}
+		scanner.close();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	}
+	
 
 	//setters and getters
 	public String GetProcess(){return process;}
