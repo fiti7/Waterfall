@@ -242,7 +242,7 @@ def createoutputs(inputarray, maxseq, linearray):
     #for each transaction
     for num in range(maxseq):
         #make a new file
-        name = './Data/outputs' + str(num) + '.js'
+        name = './Data/outputs.js'
         outnames.append(name)
         
         #get the time each sequence starts and ends
@@ -270,6 +270,10 @@ def createoutputs(inputarray, maxseq, linearray):
             inputarray[num][0][i] = int(inputarray[num][0][i])
             inputarray[num][0][i] += starttimes[num]
             i+=1
+    
+    f = open(sys.argv[0] + "/../" + outnames[0][1:], 'w')    
+    #print to write to file
+    sys.stdout = f
         
     for num in range(maxseq):
         
@@ -280,15 +284,13 @@ def createoutputs(inputarray, maxseq, linearray):
         sys.stdout = f
         #create a waterfall from the data
         #ml is going to be my margin line boundary (for text left of the waterfall)
-        print("var current = "+inputarray[num][-3][-1]+";\
-        var ml = 275; var myline; var calculatedPercent = 0;\n\
-        var starttime = " , starttimes[num] , ";\n\
-        var endtime = " , endtimes[num] , ";\n\
+        print("\
+        var ml = 275; var myline"+inputarray[num][-3][-1]+"; var calculatedPercent = 0;\n\
             $(function main() {\n\
-            $(\'#container\').highcharts({\n\
+            $(\'#container"+inputarray[num][-3][-1]+"\').highcharts({\n\
                 chart: {marginLeft: ml,\n\
                     type: \'bar\',\n\
-                    renderTo: \'container\'\n\
+                    renderTo: \'container"+inputarray[num][-3][-1]+"\'\n\
                 },\n\
                 legend: {\n\
                     enabled: false\n\
@@ -375,9 +377,12 @@ def createoutputs(inputarray, maxseq, linearray):
         # creates the line and links it to the scrollbar, refreshing every 1000 milliseconds
         print("$(setInterval(\n\
         function makeline(chart) {\n\
-        if(myline !== undefined){\n\
-        $(myline.element).remove();};\n\
-        var chart = $('#container').highcharts();\n\
+        var current = "+inputarray[num][-3][-1]+";\
+        var starttime = " , starttimes[num] , ";\n\
+        var endtime = " , endtimes[num] , ";\n\
+        if(myline"+inputarray[num][-3][-1]+" !== undefined){\n\
+        $(myline"+inputarray[num][-3][-1]+".element).remove();};\n\
+        var chart = $('#container"+inputarray[num][-3][-1]+"').highcharts();\n\
         var element = document.getElementById('media');\n\
         style = window.getComputedStyle(element);\n\
         var scrollPercent = ((element.scrollLeft) / (element.scrollWidth - element.clientWidth));\n\
@@ -409,9 +414,9 @@ def createoutputs(inputarray, maxseq, linearray):
             ")
             
         print("if ((0 <= calculatedPercent) && (calculatedPercent <=1)){\n\
-        myline = chart.renderer.rect(mywidth, 60, 1, myheight*.9625).attr(\n\
+        myline"+inputarray[num][-3][-1]+" = chart.renderer.rect(mywidth, 60, 1, myheight*.9625).attr(\n\
         {'stroke-width': 2,stroke: 'red',zIndex: 10}).add();}\
-        if(0 > calculatedPercent){ myline = chart.renderer.rect(ml, 60, 1, myheight*.9625).attr(\n\
+        if(0 > calculatedPercent){ myline"+inputarray[num][-3][-1]+" = chart.renderer.rect(ml, 60, 1, myheight*.9625).attr(\n\
         {'stroke-width': 2,stroke: 'red',zIndex: 10}).add();} }, 100));")
         f.close()
 
@@ -536,7 +541,7 @@ processImages()
 if not os.path.exists(sys.argv[0] + "/../TransData.dat"):
     dat = glob.glob(sys.argv[0] + "/../*.dat")
     data = main(sys.argv[0] + dat[-1])
-else:
+else: 
     data = main(sys.argv[0] + "/../TransData.dat")
 #print(data)
 array = formatdata(data, elements)
