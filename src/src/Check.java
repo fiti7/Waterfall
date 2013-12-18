@@ -176,7 +176,7 @@ public class Check implements Runnable{
 			Thread r = new Thread(re);
 			logger.log("running renamer");
 			r.start();
-
+			
 
 			logger.log("mypath = " + path);
 
@@ -199,22 +199,17 @@ public class Check implements Runnable{
 		//this signals to Controller.java to process and send the data.
 		this.setRunning(1);
 		logger.log("prepping for processing");
-	}
-
-	public void Process(String commandlinePath, String pythonPath, String filePath){
+		//kill the renamer if it runs too long
 		try {
-			System.out.println("running file processor");
-			Process process = Runtime.getRuntime().exec(commandlinePath +" /c " + pythonPath + " " + filePath, null, null);
-			Scanner scanner = new Scanner(process.getInputStream());
-			while (scanner.hasNext()) {
-				System.out.println(scanner.nextLine());
-			}
-			scanner.close();
-		} catch (IOException e) {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		re.stop();
 	}
+
+
 
 
 	//setters and getters

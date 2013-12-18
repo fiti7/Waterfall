@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Scanner;
 
 import javax.mail.MessagingException;
 
@@ -29,7 +30,6 @@ public class Controller {
 
 	//additional files we want to copy to dropbox
 	private static String[] filePaths = new String[]{"waterfall.html", "waterfall.js", "waterfall.css", "map.txt", "README.txt"};
-	private static String[] directoryPaths = new String[]{"Data"};
 
 	//and the root of their location
 	private static String FILES = "C:/Users/knadmin/workspace/www/src/src";
@@ -49,7 +49,7 @@ public class Controller {
 	//used to run python processing file
 	private static String commandlinePath = "C:/Windows/System32/cmd.exe";
 	private static String pythonPath = "C:/python33/python.exe";
-	private static String filePath = "/formatchart.py";
+	private static String filePath = OUTPUT_FOLDER + "/formatchart.py";
 
 	//commented out section for local testing
 
@@ -103,14 +103,25 @@ public class Controller {
 			//Waiting for Check.java to let us know it has finished capturing images
 			if (ch.isRunning() == 1){
 				logger.log("processing....");
-				//runs python file to create javascript files to create the data for waterfall.html
-				ch.Process(commandlinePath, pythonPath, filePath);
+
 				try {
 					//add the additional necessary files
 					for (int i = 0; i < filePaths.length; i++)
 						FileUtils.copyFileToDirectory(new File(FILES + "/" + filePaths[i]), new File(OUTPUT_FOLDER));
-					for (int i = 0; i < directoryPaths.length; i++)
-						FileUtils.copyDirectoryToDirectory(new File(FILES + "/" + directoryPaths[i]), new File(OUTPUT_FOLDER));
+					
+					//runs python file to create javascript files to create the data for waterfall.html					
+						try {
+							System.out.println("running file processor");
+							Process process = Runtime.getRuntime().exec(commandlinePath +" /c " + pythonPath + " " + filePath, null, null);
+							Scanner scanner = new Scanner(process.getInputStream());
+							while (scanner.hasNext()) {
+								System.out.println(scanner.nextLine());
+							}
+							scanner.close();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
 					//and upload it to Dropbox
 					DROPBOX.recursiveUpload(OUTPUT_FOLDER, current_output);
 

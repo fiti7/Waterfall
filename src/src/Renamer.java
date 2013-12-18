@@ -16,6 +16,7 @@ public class Renamer implements Runnable{
 	LoggerTest logger = new LoggerTest();
 	File afile = new File("");
 	long starttime = System.nanoTime();
+	public boolean stopped = false;
 
 	public Renamer(File bfile, LoggerTest mylogger){
 		afile = bfile;
@@ -34,7 +35,7 @@ public class Renamer implements Runnable{
 		double name;
 		
 		File[] myfiles;
-		while(afile.exists()){
+		while(afile.exists() && !stopped){
 			//get all files 
 			myfiles = afile.listFiles();
 			for (int i = 0; i < myfiles.length; i++){
@@ -64,6 +65,9 @@ public class Renamer implements Runnable{
 		}
 
 
+	}
 
+	public void stop(){
+		stopped = true;
 	}
 }
