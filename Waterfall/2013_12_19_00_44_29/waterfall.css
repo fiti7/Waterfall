@@ -1,0 +1,65 @@
+/**
+ * waterfall.css
+ * Stylesheet for waterfall.html
+ * 
+ * 
+ * @author Etai Klein
+ * Keynote Systems Intern
+ * 
+ * Last modified 12/18/13
+ **/
+
+
+body {background-color:black;}
+
+/*filmstrip classes/ids */
+.media, #media
+{color: white;
+	resize: both;
+	
+    max-width: 85%;
+    max-height: 30em; 
+	Margin-left:7.5%;
+    Margin-right:7.5%;
+    
+    display: inline-block;
+    white-space: nowrap;
+
+    overflow-x: scroll;
+    -ms-overflow-x: auto;
+    overflow-y: hidden;
+    -ms-overflow-y: hidden;
+    
+}
+
+.image
+{
+float:left;
+height: 25em;
+width: 28em;
+margin: 0em;
+text-align:center;
+border: 0em solid white;
+
+
+}
+
+.imageContainer
+{
+float:left;
+
+}
+
+/* waterfall classes/ids*/
+.container
+{
+	display:none;
+    text-align: center;
+    width: 80%;
+    min-width: 25em; 
+    max-width: 75em; 
+    height: 150em; 
+    margin: auto;
+}   
+
+#container1{display:block;}   

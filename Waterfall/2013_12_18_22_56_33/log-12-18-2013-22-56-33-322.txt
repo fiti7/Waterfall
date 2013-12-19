@@ -1,0 +1,25 @@
+12/18/2013 22:56:33.331
+created
+12/18/2013 22:56:33.337
+running screencapper
+12/18/2013 22:56:33.591
+copied ar.txt, bg.txt, ca.txt, cn.txt, cz.txt, de.txt, dk.txt, du.txt, en.txt, es.txt, fi.txt, fr.txt, hu.txt, il.txt, it.txt, jp.txt, ko.txt, pl.txt, pt.txt, ro.txt, ru.txt, se.txt, sl.txt, sr.txt, tr.txt, tw.txt
+from C:/wamp/www/src/external/FreeStopwatch/Langs to C:/Users/Etai/Desktop/temp
+12/18/2013 22:56:55.467
+running renamer
+12/18/2013 22:56:55.471
+mypath = C:/Users/Etai/Desktop/temp/ScreenCaps
+12/18/2013 22:56:55.517
+capturing
+12/18/2013 22:56:57.204
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00001.jpg changed to1.701409501
+12/18/2013 22:57:01.756
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00020.jpg changed to6.259619381
+12/18/2013 22:57:02.061
+stopping capture
+12/18/2013 22:57:02.066
+prepping for processing
+12/18/2013 22:57:02.205
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00024.jpg changed to6.710382946
+12/18/2013 22:57:02.373
+processing....

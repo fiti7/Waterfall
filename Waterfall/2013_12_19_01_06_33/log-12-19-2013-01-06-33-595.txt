@@ -1,0 +1,27 @@
+12/19/2013 01:06:33.597
+created
+12/19/2013 01:06:33.601
+running screencapper
+12/19/2013 01:06:33.628
+copied TransData.dat
+from C:/wamp/www/src/external/FreeStopwatch/Langs/en to C:/Users/Etai/Desktop/temp
+12/19/2013 01:07:05.403
+running renamer
+12/19/2013 01:07:05.404
+mypath = C:/Users/Etai/Desktop/temp/ScreenCaps
+12/19/2013 01:07:05.410
+capturing
+12/19/2013 01:07:06.093
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00001.jpg changed to0.684486846
+12/19/2013 01:07:09.338
+stopping capture
+12/19/2013 01:07:09.339
+prepping for processing
+12/19/2013 01:07:09.628
+processing....
+12/19/2013 01:07:11.782
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00021.jpg changed to6.378003482
+12/19/2013 01:07:12.210
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00025.jpg changed to6.805970668
+12/19/2013 01:07:13.928
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00041.jpg changed to8.523962441

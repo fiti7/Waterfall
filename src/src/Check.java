@@ -201,7 +201,7 @@ public class Check implements Runnable{
 		logger.log("prepping for processing");
 		//kill the renamer if it runs too long
 		try {
-			Thread.sleep(10000);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

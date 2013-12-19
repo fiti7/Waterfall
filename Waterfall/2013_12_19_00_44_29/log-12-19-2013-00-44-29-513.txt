@@ -1,0 +1,61 @@
+12/19/2013 00:44:29.529
+created
+12/19/2013 00:44:29.540
+running screencapper
+12/19/2013 00:44:29.567
+copied TransData.dat
+from C:/wamp/www/src/external/FreeStopwatch/Langs/en to C:/Users/Etai/Desktop/temp
+12/19/2013 00:44:34.405
+running renamer
+12/19/2013 00:44:34.414
+mypath = C:/Users/Etai/Desktop/temp/ScreenCaps
+12/19/2013 00:44:34.590
+capturing
+12/19/2013 00:44:43.940
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00001.jpg changed to9.517651467
+12/19/2013 00:44:48.892
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00017.jpg changed to14.472579318
+12/19/2013 00:44:49.561
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00020.jpg changed to15.139812388
+12/19/2013 00:44:55.112
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00033.jpg changed to20.691238542
+12/19/2013 00:44:56.883
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00046.jpg changed to22.464329475
+12/19/2013 00:45:02.538
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00085.jpg changed to28.120078682
+12/19/2013 00:45:04.866
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00105.jpg changed to30.447541121
+12/19/2013 00:45:09.264
+stopping capture
+12/19/2013 00:45:09.280
+prepping for processing
+12/19/2013 00:45:10.027
+processing....
+12/19/2013 00:45:21.447
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00122.jpg changed to47.027890928
+12/19/2013 00:45:23.811
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00138.jpg changed to49.392733717
+12/19/2013 00:45:25.992
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00153.jpg changed to51.572471221
+12/19/2013 00:45:27.608
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00166.jpg changed to53.189517911
+12/19/2013 00:45:30.085
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00184.jpg changed to55.666494031
+12/19/2013 00:45:32.102
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00199.jpg changed to57.683162364
+12/19/2013 00:45:34.490
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00217.jpg changed to60.071885585
+12/19/2013 00:45:36.018
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00228.jpg changed to61.599132989
+12/19/2013 00:45:37.492
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00239.jpg changed to63.074537637
+12/19/2013 00:45:39.757
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00258.jpg changed to65.338221929
+12/19/2013 00:45:41.275
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00270.jpg changed to66.855629108
+12/19/2013 00:45:43.179
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00285.jpg changed to68.760318864
+12/19/2013 00:45:45.536
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00303.jpg changed to71.117256438
+12/19/2013 00:45:47.237
+C:\Users\Etai\Desktop\temp\ScreenCaps\scap00318.jpg changed to72.819467498
