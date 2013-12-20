@@ -449,7 +449,7 @@ def cmp(a, b):
     #get the total load time
 def imagesGetMax(images):
     exploded = images[-1].split("\\")
-    msecMax = ast.literal_eval(exploded[-1][0:-4])
+    msecMax = ast.literal_eval(exploded[-1][0:-5])
     if (msecMax > 0):
         return msecMax
     else:
@@ -462,7 +462,7 @@ def reduceImages(increment, images, msecMax):
     percentages = []
     for image in images:
         exploded = image.split("\\")
-        imagename = ast.literal_eval(exploded[-1][0:-4]);
+        imagename = ast.literal_eval(exploded[-1][0:-5]);
         percentages.append((100 * (imagename)/msecMax))
         newimages[(100 * (imagename)/msecMax)] = image
     #my new dict
@@ -488,11 +488,12 @@ def processImages():
     increment = 10
     
      #get the list of all files with .jpg extension in the directory and save it in an array named $images
-    dir = sys.argv[0] + '/../Screencaps/[0-9]*.jpg'
+    dir = sys.argv[0] + '/../Screencaps/[0-9]*.jpeg'
     images = glob.glob(dir)
+    print(images)
 
     #sort the images by time. The string manipulation is necessary to get the title of the file
-    images.sort(key = lambda x: x.split("/")[-1][0:-4]) 
+    images.sort(key = lambda x: x.split("/")[-1][0:-5]) 
     
         #get the total load time
     msecMax = imagesGetMax(images);

@@ -1,0 +1,57 @@
+12/19/2013 09:00:19.158
+round finished
+12/19/2013 09:04:15.342
+running renamer
+12/19/2013 09:04:15.342
+mypath = C:/Users/knadmin/Desktop/temp/ScreenCaps
+12/19/2013 09:04:15.342
+capturing
+12/19/2013 09:04:15.354
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00001.jpg changed to0.014407138
+12/19/2013 09:04:19.925
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00048.jpg changed to4.582248581
+12/19/2013 09:04:26.527
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00119.jpg changed to11.184846398
+12/19/2013 09:04:28.794
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00133.jpg changed to13.451432793
+12/19/2013 09:04:30.115
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00147.jpg changed to14.772709101
+12/19/2013 09:04:34.889
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00197.jpg changed to19.547123447
+12/19/2013 09:04:36.617
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00215.jpg changed to21.274778498
+12/19/2013 09:04:38.141
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00231.jpg changed to22.799077536
+12/19/2013 09:04:39.666
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00247.jpg changed to24.32363359
+12/19/2013 09:04:41.089
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00262.jpg changed to25.746336755
+12/19/2013 09:04:42.511
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00277.jpg changed to27.169218992
+12/19/2013 09:04:43.934
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00292.jpg changed to28.592027757
+12/19/2013 09:04:45.256
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00306.jpg changed to29.9133415
+12/19/2013 09:04:46.577
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00320.jpg changed to31.234637642
+12/19/2013 09:04:47.898
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00334.jpg changed to32.555890483
+12/19/2013 09:04:49.219
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00348.jpg changed to33.877272949
+12/19/2013 09:04:50.392
+copied blob, content, Destin1, IEBrowserCache, invalid, TransData.dat
+from C:/KNAgent/Data to C:/Users/knadmin/Desktop/temp
+12/19/2013 09:04:50.542
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00362.jpg changed to35.199447415
+12/19/2013 09:04:53.081
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00390.jpg changed to37.738496931
+12/19/2013 09:04:54.402
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00404.jpg changed to39.059805925
+12/19/2013 09:04:55.723
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00418.jpg changed to40.381132518
+12/19/2013 09:04:55.767
+stopping capture
+12/19/2013 09:04:55.767
+prepping for processing
+12/19/2013 09:04:56.177
+processing....

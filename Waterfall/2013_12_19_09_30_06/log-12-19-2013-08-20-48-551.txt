@@ -1,0 +1,61 @@
+12/19/2013 09:30:08.399
+round finished
+12/19/2013 09:30:14.048
+copied blob, content, Destin1, IEBrowserCache, invalid, kntd_20131219173013.dat
+from C:/KNAgent/Data to C:/Users/knadmin/Desktop/temp
+12/19/2013 09:30:15.049
+copied blob, content, Destin1, IEBrowserCache, invalid
+from C:/KNAgent/Data to C:/Users/knadmin/Desktop/temp
+12/19/2013 09:34:15.276
+running renamer
+12/19/2013 09:34:15.276
+mypath = C:/Users/knadmin/Desktop/temp/ScreenCaps
+12/19/2013 09:34:15.276
+capturing
+12/19/2013 09:34:15.297
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00001.jpg changed to0.019842466
+12/19/2013 09:34:33.754
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00186.jpg changed to18.476239578
+12/19/2013 09:34:34.161
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00191.jpg changed to18.883458373
+12/19/2013 09:34:36.091
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00211.jpg changed to20.813149437
+12/19/2013 09:34:37.818
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00229.jpg changed to22.540765098
+12/19/2013 09:34:39.343
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00246.jpg changed to24.065084809
+12/19/2013 09:34:40.969
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00262.jpg changed to25.691123034
+12/19/2013 09:34:42.501
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00277.jpg changed to27.223292346
+12/19/2013 09:34:43.924
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00292.jpg changed to28.646175981
+12/19/2013 09:34:45.448
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00307.jpg changed to30.170549609
+12/19/2013 09:34:46.972
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00322.jpg changed to31.694950895
+12/19/2013 09:34:48.395
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00336.jpg changed to33.117773907
+12/19/2013 09:34:49.818
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00350.jpg changed to34.540709225
+12/19/2013 09:34:51.241
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00364.jpg changed to35.963515196
+12/19/2013 09:34:52.072
+copied blob, content, Destin1, IEBrowserCache, invalid, TransData.dat
+from C:/KNAgent/Data to C:/Users/knadmin/Desktop/temp
+12/19/2013 09:34:52.662
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00378.jpg changed to37.384443554
+12/19/2013 09:34:54.085
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00392.jpg changed to38.807250922
+12/19/2013 09:34:55.508
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00406.jpg changed to40.230127293
+12/19/2013 09:34:56.930
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00420.jpg changed to41.653089988
+12/19/2013 09:34:57.892
+stopping capture
+12/19/2013 09:34:57.892
+prepping for processing
+12/19/2013 09:34:58.353
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00434.jpg changed to43.075902943
+12/19/2013 09:34:58.421
+processing....

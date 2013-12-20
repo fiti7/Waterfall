@@ -1,0 +1,49 @@
+12/19/2013 09:20:29.329
+round finished
+12/19/2013 09:24:15.568
+running renamer
+12/19/2013 09:24:15.568
+mypath = C:/Users/knadmin/Desktop/temp/ScreenCaps
+12/19/2013 09:24:15.568
+capturing
+12/19/2013 09:24:15.575
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00001.jpg changed to0.006384331
+12/19/2013 09:24:20.144
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00048.jpg changed to4.575615895
+12/19/2013 09:24:21.466
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00062.jpg changed to5.896887174
+12/19/2013 09:24:22.787
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00076.jpg changed to7.218164878
+12/19/2013 09:24:24.108
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00090.jpg changed to8.539455713
+12/19/2013 09:24:25.429
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00104.jpg changed to9.860718052
+12/19/2013 09:24:26.751
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00118.jpg changed to11.18197229
+12/19/2013 09:24:28.072
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00132.jpg changed to12.503373194
+12/19/2013 09:24:29.401
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00146.jpg changed to13.832639344
+12/19/2013 09:24:30.824
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00160.jpg changed to15.25523607
+12/19/2013 09:24:32.143
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00174.jpg changed to16.574569952
+12/19/2013 09:24:33.465
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00188.jpg changed to17.895871961
+12/19/2013 09:24:34.786
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00202.jpg changed to19.217291583
+12/19/2013 09:24:36.986
+copied blob, content, Destin1, IEBrowserCache, invalid, TransData.dat
+from C:/KNAgent/Data to C:/Users/knadmin/Desktop/temp
+12/19/2013 09:24:37.327
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00230.jpg changed to21.759371372
+12/19/2013 09:24:38.647
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00244.jpg changed to23.078558308
+12/19/2013 09:24:39.449
+stopping capture
+12/19/2013 09:24:39.449
+prepping for processing
+12/19/2013 09:24:39.969
+C:\Users\knadmin\Desktop\temp\ScreenCaps\scap00258.jpg changed to24.39979299
+12/19/2013 09:24:40.348
+processing....
