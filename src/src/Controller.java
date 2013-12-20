@@ -137,9 +137,7 @@ public class Controller {
 					//waiting for execution to finish (should take approx. 30 sec)
 					System.out.println("waiting for python execution");
 					p.waitFor();
-					
-					System.exit(0);
-					
+										
 					//and upload it to Dropbox
 					DROPBOX.recursiveUpload(OUTPUT_FOLDER, current_output);
 

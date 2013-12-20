@@ -538,7 +538,6 @@ if not os.path.exists(sys.argv[0] + "/../TransData.dat"):
     
     else: 
         print("no .dat file")
-        sys.exit()
 else: 
     data = main(sys.argv[0] + "/../TransData.dat")
 
