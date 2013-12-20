@@ -37,24 +37,24 @@ public class Controller {
 	public static String current_output = null;
 
 //		//the location of the working directory
-//		private static String FILES = "C:/Users/knadmin/workspace/www/src/src";
+		private static String FILES = "C:/Users/knadmin/workspace/www/src/src";
 //	
 //		//Copy files from here
-//		private static String SOURCE_FOLDER = "C:/KNAgent/Data";
+		private static String SOURCE_FOLDER = "C:/KNAgent/Data";
 //		//to here
-//		private static String OUTPUT_FOLDER = "C:/Users/knadmin/Desktop/temp";
+		private static String OUTPUT_FOLDER = "C:/Users/knadmin/Desktop/temp";
 //		//then uploaded to here (not uploaded directly because of lag)
-//		private static String DROPBOX_FOLDER = "C:/Users/knadmin/Desktop/Dropbox/Apps/Waterfall";
+		private static String DROPBOX_FOLDER = "C:/Users/knadmin/Desktop/Dropbox/Apps/Waterfall";
 //		//When this process is running we start taking screencaps
-//		private static String PROCESS = "TxnPlaybackEngine.exe";
+		private static String PROCESS = "TxnPlaybackEngine.exe";
 
 	//commented out section for local testing
 
-	private static String SOURCE_FOLDER = "C:/wamp/www/src/external/FreeStopwatch/Langs/en";
-	private static String OUTPUT_FOLDER = "C:/localhost/test/src";
-	private static String DROPBOX_FOLDER = "C:/Users/Etai/Desktop/Dropbox/Apps/Waterfall";
-	private static String PROCESS = "firefox.exe";
-	private static String FILES = "C:/wamp/www/src/src";
+//	private static String SOURCE_FOLDER = "C:/wamp/www/src/external/FreeStopwatch/Langs/en";
+//	private static String OUTPUT_FOLDER = "C:/localhost/test/src";
+//	private static String DROPBOX_FOLDER = "C:/Users/Etai/Desktop/Dropbox/Apps/Waterfall";
+//	private static String PROCESS = "firefox.exe";
+//	private static String FILES = "C:/wamp/www/src/src";
 
 
 	//used to run python processing file

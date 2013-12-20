@@ -177,11 +177,11 @@ public class Check implements Runnable{
 			r.start();
 			
 
-			logger.log("mypath = " + "C:\\wamp\\www\\src\\external\\ScreenCapture.exe " + path + "\\ " + process.substring(0, process.length()-4));
+			logger.log("mypath = " + "C:\\Users\\KnAdmin\\workspace\\www\\src\\external\\ScreenCapture.exe " + path + "\\ " + process.substring(0, process.length()-4));
 			String s = null;
 			//TODO: fill in more accurate screencap process and nix renamer
 			//screencapProcess = rt.exec("C:\\VLC\\vlc screen:// --dshow-vdev=screen-capture-recorder --screen-width="+(width)+" --screen-height=" + (height-50) + "--dshow-fps=5 -I dummy --dummy-quiet --rate=1 --video-filter=scene --vout=dummy --scene-format=jpg --scene-ratio=1 --scene-prefix=snap --scene-path=" + path +" --scene-prefix=scap vlc://quit");
-			screencapProcess = rt.exec("C:\\wamp\\www\\src\\external\\ScreenCapture.exe " + path + "\\ " + process.substring(0, process.length()-4));
+			screencapProcess = rt.exec("C:\\Users\\Knadmin\\workspace\\www\\src\\external\\ScreenCapture.exe " + path + "\\ " + process.substring(0, process.length()-4));
 			System.out.println("have I exited?");
 			
 //			BufferedReader stdInput = new BufferedReader(new InputStreamReader(screencapProcess.getInputStream()));
