@@ -20,7 +20,7 @@ import ast
 #which elements of the mapped data are we using?
 elements = ["START_MSEC", "DNS_LOOKUP_MSEC", "CONNECT_DELTA", "SSL_HANDSHAKE_DELTA",
              "REDIR_DELTA", "REQUEST_DELTA", 
-             "FIRST_BYTE_MSEC", “REMAINING_PACKETS_DELTA”,
+             "FIRST_BYTE_MSEC", "REMAINING_PACKETS_DELTA",
              #new elements can be added until this point
              #beyond here, the rest are referred to in order
             "CONN_STRING_TEXT", #the domain strings
@@ -32,7 +32,7 @@ elements = ["START_MSEC", "DNS_LOOKUP_MSEC", "CONNECT_DELTA", "SSL_HANDSHAKE_DEL
 #if you add new elements, make sure the colors match up
 
 colors = ["\'transparent\'", "\'yellow\'", "\'orange\'", "\'pink\'", "\'light green\'", "\'dark green\'", 
-          "\'light blue\’“, “\’blue\’”]
+          "\'light blue\'", "\'blue\'"]
 
 # START_MSEC - white
 # DNS_LOOKUP_MSEC - yellow
