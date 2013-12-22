@@ -20,7 +20,7 @@ import ast
 #which elements of the mapped data are we using?
 elements = ["START_MSEC", "DNS_LOOKUP_MSEC", "CONNECT_DELTA", "SSL_HANDSHAKE_DELTA",
              "REDIR_DELTA", "REQUEST_DELTA", 
-             "FIRST_BYTE_MSEC",
+             "FIRST_BYTE_MSEC", “REMAINING_PACKETS_DELTA”,
              #new elements can be added until this point
              #beyond here, the rest are referred to in order
             "CONN_STRING_TEXT", #the domain strings
@@ -32,7 +32,7 @@ elements = ["START_MSEC", "DNS_LOOKUP_MSEC", "CONNECT_DELTA", "SSL_HANDSHAKE_DEL
 #if you add new elements, make sure the colors match up
 
 colors = ["\'transparent\'", "\'yellow\'", "\'orange\'", "\'pink\'", "\'light green\'", "\'dark green\'", 
-          "\'light blue\'"]
+          "\'light blue\’“, “\’blue\’”]
 
 # START_MSEC - white
 # DNS_LOOKUP_MSEC - yellow
@@ -41,7 +41,7 @@ colors = ["\'transparent\'", "\'yellow\'", "\'orange\'", "\'pink\'", "\'light gr
 # REDIR_DELTA - light green
 # REQUEST_DELTA - Dark Green
 # FIRST_BYTE_MSEC - light blue
-# content download - how is this generated? - Blue
+# remaining packets delta  = content download - how is this generated? - Blue
 # client time - how is this generated? - Dark blue
 # MS_FIRST_PAINT_MSEC - greenline
 # DOM_INTERACTIVE_MSEC - redline
@@ -535,7 +535,7 @@ if not os.path.exists(sys.argv[0] + "/../TransData.dat"):
     dat = glob.glob(sys.argv[0] + "/../*.dat")
     if (len(dat)!= 0):
         data = main(dat[-1])
-    
+
     else: 
         print("no .dat file")
 else: 
