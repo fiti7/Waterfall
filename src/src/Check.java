@@ -37,7 +37,6 @@ public class Check implements Runnable{
 	public static Process screencapProcess = null;
 
 	//to rename the files 
-	private static Renamer re = new Renamer(null, logger);
 
 	//to crop the images
 	private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
