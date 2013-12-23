@@ -308,8 +308,14 @@ def createoutputs(inputarray, maxseq, linearray):
                 chart: {marginLeft: ml,\n\
                     type: \'bar\',\n\
                     renderTo: \'container"+inputarray[num][-3][-1]+"\'\n\
-                },\n\
-                legend: {\n\
+                },\
+\n\ 
+        plotOptions: {\
+            series: {\
+                shadow: false\
+            }\
+        }, \n\
+               legend: {\n\
                     enabled: false\n\
                 },\n\
                 tooltip: {\

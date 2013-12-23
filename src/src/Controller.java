@@ -31,7 +31,7 @@ public class Controller {
 	private static final int BUFFER = 12;
 
 	//additional files we want to copy to dropbox
-	private static String[] filePaths = new String[]{"formatchart.py", "waterfall.html", "waterfall.js", "waterfall.css", "map.txt", "README.txt"};
+	private static String[] filePaths = new String[]{"formatchart.py", "waterfall.html", "waterfall.js", "waterfall.css", "map.txt", "README.txt", "jquery-2.0.2.min.js", "highcharts.js", "highcharts-more.js", "exporting.js"};
 
 	//Dropbox filename
 	public static String current_output = null;
