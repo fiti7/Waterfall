@@ -47,7 +47,7 @@ public class Controller {
 		private static String DROPBOX_FOLDER = "C:/Users/knadmin/Desktop/Dropbox/Apps/Waterfall";
 //		//When this process is running we start taking screencaps
 		private static String PROCESS = "TxnPlaybackEngine.exe";
-
+//		private static String PROCESS = "firefox.exe";
 	//commented out section for local testing
 
 //	private static String SOURCE_FOLDER = "C:/wamp/www/src/external/FreeStopwatch/Langs/en";
