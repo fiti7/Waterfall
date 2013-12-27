@@ -1,0 +1,18 @@
+12/22/2013 16:00:25.883
+round finished
+12/22/2013 16:01:15.513
+copied blob, content, Destin1, IEBrowserCache, invalid
+from C:/KNAgent/Data to C:/Users/knadmin/Desktop/temp
+12/22/2013 16:04:21.889
+mypath = C:\Users\Knadmin\workspace\www\src\external\ScreenCapture.exe C:/Users/knadmin/Desktop/temp/ScreenCaps\ TxnPlaybackEngine
+12/22/2013 16:04:21.889
+capturing
+12/22/2013 16:04:56.515
+copied blob, content, Destin1, IEBrowserCache, invalid, TransData.dat
+from C:/KNAgent/Data to C:/Users/knadmin/Desktop/temp
+12/22/2013 16:04:59.379
+stopping capture
+12/22/2013 16:04:59.379
+prepping for processing
+12/22/2013 16:04:59.889
+processing....

@@ -20,7 +20,7 @@ import ast
 #which elements of the mapped data are we using?
 elements = ["START_MSEC", "DNS_LOOKUP_MSEC", "CONNECT_DELTA", "SSL_HANDSHAKE_DELTA",
              "REDIR_DELTA", "REQUEST_DELTA", 
-             "FIRST_PACKET_DELTA", "REMAINING_PACKETS_DELTA", "SYSTEM_DELTA",
+             "FIRST_BYTE_MSEC", "REMAINING_PACKETS_DELTA",
              #new elements can be added until this point
              #beyond here, the rest are referred to in order
             "CONN_STRING_TEXT", #the domain strings
@@ -32,7 +32,7 @@ elements = ["START_MSEC", "DNS_LOOKUP_MSEC", "CONNECT_DELTA", "SSL_HANDSHAKE_DEL
 #if you add new elements, make sure the colors match up
 
 colors = ["\'transparent\'", "\'yellow\'", "\'orange\'", "\'pink\'", "\'light green\'", "\'dark green\'", 
-          "\'light blue\'", "\'blue\'", "\'dark blue\'"]
+          "\'light blue\'", "\'blue\'"]
 
 # START_MSEC - white
 # DNS_LOOKUP_MSEC - yellow
@@ -40,10 +40,9 @@ colors = ["\'transparent\'", "\'yellow\'", "\'orange\'", "\'pink\'", "\'light gr
 # SSL_HANDSHAKE_DELTA - pink
 # REDIR_DELTA - light green
 # REQUEST_DELTA - Dark Green
-
-# FIRST_PACKET_DELTA- light blue
-# remaining packets delta- Blue
-# client time - system_delta- Dark blue
+# FIRST_BYTE_MSEC - light blue
+# remaining packets delta  = content download - how is this generated? - Blue
+# client time - how is this generated? - Dark blue
 # MS_FIRST_PAINT_MSEC - greenline
 # DOM_INTERACTIVE_MSEC - redline
 
@@ -59,17 +58,16 @@ def main(source):
     with open(source, "r") as f:
         try:
             items = f.readlines()
+            
             #for each line
             for item in items:
-                i = 0
                 i = 0
                 j = ""
 
                 while (i < len(item)):
                     #find the '='
-                    if item[i] == "=" and not (item[i-1].isupper()):
-                        #there will be either 2 or 3 or 4 characters indicating the element
-                        
+                    if item[i] == "=":
+                        #there will be either 2 or 3 characters indicating the element
                         if item[i-3] == ' ':
                             #if it's 2 then slice it
                             j = item[i-2:i]
@@ -77,28 +75,18 @@ def main(source):
                             j = finditem(j)
                             if j!= None:
                                 #and replace it
-                                item = item[0:i-2] + j + item[i:]
-                        elif item[i-4] == ' ':  
+                                item = item[0:i-2] + j + item[i:-1]
+                        else:  
                             #if it is 3 chars long
                             j = item[i-3:i]
                             #find the mapping
                             j = finditem(j)
                             if j!= None:
                                 #and replace it
-                                item = item[0:i-3] + j + item[i:]
-                        else:
-                            #if it is 4 chars long
-                            j = item[i-4:i]
-                            #find the mapping
-                            j = finditem(j)
-                            if j!= None:
-                                #and replace it
-                                item = item[0:i-4] + j + item[i:]
-                    
-                    
+                                item = item[0:i-3] + j + item[i:-1]
                     i+=1
-                    
                 lines.append(item)                  
+                
 
             pass
         except:
@@ -108,7 +96,7 @@ def main(source):
         
 #searches the map.txt file for an equivalent to a .dat file element
 def finditem(input):
-    with open(sys.argv[0][0: -len("formatchart.py")] + "map.txt", "r") as f:
+    with open(sys.argv[0] + "/../map.txt", "r") as f:
         try:
             items = f.readlines()
         
@@ -138,11 +126,10 @@ def finditem(input):
                 
                 #grab the next 2 or three characters
                 l = item[i] + item[i+1]
-                while(item[i+2].isalpha() and item[i+2].islower()):
+                if item[i+2] != '|':
                     l = l + item[i+2]
                     i+=1
-
-
+                
                 #is it equal to my input string?
                 if l == input:
                     i = i+3
@@ -262,8 +249,8 @@ def reducetext(inputarrayA, inputarrayB):
 def createoutputs(inputarray, maxseq, linearray):
     
     #makes a folder to put the files in
-    if not os.path.exists(sys.argv[0][0: -len("formatchart.py")] + "Data"):
-        os.makedirs(sys.argv[0][0: -len("formatchart.py")] + "Data")
+    if not os.path.exists(sys.argv[0] + "/../Data"):
+        os.makedirs(sys.argv[0] + "/../Data")
     
     myout = sys.stdout
     outnames = []   #the names of the files
@@ -307,51 +294,62 @@ def createoutputs(inputarray, maxseq, linearray):
     for num in range(maxseq):
         
         
-        f = open(sys.argv[0][0: -len("formatchart.py")] + outnames[num][1:], 'w')    
+        f = open(sys.argv[0] + "/../" + outnames[num][1:], 'w')    
         #print to write to file. use myout.write() to write to console in this mode
         sys.stdout = f
         #create a waterfall from the data
         print("\
+        //ml is the margin line boundary (for text left of the waterfall)\n\
         var ml = 275; \
-        var myline"+inputarray[num][-3][-1]+"; var calculatedPercent = 0;\
-            $(function main() {\
-            $(\'#container"+inputarray[num][-3][-1]+"\').highcharts({\
-                chart: {marginLeft: ml,\
-                    type: \'bar\',\
-                    renderTo: \'container"+inputarray[num][-3][-1]+"\'\
+        var myline"+inputarray[num][-3][-1]+"; var calculatedPercent = 0;\n\
+            $(function main() {\n\
+            //different containers are shown/hid to display the different waterfalls\n\
+            $(\'#container"+inputarray[num][-3][-1]+"\').highcharts({\n\
+                chart: {marginLeft: ml,\n\
+                    type: \'bar\',\n\
+                    renderTo: \'container"+inputarray[num][-3][-1]+"\'\n\
                 },\
-                legend: {\
-                    enabled: false\
-                },\
+\n\ 
+        plotOptions: {\
+            series: {\
+                shadow: false\
+            }\
+        }, \n\
+               legend: {\n\
+                    enabled: false\n\
+                },\n\
                 tooltip: {\
                     enabled: false\
                 },\
-                title: {\
+                title: {\n\
                     text: \'Waterfall\'\
-                },\
+                },\n\
+                //the axis labels. \n\
                  xAxis: {categories:"
                  ,inputarray[num][-1],",\
                  alternateGridColor: '#FDFFD5'\
-                 },\
-                         yAxis: [{\
-                         labels:{ format: \"{value:.3f}\", formatter: function(){return ((this.value) / 1000) + 's';}}, \
-                    min: \"" , starttimes[num] , "\",\
-                    title: false,\
+                 },\n\
+                         yAxis: [{\n\
+                         labels:{ format: \"{value:.3f}\", formatter: function(){return ((this.value) / 1000) + 's';}}, \n\
+                    //the starttime\n\
+                    min: \"" , starttimes[num] , "\",\n\
+                    title: false,\n\
                 },{\
                 linkedTo:0,\
-                labels:{ format: \"{value:.3f}\", formatter: function(){return ((this.value) / 1000) + 's';}}, \
-                title: false,\
+                labels:{ format: \"{value:.3f}\", formatter: function(){return ((this.value) / 1000) + 's';}}, \n\
+                title: false,\n\
+                //opposite lets us render the bars horizontally\n\
                 opposite:true\
                 }],\
                 legend: {\
                     backgroundColor: \'#FFFFFF\',\
                     reversed: true\
-                },\
+                },\n\
                 plotOptions: {\
                     series: {\
                         stacking: \'normal\'\
                     }\
-                },\
+                },\n\
                  series: [")
         
         i = len(inputarray[num]) - 2
@@ -362,7 +360,7 @@ def createoutputs(inputarray, maxseq, linearray):
             if (i < len(colors)):
                 print ("color: " + colors[i] + ",")
                       
-            print("\
+            print("\n\
             showInLegend: false, data: "
             + (str(inputarray[num][i])).replace("'",""))
             
@@ -379,21 +377,21 @@ def createoutputs(inputarray, maxseq, linearray):
             i-=1
         
         # creates the line and links it to the scrollbar, refreshing every 1000 milliseconds
-        print("$(setInterval(\
-        function makeline(chart) {\
+        print("$(setInterval(\n\
+        function makeline(chart) {\n\
         var current = "+inputarray[num][-3][-1]+";\
-        var starttime = " , starttimes[num] , ";\
-        var endtime = " , endtimes[num] , ";\
-        if(myline"+inputarray[num][-3][-1]+" !== undefined){\
-        $(myline"+inputarray[num][-3][-1]+".element).remove();};\
-        var chart = $('#container"+inputarray[num][-3][-1]+"').highcharts();\
-        var element = document.getElementById('media');\
-        style = window.getComputedStyle(element);\
-        var scrollPercent = ((element.scrollLeft) / (element.scrollWidth - element.clientWidth));\
-        var myheight = $(chart.container).height();\
-        var startPercent = (starttime / ", endtimes[-1] , ");\
-        var endPercent = (endtime / ", endtimes[-1] , ");\
-        calculatedPercent = (scrollPercent - startPercent)/(endPercent - startPercent);\
+        var starttime = " , starttimes[num] , ";\n\
+        var endtime = " , endtimes[num] , ";\n\
+        if(myline"+inputarray[num][-3][-1]+" !== undefined){\n\
+        $(myline"+inputarray[num][-3][-1]+".element).remove();};\n\
+        var chart = $('#container"+inputarray[num][-3][-1]+"').highcharts();\n\
+        var element = document.getElementById('media');\n\
+        style = window.getComputedStyle(element);\n\
+        var scrollPercent = ((element.scrollLeft) / (element.scrollWidth - element.clientWidth));\n\
+        var myheight = $(chart.container).height();\n\
+        var startPercent = (starttime / ", endtimes[-1] , ");\n\
+        var endPercent = (endtime / ", endtimes[-1] , ");\n\
+        calculatedPercent = (scrollPercent - startPercent)/(endPercent - startPercent);\n\
         var mywidth =  (calculatedPercent * ($(chart.container).width() - ml)) + ml - 1 ;")
         
         # draws the first paint and interactive lines
@@ -401,7 +399,7 @@ def createoutputs(inputarray, maxseq, linearray):
         for item in linearray:
             if(item[-4] != 0):
                     print("\
-            if ( current == "+str(item[-3]) +"){\
+            if ( current == "+str(item[-3]) +"){\n\
             chart.renderer.rect(\
             (((("+str(item[-4])+" + starttime)/endtime)\
               * ($(chart.container).width() - ml)) + ml - 1)\
@@ -410,7 +408,7 @@ def createoutputs(inputarray, maxseq, linearray):
             }")
             if(item[-5] != 0):
                     print("\
-            if (current == "+str(item[-3]) +"){\
+            if (current == "+str(item[-3]) +"){\n\
             chart.renderer.rect(\
             (((("+str(item[-5])+" + starttime)/endtime) \
              * ($(chart.container).width() - ml)) + ml - 1)\
@@ -421,15 +419,15 @@ def createoutputs(inputarray, maxseq, linearray):
         
         #render the line attached to the image scrollbar.
         #The second line at 0 > calculatedPercent keeps the line visible at the starting position
-        print("if ((0 <= calculatedPercent) && (calculatedPercent <=1)){\
-        myline"+inputarray[num][-3][-1]+" = chart.renderer.rect(mywidth, 60, 1, myheight*.9625).attr(\
+        print("if ((0 <= calculatedPercent) && (calculatedPercent <=1)){\n\
+        myline"+inputarray[num][-3][-1]+" = chart.renderer.rect(mywidth, 60, 1, myheight*.9625).attr(\n\
         {'stroke-width': 2,stroke: 'red',zIndex: 10}).add();}\
-        if(0 > calculatedPercent){ myline"+inputarray[num][-3][-1]+" = chart.renderer.rect(ml, 60, 1, myheight*.9625).attr(\
+        if(0 > calculatedPercent){ myline"+inputarray[num][-3][-1]+" = chart.renderer.rect(ml, 60, 1, myheight*.9625).attr(\n\
         {'stroke-width': 2,stroke: 'red',zIndex: 10}).add();} }, 100));")
         f.close()
 
     #add useful data to a key file
-    f = open(sys.argv[0][0: -len("formatchart.py")] + 'Data/key.js', 'w')
+    f = open(sys.argv[0] + '/../Data/key.js', 'w')
     sys.stdout = f
     print("var outnames =" + str(outnames) + ";")
     print("var starttimes =" + str(starttimes) + ";")
@@ -457,9 +455,6 @@ def cmp(a, b):
     #get the total load time
 def imagesGetMax(images):
     exploded = images[-1].split("\\")
-    exploded = exploded[-1].split("/")
-    print(exploded)
-    print(exploded[-1][0:-5])
     msecMax = ast.literal_eval(exploded[-1][0:-5])
     if (msecMax > 0):
         return msecMax
@@ -473,7 +468,6 @@ def reduceImages(increment, images, msecMax):
     percentages = []
     for image in images:
         exploded = image.split("\\")
-        exploded = exploded[-1].split("/")
         imagename = ast.literal_eval(exploded[-1][0:-5]);
         percentages.append((100 * (imagename)/msecMax))
         newimages[(100 * (imagename)/msecMax)] = image
@@ -500,8 +494,7 @@ def processImages():
     increment = 10
     
      #get the list of all files with .jpg extension in the directory and save it in an array named $images
-    dir = sys.argv[0][0: -len("formatchart.py")] + 'Screencaps/[0-9]*.jpeg'
-    print(dir)
+    dir = sys.argv[0] + '/../Screencaps/[0-9]*.jpeg'
     images = glob.glob(dir)
     print(images)
 
@@ -518,22 +511,20 @@ def processImages():
     reducedimages.sort(key=lambda x: x[1])
     
 
-    if not os.path.exists(sys.argv[0][0: -len("formatchart.py")] + "Data"):
-        os.makedirs(sys.argv[0][0: -len("formatchart.py")] + "Data")
+    if not os.path.exists(sys.argv[0] + "/../Data"):
+        os.makedirs(sys.argv[0] + "/../Data")
     
-    f = open(sys.argv[0][0: -len("formatchart.py")] + 'Data/images.js', 'w')
+    f = open(sys.argv[0] + '/../Data/images.js', 'w')
     sys.stdout = f
     
         
     #output my images to the html
     for image in reducedimages:
         exploded = image[1].split("\\")
-        exploded = exploded[0].split("/")
         imagename = exploded[-1][0:-4]
-        
         print("document.write(\"<div class=\\\"image\\\">\
         <p>" + imagename + "s</p>\
-        <img src=" + image[1] + \
+        <img src=" + "Screencaps/" + image[1].split("\\")[-1] + \
         " height=\\\"300em\\\" style=\\\"max-width: 500em;\\\">\
         <p>" + str(image[0]) + "%</p>\
         </div>\");")
@@ -543,20 +534,19 @@ def processImages():
 
 # Running the program
 
-#processImages()
+processImages()
 
 #is there a Transdata.dat file? If not, grab another .dat file
-if not os.path.exists(sys.argv[0][0: -len("formatchart.py")] + "TransData.dat"):
-    print("I exist")
-    dat = glob.glob(sys.argv[0][0: -len("formatchart.py")] + "*.dat")
+if not os.path.exists(sys.argv[0] + "/../TransData.dat"):
+    dat = glob.glob(sys.argv[0] + "/../*.dat")
     if (len(dat)!= 0):
         data = main(dat[-1])
 
     else: 
         print("no .dat file")
 else: 
-    data = main(sys.argv[0][0: -len("formatchart.py")] + "TransData.dat")
-    
+    data = main(sys.argv[0] + "/../TransData.dat")
+
 #'translate the .dat file'
 array = formatdata(data, elements)
 linearray = array[1] #contains the first paint and interactive information which are rendered as lines
