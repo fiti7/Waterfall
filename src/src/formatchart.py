@@ -16,11 +16,12 @@ import operator
 import webbrowser
 import glob
 import ast
+import re
 
 #which elements of the mapped data are we using?
 elements = ["START_MSEC", "DNS_LOOKUP_MSEC", "CONNECT_DELTA", "SSL_HANDSHAKE_DELTA",
              "REDIR_DELTA", "REQUEST_DELTA", 
-             "FIRST_PACKET_DELTA", "REMAINING_PACKETS_DELTA", "SYSTEM_DELTA",
+             "FIRST_PACKET_DELTA", "REMAIN_PACKETS_DELTA", "SYSTEM_DELTA",
              #new elements can be added until this point
              #beyond here, the rest are referred to in order
             "CONN_STRING_TEXT", #the domain strings
@@ -31,8 +32,8 @@ elements = ["START_MSEC", "DNS_LOOKUP_MSEC", "CONNECT_DELTA", "SSL_HANDSHAKE_DEL
 
 #if you add new elements, make sure the colors match up
 
-colors = ["\'transparent\'", "\'yellow\'", "\'orange\'", "\'pink\'", "\'light green\'", "\'dark green\'", 
-          "\'light blue\'", "\'blue\'", "\'dark blue\'"]
+colors = ["\'transparent\'", "\'yellow\'", "\'orange\'", "\'pink\'", "\'limegreen\'", "\'forestgreen\'", 
+          "\'lightblue\'", "\'blue\'", "\'darkblue\'"]
 
 # START_MSEC - white
 # DNS_LOOKUP_MSEC - yellow
@@ -61,6 +62,7 @@ def main(source):
             items = f.readlines()
             #for each line
             for item in items:
+                item = re.sub('[^0-9a-zA-Z= ":\_./]','',item)
                 i = 0
                 i = 0
                 j = ""
@@ -406,7 +408,7 @@ def createoutputs(inputarray, maxseq, linearray):
             (((("+str(item[-4])+" + starttime)/endtime)\
               * ($(chart.container).width() - ml)) + ml - 1)\
              , 60, 1, myheight*.9625).attr(\
-            {'stroke-width': 1,stroke: 'salmon',zIndex: 4}).add(); \
+            {'stroke-width': 1,stroke: 'limegreen',zIndex: 4}).add(); \
             }")
             if(item[-5] != 0):
                     print("\
@@ -415,7 +417,7 @@ def createoutputs(inputarray, maxseq, linearray):
             (((("+str(item[-5])+" + starttime)/endtime) \
              * ($(chart.container).width() - ml)) + ml - 1)\
             , 60, 1, myheight*.9625).attr(\
-            {'stroke-width': 1,stroke: 'limegreen',zIndex: 4}).add();\
+            {'stroke-width': 1,stroke: 'salmon',zIndex: 4}).add();\
             }\
             ")
         
@@ -458,8 +460,6 @@ def cmp(a, b):
 def imagesGetMax(images):
     exploded = images[-1].split("\\")
     exploded = exploded[-1].split("/")
-    print(exploded)
-    print(exploded[-1][0:-5])
     msecMax = ast.literal_eval(exploded[-1][0:-5])
     if (msecMax > 0):
         return msecMax
@@ -501,9 +501,7 @@ def processImages():
     
      #get the list of all files with .jpg extension in the directory and save it in an array named $images
     dir = sys.argv[0][0: -len("formatchart.py")] + 'Screencaps/[0-9]*.jpeg'
-    print(dir)
     images = glob.glob(dir)
-    print(images)
 
     #sort the images by time. The string manipulation is necessary to get the title of the file
     images.sort(key = lambda x: x.split("/")[-1][0:-5]) 
@@ -516,7 +514,6 @@ def processImages():
     #[(percentage, image path)]
     reducedimages = reduceImages(increment, images, msecMax)
     reducedimages.sort(key=lambda x: x[1])
-    
 
     if not os.path.exists(sys.argv[0][0: -len("formatchart.py")] + "Data"):
         os.makedirs(sys.argv[0][0: -len("formatchart.py")] + "Data")
@@ -528,12 +525,12 @@ def processImages():
     #output my images to the html
     for image in reducedimages:
         exploded = image[1].split("\\")
-        exploded = exploded[0].split("/")
-        imagename = exploded[-1][0:-4]
+     
+        imagename = exploded[-1][0:-5]
         
         print("document.write(\"<div class=\\\"image\\\">\
         <p>" + imagename + "s</p>\
-        <img src=" + image[1] + \
+        <img src=" + "ScreenCaps/" + imagename + ".jpeg" +\
         " height=\\\"300em\\\" style=\\\"max-width: 500em;\\\">\
         <p>" + str(image[0]) + "%</p>\
         </div>\");")
@@ -543,11 +540,10 @@ def processImages():
 
 # Running the program
 
-#processImages()
+processImages()
 
 #is there a Transdata.dat file? If not, grab another .dat file
 if not os.path.exists(sys.argv[0][0: -len("formatchart.py")] + "TransData.dat"):
-    print("I exist")
     dat = glob.glob(sys.argv[0][0: -len("formatchart.py")] + "*.dat")
     if (len(dat)!= 0):
         data = main(dat[-1])
@@ -556,7 +552,7 @@ if not os.path.exists(sys.argv[0][0: -len("formatchart.py")] + "TransData.dat"):
         print("no .dat file")
 else: 
     data = main(sys.argv[0][0: -len("formatchart.py")] + "TransData.dat")
-    
+
 #'translate the .dat file'
 array = formatdata(data, elements)
 linearray = array[1] #contains the first paint and interactive information which are rendered as lines
