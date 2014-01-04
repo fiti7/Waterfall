@@ -180,7 +180,7 @@ $(setInterval(
     if ( current == 1){   
 //draws a rectangle on the chart
     chart.renderer.rect(   
-        //the time of the event has to be refactored to relate of the chart's width and height
+        //the time of the event has to be refactored to relate to the chart's width and height
         ((((113 + starttime)/endtime)* ($(chart.container).width() - ml)) + ml - 1) , 60, 1, myheight*.9625).attr(
         //how wide?
         {'stroke-width': 1,
@@ -201,4 +201,15 @@ $(setInterval(
             if (current == 4){            chart.renderer.rect(            ((((369 + starttime)/endtime)              * ($(chart.container).width() - ml)) + ml - 1)            , 60, 1, myheight*.9625).attr(            {'stroke-width': 1,stroke: 'limegreen',zIndex: 4}).add();            }            
             if ( current == 7){            chart.renderer.rect(            ((((1075 + starttime)/endtime)              * ($(chart.container).width() - ml)) + ml - 1)             , 60, 1, myheight*.9625).attr(            {'stroke-width': 1,stroke: 'salmon',zIndex: 4}).add();             }
             if (current == 7){            chart.renderer.rect(            ((((1361 + starttime)/endtime)              * ($(chart.container).width() - ml)) + ml - 1)            , 60, 1, myheight*.9625).attr(            {'stroke-width': 1,stroke: 'limegreen',zIndex: 4}).add();            }            
-if ((0 <= calculatedPercent) && (calculatedPercent <=1)){        myline1 = chart.renderer.rect(mywidth, 60, 1, myheight*.9625).attr(        {'stroke-width': 2,stroke: 'red',zIndex: 10}).add();}        if(0 > calculatedPercent){ myline1 = chart.renderer.rect(ml, 60, 1, myheight*.9625).attr(        {'stroke-width': 2,stroke: 'red',zIndex: 10}).add();} }, 100));
+        
+//this section controls the red marker line connected to scrolling the filmstrip.       
+    
+//redraws the red marker every second
+if ((0 <= calculatedPercent) && (calculatedPercent <=1)){        
+
+//overwrite the last line
+myline1 = chart.renderer.rect(mywidth, 60, 1, myheight*.9625).attr(        
+{'stroke-width': 2,stroke: 'red',zIndex: 10}).add();}        
+
+//edge case for before scrolling
+if(0 > calculatedPercent){ myline1 = chart.renderer.rect(ml, 60, 1, myheight*.9625).attr(        {'stroke-width': 2,stroke: 'red',zIndex: 10}).add();} }, 100));
