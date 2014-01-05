@@ -60,7 +60,6 @@ def main(source):
     with open(source, "r") as f:
         try:
             items = f.readlines()
-            
             #for each line
             for item in items:
                 i = 0

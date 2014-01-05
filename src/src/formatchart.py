@@ -62,7 +62,6 @@ def main(source):
             items = f.readlines()
             #for each line
             for item in items:
-                item = re.sub('[^0-9a-zA-Z= ":\_./]','',item)
                 i = 0
                 i = 0
                 j = ""
@@ -182,9 +181,12 @@ def formatdata(data, elements):
             item = item.split("=")
             n=0
             # check and see if it matches
-            while n < len(elements):
+           while n < len(elements):
                 if item[0] == elements[n]:
-                    newarray[n] = (item[1].strip("\'").strip("\"")) 
+                    if (item[1][0] == "\""):
+                        newarray[n] = item[1].split("\"")[1]
+                    if (item[1][0] == "\'"):
+                        newarray[n] = item[1].split("\'")[1]
                 n+=1
         
         #add it to my my data structure if it's useful
@@ -289,6 +291,8 @@ def createoutputs(inputarray, maxseq, linearray):
         # -1 b/c we deleted our set of domains - CONN_STRING_TEXT in reducetext(), 
         #-1 b/c we dont want to use the second - OBJECT_TEXT. 
         while (n < len(elements)-2):
+            #get rid of unnecessary information
+            inputarray[num][n][-1] = re.sub("[^0-9]","",str(inputarray[num][n][-1]))
             endtime += int(inputarray[num][n][-1])
             n += 1
             
@@ -408,7 +412,7 @@ def createoutputs(inputarray, maxseq, linearray):
             (((("+str(item[-4])+" + starttime)/endtime)\
               * ($(chart.container).width() - ml)) + ml - 1)\
              , 60, 1, myheight*.9625).attr(\
-            {'stroke-width': 1,stroke: 'limegreen',zIndex: 4}).add(); \
+            {'stroke-width': 1,stroke: 'salmon',zIndex: 4}).add(); \
             }")
             if(item[-5] != 0):
                     print("\
@@ -417,7 +421,7 @@ def createoutputs(inputarray, maxseq, linearray):
             (((("+str(item[-5])+" + starttime)/endtime) \
              * ($(chart.container).width() - ml)) + ml - 1)\
             , 60, 1, myheight*.9625).attr(\
-            {'stroke-width': 1,stroke: 'salmon',zIndex: 4}).add();\
+            {'stroke-width': 1,stroke: 'limegreen',zIndex: 4}).add();\
             }\
             ")
         
